@@ -26,20 +26,6 @@ C:\TextumReader test\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.
 C:\TextumReader test\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.csproj.GenerateResource.Cache
 C:\TextumReader test\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.dll
 C:\TextumReader test\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.pdb
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.dll.config
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.dll
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.pdb
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.dll
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.SqlServer.dll
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.ProblemDomain.dll
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.ProblemDomain.pdb
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.xml
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.SqlServer.xml
-C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.csprojResolveAssemblyReference.cache
-C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.Migrations.InitialCreate.resources
-C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.csproj.GenerateResource.Cache
-C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.dll
-C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.pdb
 C:\TextumReader refactoring\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.dll.config
 C:\TextumReader refactoring\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.dll
 C:\TextumReader refactoring\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.pdb
@@ -68,3 +54,17 @@ C:\TextumReader test\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.Mig
 C:\TextumReader test\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.csproj.GenerateResource.Cache
 C:\TextumReader test\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.dll
 C:\TextumReader test\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.pdb
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.dll.config
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.dll
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.pdb
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.dll
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.ProblemDomain.dll
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.ProblemDomain.pdb
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.xml
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.csprojResolveAssemblyReference.cache
+C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.Migrations.InitialCreate.resources
+C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.csproj.GenerateResource.Cache
+C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.dll
+C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.pdb

@@ -16,7 +16,7 @@ function setDialog(params) {
     });
 
     $(params.wordTagName).click(function (e) {
-        var selectedWord = $(this).text();
+        var selectedWord = $(this).text().toLocaleLowerCase();
         
         $.post(params.getTranslationAction, { word: selectedWord }, function (data) {
             $.post(params.getSavedTranslationsAction, { word: selectedWord, dictionaryId: params.dictionaryId }, function (savedTranslations) {

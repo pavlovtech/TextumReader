@@ -15,7 +15,7 @@ namespace TextumReader.ProblemDomain
         }
 
         public int WordId { get; set; }
-        public int? DictionaryId { get; set; }
+        public int DictionaryId { get; set; }
 
         public string WordName { get; set; }
 

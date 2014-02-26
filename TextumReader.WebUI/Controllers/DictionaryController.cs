@@ -78,10 +78,13 @@ namespace TextumReader.WebUI.Controllers
         public ActionResult DeleteWord(int id)
         {
             var word = _repository.GetSingle<Word>(m => m.WordId == id);
+
+            int dictId = word.DictionaryId;
+
             _repository.Remove(word);
             _repository.SaveChanges();
 
-            return RedirectToAction("WordList");
+            return RedirectToAction("WordList", new { DictionaryId = dictId });
         }
 
         public ViewResult Edit(int id)

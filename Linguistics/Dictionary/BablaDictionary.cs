@@ -20,9 +20,9 @@ namespace Linguistics.Dictionary
             {
                 result = HttpQuery.Get(query);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("Http connection problem");
+                throw new Exception("Http connection problem", ex);
             }
                 
             var html = new HtmlDocument();
@@ -35,9 +35,9 @@ namespace Linguistics.Dictionary
                 quickResultSection = html.DocumentNode.SelectNodes("//div[@class='quick-result-section'][1]//a[@class='muted-link']");
                 correctName = html.DocumentNode.SelectSingleNode("//a[@class='result-link'][1]").InnerText;
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("Cannot parse results");
+                throw new Exception("Cannot parse results", ex);
             }
             
             List<string> translations = new List<string>();

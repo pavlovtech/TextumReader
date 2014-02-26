@@ -156,7 +156,6 @@ namespace TextumReader.WebUI.Controllers
             }
             catch (Exception)
             {
-
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
 

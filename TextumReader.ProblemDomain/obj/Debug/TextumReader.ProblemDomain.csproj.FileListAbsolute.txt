@@ -8,10 +8,6 @@ C:\TextumReader test\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumRea
 C:\TextumReader test\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.csprojResolveAssemblyReference.cache
 C:\TextumReader test\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.dll
 C:\TextumReader test\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.pdb
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.dll
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.pdb
-C:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.dll
-C:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.pdb
 C:\TextumReader refactoring\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.dll
 C:\TextumReader refactoring\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.pdb
 C:\TextumReader refactoring\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.csprojResolveAssemblyReference.cache
@@ -21,3 +17,8 @@ C:\TextumReader test\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDo
 C:\TextumReader test\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.pdb
 C:\TextumReader test\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.dll
 C:\TextumReader test\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.pdb
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.dll
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.pdb
+C:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.csprojResolveAssemblyReference.cache
+C:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.dll
+C:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.pdb
