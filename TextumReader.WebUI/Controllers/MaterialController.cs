@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using TextumReader.ProblemDomain;
@@ -147,7 +148,17 @@ namespace TextumReader.WebUI.Controllers
         [HttpPost]
         public JsonResult GetTranslation(string word)
         {
-            WordTranslation translation = _dictionary.GetTranslation(word, "английский-русский");
+            WordTranslation translation;
+
+            try
+            {
+                translation = _dictionary.GetTranslation(word, "английский-русский");
+            }
+            catch (Exception)
+            {
+
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
 
             return Json(translation, JsonRequestBehavior.AllowGet);
         }

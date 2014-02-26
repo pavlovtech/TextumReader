@@ -15,13 +15,31 @@ namespace Linguistics.Dictionary
         {
             string query = String.Format("http://www.babla.ru/{0}/{1}", translationDirection, word);
 
-            string result = HttpQuery.Get(query);
+            string result;
+            try
+            {
+                result = HttpQuery.Get(query);
+            }
+            catch
+            {
+                throw new Exception("Http connection problem");
+            }
+                
             var html = new HtmlDocument();
             html.LoadHtml(result);
+            IEnumerable<HtmlNode> quickResultSection;
+            string correctName;
 
-            var quickResultSection = html.DocumentNode.SelectNodes("//div[@class='quick-result-section'][1]//a[@class='muted-link']");
-            string correctName = html.DocumentNode.SelectSingleNode("//a[@class='result-link'][1]").InnerText;
-
+            try
+            {
+                quickResultSection = html.DocumentNode.SelectNodes("//div[@class='quick-result-section'][1]//a[@class='muted-link']");
+                correctName = html.DocumentNode.SelectSingleNode("//a[@class='result-link'][1]").InnerText;
+            }
+            catch
+            {
+                throw new Exception("Cannot parse results");
+            }
+            
             List<string> translations = new List<string>();
 
             foreach (var node in quickResultSection)

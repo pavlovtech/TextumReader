@@ -36,3 +36,4 @@ C:\TextumReader test\Linguistics\bin\Debug\HtmlAgilityPack.pdb
 C:\TextumReader test\Linguistics\bin\Debug\HtmlAgilityPack.xml
 C:\TextumReader test\Linguistics\obj\Debug\Linguistics.dll
 C:\TextumReader test\Linguistics\obj\Debug\Linguistics.pdb
+C:\TextumReader\Linguistics\obj\Debug\Linguistics.csprojResolveAssemblyReference.cache

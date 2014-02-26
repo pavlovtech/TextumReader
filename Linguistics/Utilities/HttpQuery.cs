@@ -12,13 +12,15 @@ namespace Linguistics.Utilities
     {
         public static string Get(string query)
         {
+            string Out = "";
             WebRequest req = WebRequest.Create(query);
 
             WebResponse resp = req.GetResponse();
             Stream stream = resp.GetResponseStream();
             StreamReader sr = new StreamReader(stream);
-            string Out = sr.ReadToEnd();
+            Out = sr.ReadToEnd();
             sr.Close();
+
             return Out;
         }
     }
