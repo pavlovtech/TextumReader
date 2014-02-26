@@ -1,0 +1,38 @@
+C:\TextumReader\TextumReader\Linguistics\bin\Debug\Linguistics.dll
+C:\TextumReader\TextumReader\Linguistics\bin\Debug\Linguistics.pdb
+C:\TextumReader\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader\TextumReader\Linguistics\obj\Debug\Linguistics.csprojResolveAssemblyReference.cache
+C:\TextumReader\TextumReader\Linguistics\obj\Debug\Linguistics.dll
+C:\TextumReader\TextumReader\Linguistics\obj\Debug\Linguistics.pdb
+C:\TextumReader test\TextumReader\Linguistics\bin\Debug\Linguistics.dll
+C:\TextumReader test\TextumReader\Linguistics\bin\Debug\Linguistics.pdb
+C:\TextumReader test\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader test\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader test\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader test\TextumReader\Linguistics\obj\Debug\Linguistics.csprojResolveAssemblyReference.cache
+C:\TextumReader test\TextumReader\Linguistics\obj\Debug\Linguistics.dll
+C:\TextumReader test\TextumReader\Linguistics\obj\Debug\Linguistics.pdb
+C:\TextumReader\Linguistics\bin\Debug\Linguistics.dll
+C:\TextumReader\Linguistics\bin\Debug\Linguistics.pdb
+C:\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader\Linguistics\obj\Debug\Linguistics.dll
+C:\TextumReader\Linguistics\obj\Debug\Linguistics.pdb
+C:\TextumReader refactoring\Linguistics\bin\Debug\Linguistics.dll
+C:\TextumReader refactoring\Linguistics\bin\Debug\Linguistics.pdb
+C:\TextumReader refactoring\Linguistics\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader refactoring\Linguistics\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader refactoring\Linguistics\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader refactoring\Linguistics\obj\Debug\Linguistics.csprojResolveAssemblyReference.cache
+C:\TextumReader refactoring\Linguistics\obj\Debug\Linguistics.dll
+C:\TextumReader refactoring\Linguistics\obj\Debug\Linguistics.pdb
+C:\TextumReader test\Linguistics\bin\Debug\Linguistics.dll
+C:\TextumReader test\Linguistics\bin\Debug\Linguistics.pdb
+C:\TextumReader test\Linguistics\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader test\Linguistics\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader test\Linguistics\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader test\Linguistics\obj\Debug\Linguistics.dll
+C:\TextumReader test\Linguistics\obj\Debug\Linguistics.pdb

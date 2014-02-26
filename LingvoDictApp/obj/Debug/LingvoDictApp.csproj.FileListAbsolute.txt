@@ -1,0 +1,86 @@
+C:\TextumReader\TextumReader\LingvoDictApp\bin\Debug\LingvoDictApp.exe.config
+C:\TextumReader\TextumReader\LingvoDictApp\bin\Debug\LingvoDictApp.exe
+C:\TextumReader\TextumReader\LingvoDictApp\bin\Debug\LingvoDictApp.pdb
+C:\TextumReader\TextumReader\LingvoDictApp\bin\Debug\Linguistics.dll
+C:\TextumReader\TextumReader\LingvoDictApp\bin\Debug\TextumReader.Utilities.dll
+C:\TextumReader\TextumReader\LingvoDictApp\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader\TextumReader\LingvoDictApp\bin\Debug\Linguistics.pdb
+C:\TextumReader\TextumReader\LingvoDictApp\bin\Debug\TextumReader.Utilities.pdb
+C:\TextumReader\TextumReader\LingvoDictApp\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader\TextumReader\LingvoDictApp\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.csprojResolveAssemblyReference.cache
+C:\TextumReader\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.Form1.resources
+C:\TextumReader\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.Properties.Resources.resources
+C:\TextumReader\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.csproj.GenerateResource.Cache
+C:\TextumReader\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.exe
+C:\TextumReader\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.pdb
+C:\TextumReader test\TextumReader\LingvoDictApp\bin\Debug\LingvoDictApp.exe.config
+C:\TextumReader test\TextumReader\LingvoDictApp\bin\Debug\LingvoDictApp.exe
+C:\TextumReader test\TextumReader\LingvoDictApp\bin\Debug\LingvoDictApp.pdb
+C:\TextumReader test\TextumReader\LingvoDictApp\bin\Debug\Linguistics.dll
+C:\TextumReader test\TextumReader\LingvoDictApp\bin\Debug\TextumReader.Utilities.dll
+C:\TextumReader test\TextumReader\LingvoDictApp\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader test\TextumReader\LingvoDictApp\bin\Debug\Linguistics.pdb
+C:\TextumReader test\TextumReader\LingvoDictApp\bin\Debug\TextumReader.Utilities.pdb
+C:\TextumReader test\TextumReader\LingvoDictApp\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader test\TextumReader\LingvoDictApp\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader test\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.csprojResolveAssemblyReference.cache
+C:\TextumReader test\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.Form1.resources
+C:\TextumReader test\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.Properties.Resources.resources
+C:\TextumReader test\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.csproj.GenerateResource.Cache
+C:\TextumReader test\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.exe
+C:\TextumReader test\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.pdb
+C:\TextumReader\LingvoDictApp\bin\Debug\LingvoDictApp.exe.config
+C:\TextumReader\LingvoDictApp\bin\Debug\LingvoDictApp.exe
+C:\TextumReader\LingvoDictApp\bin\Debug\LingvoDictApp.pdb
+C:\TextumReader\LingvoDictApp\bin\Debug\Linguistics.dll
+C:\TextumReader\LingvoDictApp\bin\Debug\TextumReader.Utilities.dll
+C:\TextumReader\LingvoDictApp\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader\LingvoDictApp\bin\Debug\Linguistics.pdb
+C:\TextumReader\LingvoDictApp\bin\Debug\TextumReader.Utilities.pdb
+C:\TextumReader\LingvoDictApp\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader\LingvoDictApp\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.csprojResolveAssemblyReference.cache
+C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.Form1.resources
+C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.Properties.Resources.resources
+C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.csproj.GenerateResource.Cache
+C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.exe
+C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.pdb
+C:\TextumReader\LingvoDictApp\bin\Debug\WatiN.Core.dll
+C:\TextumReader\LingvoDictApp\bin\Debug\WatiN.Core.xml
+C:\TextumReader refactoring\LingvoDictApp\bin\Debug\LingvoDictApp.exe.config
+C:\TextumReader refactoring\LingvoDictApp\bin\Debug\LingvoDictApp.exe
+C:\TextumReader refactoring\LingvoDictApp\bin\Debug\LingvoDictApp.pdb
+C:\TextumReader refactoring\LingvoDictApp\bin\Debug\Linguistics.dll
+C:\TextumReader refactoring\LingvoDictApp\bin\Debug\TextumReader.Utilities.dll
+C:\TextumReader refactoring\LingvoDictApp\bin\Debug\WatiN.Core.dll
+C:\TextumReader refactoring\LingvoDictApp\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader refactoring\LingvoDictApp\bin\Debug\Linguistics.pdb
+C:\TextumReader refactoring\LingvoDictApp\bin\Debug\TextumReader.Utilities.pdb
+C:\TextumReader refactoring\LingvoDictApp\bin\Debug\WatiN.Core.xml
+C:\TextumReader refactoring\LingvoDictApp\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader refactoring\LingvoDictApp\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader refactoring\LingvoDictApp\obj\Debug\LingvoDictApp.csprojResolveAssemblyReference.cache
+C:\TextumReader refactoring\LingvoDictApp\obj\Debug\LingvoDictApp.Form1.resources
+C:\TextumReader refactoring\LingvoDictApp\obj\Debug\LingvoDictApp.Properties.Resources.resources
+C:\TextumReader refactoring\LingvoDictApp\obj\Debug\LingvoDictApp.csproj.GenerateResource.Cache
+C:\TextumReader refactoring\LingvoDictApp\obj\Debug\LingvoDictApp.exe
+C:\TextumReader refactoring\LingvoDictApp\obj\Debug\LingvoDictApp.pdb
+C:\TextumReader test\LingvoDictApp\bin\Debug\LingvoDictApp.exe.config
+C:\TextumReader test\LingvoDictApp\bin\Debug\LingvoDictApp.exe
+C:\TextumReader test\LingvoDictApp\bin\Debug\LingvoDictApp.pdb
+C:\TextumReader test\LingvoDictApp\bin\Debug\Linguistics.dll
+C:\TextumReader test\LingvoDictApp\bin\Debug\TextumReader.Utilities.dll
+C:\TextumReader test\LingvoDictApp\bin\Debug\WatiN.Core.dll
+C:\TextumReader test\LingvoDictApp\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader test\LingvoDictApp\bin\Debug\Linguistics.pdb
+C:\TextumReader test\LingvoDictApp\bin\Debug\TextumReader.Utilities.pdb
+C:\TextumReader test\LingvoDictApp\bin\Debug\WatiN.Core.xml
+C:\TextumReader test\LingvoDictApp\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader test\LingvoDictApp\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader test\LingvoDictApp\obj\Debug\LingvoDictApp.csprojResolveAssemblyReference.cache
+C:\TextumReader test\LingvoDictApp\obj\Debug\LingvoDictApp.Form1.resources
+C:\TextumReader test\LingvoDictApp\obj\Debug\LingvoDictApp.Properties.Resources.resources
+C:\TextumReader test\LingvoDictApp\obj\Debug\LingvoDictApp.csproj.GenerateResource.Cache
+C:\TextumReader test\LingvoDictApp\obj\Debug\LingvoDictApp.exe
+C:\TextumReader test\LingvoDictApp\obj\Debug\LingvoDictApp.pdb

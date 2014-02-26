@@ -1,0 +1,50 @@
+C:\TextumReader\TextumReader\TextProcessing\bin\Debug\TextumReader.Utilities.dll
+C:\TextumReader\TextumReader\TextProcessing\bin\Debug\TextumReader.Utilities.pdb
+C:\TextumReader\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader\TextumReader\TextProcessing\bin\Debug\Linguistics.dll
+C:\TextumReader\TextumReader\TextProcessing\bin\Debug\Linguistics.pdb
+C:\TextumReader\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.csprojResolveAssemblyReference.cache
+C:\TextumReader\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.dll
+C:\TextumReader\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.pdb
+C:\TextumReader test\TextumReader\TextProcessing\bin\Debug\TextumReader.Utilities.dll
+C:\TextumReader test\TextumReader\TextProcessing\bin\Debug\TextumReader.Utilities.pdb
+C:\TextumReader test\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader test\TextumReader\TextProcessing\bin\Debug\Linguistics.dll
+C:\TextumReader test\TextumReader\TextProcessing\bin\Debug\Linguistics.pdb
+C:\TextumReader test\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader test\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader test\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.csprojResolveAssemblyReference.cache
+C:\TextumReader test\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.dll
+C:\TextumReader test\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.pdb
+C:\TextumReader\TextProcessing\bin\Debug\TextumReader.Utilities.dll
+C:\TextumReader\TextProcessing\bin\Debug\TextumReader.Utilities.pdb
+C:\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader\TextProcessing\bin\Debug\Linguistics.dll
+C:\TextumReader\TextProcessing\bin\Debug\Linguistics.pdb
+C:\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.csprojResolveAssemblyReference.cache
+C:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.dll
+C:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.pdb
+C:\TextumReader refactoring\TextProcessing\bin\Debug\TextumReader.Utilities.dll
+C:\TextumReader refactoring\TextProcessing\bin\Debug\TextumReader.Utilities.pdb
+C:\TextumReader refactoring\TextProcessing\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader refactoring\TextProcessing\bin\Debug\Linguistics.dll
+C:\TextumReader refactoring\TextProcessing\bin\Debug\Linguistics.pdb
+C:\TextumReader refactoring\TextProcessing\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader refactoring\TextProcessing\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader refactoring\TextProcessing\obj\Debug\TextumReader.Utilities.csprojResolveAssemblyReference.cache
+C:\TextumReader refactoring\TextProcessing\obj\Debug\TextumReader.Utilities.dll
+C:\TextumReader refactoring\TextProcessing\obj\Debug\TextumReader.Utilities.pdb
+C:\TextumReader test\TextProcessing\bin\Debug\TextumReader.Utilities.dll
+C:\TextumReader test\TextProcessing\bin\Debug\TextumReader.Utilities.pdb
+C:\TextumReader test\TextProcessing\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader test\TextProcessing\bin\Debug\Linguistics.dll
+C:\TextumReader test\TextProcessing\bin\Debug\Linguistics.pdb
+C:\TextumReader test\TextProcessing\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader test\TextProcessing\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader test\TextProcessing\obj\Debug\TextumReader.Utilities.csprojResolveAssemblyReference.cache
+C:\TextumReader test\TextProcessing\obj\Debug\TextumReader.Utilities.dll
+C:\TextumReader test\TextProcessing\obj\Debug\TextumReader.Utilities.pdb

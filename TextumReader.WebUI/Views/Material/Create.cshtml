@@ -1,0 +1,23 @@
+﻿@model TextumReader.WebUI.Models.MaterialViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="well">
+    @using (Html.BeginForm("Create", "Material", FormMethod.Post, new { role = "form" }))
+    {
+        <div class="form-group">
+            <label for="CategoryId">Category</label>
+            @Html.DropDownListFor(x => x.CategoryId, (SelectList)ViewData["Categories"], new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Title)
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.ForeignText)
+            @Html.TextAreaFor(x => x.ForeignText, new { @class = "form-control" })
+        </div>
+        <input type="submit" value="Save" class="btn btn-default" />
+    }
+</div>

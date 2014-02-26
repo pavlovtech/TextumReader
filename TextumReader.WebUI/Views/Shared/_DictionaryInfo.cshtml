@@ -1,0 +1,29 @@
+﻿@model TextumReader.WebUI.Models.DictionaryViewModel
+
+@{
+    Layout = null;
+    var cat = new SelectList(Model.Dictionaries, "DictionaryId", "Title");
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading" style="padding: 7px;">
+        @using (Html.BeginForm("ChangeDictionary", "Material", FormMethod.Post, new { role = "form" }))
+        {
+            @Html.DropDownListFor(m => m.CurrentDictionary.DictionaryId, cat, new { @Name = "DictionaryId", @id = "DictionaryId", @class = "form-control", style = "height: 25px; padding: 0; margin: 0;" })
+            @Html.HiddenFor(x => x.MaterialId)
+            <input type="submit" value="Submit" style="display: none;" />
+        }
+    </div>
+    <div class="panel-body">
+        <div class="list-group">
+            @foreach (var d in Model.CurrentDictionary.Words)
+            {
+                <a href="#" class="list-group-item active">@d.WordName</a>
+                foreach (var t in d.Translations)
+                {
+                    <a href="#" class="list-group-item">@t.Value</a>
+                }
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿@model TextumReader.WebUI.Models.MaterialsListViewModel
+
+@{
+    ViewBag.Title = "MaterialList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    AjaxOptions ajaxOpts = new AjaxOptions
+    {
+        UpdateTargetId = "list",
+    };
+}
+
+<div class="row">
+    <div class="col-md-2 col-sm-12">
+        <!-- The list of categories -->
+        @using (Ajax.BeginForm("MaterialList", "Material", ajaxOpts, new {id = "catform", role = "form"}))
+        {
+            @Html.DropDownList("category", new SelectList(Model.Categories, (Model.CurrentCategory ?? "All")), "All", new {@class = "form-control"})
+            <input type="submit" value="Submit" style="display: none;" />
+        }
+    </div>
+</div>
+<div class="row">
+    <!-- The list of materials (updates through ajax as a category is changed by a user) -->
+    <section id="list" class="col-md-12">
+        <!-- A service message (about an error or smth) -->
+        @if (TempData["message"] != null)
+        {
+            <p class="text-info">@TempData["message"]</p>
+        }
+
+        @if (Model.Materials.Any())
+        {
+            @Html.Action("MaterialList", new {category = Model.CurrentCategory})
+        }
+        else
+        {
+            <p class="text-info">This category doesn't have any materials</p>
+        }
+    </section>
+</div>
+
+@section scripts
+{
+    <script>
+        $(function() {
+            submitFormAutomatically("#category");
+        });
+    </script>
+}

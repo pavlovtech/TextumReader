@@ -1,0 +1,46 @@
+﻿@model TextumReader.WebUI.Models.MaterialViewModel
+
+@{
+    ViewBag.Title = "Material";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4 class="panel-title">@Model.Title</h4></div>
+            <div class="word_split panel-body">@MvcHtmlString.Create(Model.ForeignText)</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        @Html.Action("DictionaryInfo", Model)
+    </div>
+</div>
+@{ Html.RenderPartial("_DialogPartial"); }
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            hideDialogWhenUserClicksOutside("#dialog");
+
+            wrapAllWords(".word_split", "w");
+            highlightWords("w", "lighted");
+            submitFormAutomatically("#DictionaryId");
+
+            var params =
+            {
+                getTranslationAction: '@Url.Action("GetTranslation")',
+                addWordAction: '@Url.Action("AddWord", "Dictionary")',
+                getSavedTranslationsAction: '@Url.Action("GetTranslations", "Dictionary")',
+                dialogId: "#dialog",
+                wordTagName: "w",
+                translationTagName: "translation",
+                dictionaryId: @Model.DictionaryId
+            };
+
+            setDialog(params);
+        });
+    </script>
+}

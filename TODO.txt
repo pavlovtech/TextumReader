@@ -1,0 +1,7 @@
+1. Set up a cool background
+2. Implement adding a new dictionary
+3. Implement binding a dictionary to a material
+4. Add a new column with added words
+5. Implement removing translatins as a user clicks on a translation a second time
+6. Refactor javascript
+7. Add support for other dictionaries
