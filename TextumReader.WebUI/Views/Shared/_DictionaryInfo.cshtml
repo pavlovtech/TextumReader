@@ -9,7 +9,7 @@
     <div class="panel-heading" style="padding: 7px;">
         @using (Html.BeginForm("ChangeDictionary", "Material", FormMethod.Post, new { role = "form" }))
         {
-            @Html.DropDownListFor(m => m.CurrentDictionary.DictionaryId, cat, new { @Name = "DictionaryId", @id = "DictionaryId", @class = "form-control", style = "height: 25px; padding: 0; margin: 0;" })
+            @Html.DropDownList("DictionaryId", Model.Dictionaries, null, new { @class = "form-control", style = "height: 25px; padding: 0; margin: 0;" })
             @Html.HiddenFor(x => x.MaterialId)
             <input type="submit" value="Submit" style="display: none;" />
         }

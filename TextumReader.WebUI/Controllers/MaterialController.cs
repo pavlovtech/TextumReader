@@ -58,7 +58,7 @@ namespace TextumReader.WebUI.Controllers
         {
             DictionaryViewModel model = new DictionaryViewModel()
             {
-                Dictionaries = _repository.Get<Dictionary>().ToList(),
+                Dictionaries = _repository.Get<Dictionary>().DictionariesToSelectListItems(_repository.GetSingle<Material>(m => m.MaterialId == material.MaterialId).MaterialId),
                 CurrentDictionary = _repository.GetSingle<Dictionary>(c => c.DictionaryId == material.DictionaryId),
                 MaterialId = _repository.GetSingle<Material>(m => m.MaterialId == material.MaterialId).MaterialId
             };
