@@ -45,15 +45,7 @@ namespace TextumReader.WebUI.Controllers
         {
             var material = _repository.GetSingle<Material>(p => p.MaterialId == id);
 
-            var viewModel = new MaterialViewModel()
-            {
-                CategoryId = material.CategoryId,
-                MaterialId = material.MaterialId,
-                NativeText = material.NativeText,
-                Title = material.Title,
-                ForeignText = material.ForeignText,
-                DictionaryId = material.DictionaryId
-            };
+            var viewModel = Mapper.Map<MaterialViewModel>(material);
 
             var dictionaries = _repository.Get<Dictionary>().ToList();
             ViewData["Dictionaries"] = new SelectList(dictionaries, "DictionaryId", "Title");
@@ -70,8 +62,10 @@ namespace TextumReader.WebUI.Controllers
                 CurrentDictionary = _repository.GetSingle<Dictionary>(c => c.DictionaryId == material.DictionaryId),
                 MaterialId = _repository.GetSingle<Material>(m => m.MaterialId == material.MaterialId).MaterialId
             };
+
             return PartialView("_DictionaryInfo", model);
         }
+
         [HttpPost]
         public ViewResult ChangeDictionary(MaterialViewModel material)
         {
@@ -79,13 +73,7 @@ namespace TextumReader.WebUI.Controllers
             single.DictionaryId = material.DictionaryId;
             _repository.SaveChanges();
 
-            var viewModel = new MaterialViewModel()
-            {
-                ForeignText = single.ForeignText,
-                DictionaryId = single.DictionaryId,
-                Title = single.Title,
-                MaterialId = single.MaterialId
-            };
+            var viewModel = Mapper.Map<MaterialViewModel>(single);
 
             return View("Material", viewModel);
         }
@@ -94,15 +82,7 @@ namespace TextumReader.WebUI.Controllers
         {
             var material = _repository.GetSingle<Material>(m => m.MaterialId == id);
 
-            var viewModel = new MaterialViewModel()
-            {
-                ForeignText = material.ForeignText,
-                NativeText = material.NativeText,
-                MaterialId = material.MaterialId,
-                CategoryId = material.CategoryId,
-                Title = material.Title,
-                CategoryName = material.Category.Name
-            };
+            var viewModel = Mapper.Map<MaterialViewModel>(material);
 
             var categories = _repository.Get<Category>();
             ViewData["Categories"] = new SelectList(categories, "CategoryId", "Name"); // TODO: Revome this or something
@@ -176,7 +156,7 @@ namespace TextumReader.WebUI.Controllers
 
         #region Utility methods
 
-        private IEnumerable<MaterialViewModel> GetMaterialsWithCategory(string category)
+        protected IEnumerable<MaterialViewModel> GetMaterialsWithCategory(string category)
         {
             IEnumerable<Material> materials;
             if (category == "all" || string.IsNullOrEmpty(category))
@@ -184,15 +164,7 @@ namespace TextumReader.WebUI.Controllers
             else
                 materials = _repository.Get<Material>(m => m.Category.Name == category);
 
-            return materials.ToList().Select(m => new MaterialViewModel()
-            {
-                CategoryId   = m.CategoryId,
-                ForeignText = m.ForeignText,
-                MaterialId = m.MaterialId,
-                NativeText = m.NativeText,
-                Title = m.Title,
-                CategoryName = m.Category.Name
-            });
+            return materials.ToList().Select(Mapper.Map<MaterialViewModel>);
         }
 
         #endregion

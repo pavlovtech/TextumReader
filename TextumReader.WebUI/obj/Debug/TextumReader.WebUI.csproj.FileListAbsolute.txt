@@ -376,5 +376,3 @@ C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.pdb
 C:\TextumReader\TextumReader.WebUI\bin\AutoMapper.Net4.dll
 C:\TextumReader\TextumReader.WebUI\bin\AutoMapper.dll
 C:\TextumReader\TextumReader.WebUI\bin\AutoMapper.xml
-C:\TextumReader\TextumReader.WebUI\bin\Bootstrapper.AutoMapper.dll
-C:\TextumReader\TextumReader.WebUI\bin\Bootstrapper.dll

@@ -24,6 +24,7 @@ namespace TextumReader.WebUI.App_Start
         protected override void Configure()
         {
             Mapper.CreateMap<MaterialViewModel, Material>();
+            Mapper.CreateMap<Material, MaterialViewModel>();
         }
     }
 }

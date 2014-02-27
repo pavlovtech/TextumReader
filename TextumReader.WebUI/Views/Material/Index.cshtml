@@ -17,7 +17,7 @@
         @using (Ajax.BeginForm("MaterialList", "Material", ajaxOpts, new { id = "catform", role = "form" }))
         {
            
-            @Html.DropDownList("CategoryId", Model.Categories, "All", new { @class = "form-control" })
+            @Html.DropDownList("category", Model.Categories, "All", new { @class = "form-control" })
             <input type="submit" value="Submit" style="display: none;" />
         }
     </div>
@@ -46,7 +46,7 @@
 {
     <script>
         $(function () {
-            submitFormAutomatically("#CategoryId");
+            submitFormAutomatically("#category");
         });
     </script>
 }
