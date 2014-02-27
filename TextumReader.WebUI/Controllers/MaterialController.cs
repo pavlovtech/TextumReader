@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using TextumReader.ProblemDomain;
 using TextumReader.DataLayer.Abstract;
 using Linguistics.Dictionary;
+using TextumReader.WebUI.Extensions;
 using TextumReader.WebUI.Models;
 using TextumReader.Utilities;
 
@@ -21,10 +22,11 @@ namespace TextumReader.WebUI.Controllers
         }
 
         public ViewResult Index(string category = "all")
+        //TODO: add all category
         {
             var viewModel = new MaterialsListViewModel
             {
-                Categories = _repository.Get<Category>().Select(m => m.Name),
+                Categories = _repository.Get<Category>().CategoriesToSelectListItems(),
                 CurrentCategory = category,
                 Materials = GetMaterialsWithCategory(category)
             };
@@ -32,11 +34,11 @@ namespace TextumReader.WebUI.Controllers
             return View(viewModel);
         }
 
-        public ViewResult MaterialList(string category = "all")
+        public PartialViewResult MaterialList(string category = "all")
         {
             var materials = GetMaterialsWithCategory(category);
 
-            return View(materials.Reverse());
+            return PartialView("MaterialListPartial", materials.Reverse());
         }
 
         public ViewResult Material(int id)
@@ -50,7 +52,7 @@ namespace TextumReader.WebUI.Controllers
                 NativeText = material.NativeText,
                 Title = material.Title,
                 ForeignText = material.ForeignText,
-                DictionaryId = material.DictionaryId,
+                DictionaryId = material.DictionaryId
             };
 
             var dictionaries = _repository.Get<Dictionary>().ToList();
