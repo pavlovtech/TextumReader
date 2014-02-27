@@ -10,9 +10,7 @@ namespace TextumReader.WebUI.Models
     public class MaterialsListViewModel
     {
         public IEnumerable<MaterialViewModel> Materials { get; set; }
-        //public IEnumerable<string> Categories { get; set; }
         public string CurrentCategory { get; set; }
-
         public IEnumerable<SelectListItem> Categories { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
 using TextumReader.ProblemDomain;
 using TextumReader.DataLayer.Abstract;
 using Linguistics.Dictionary;
@@ -22,7 +23,6 @@ namespace TextumReader.WebUI.Controllers
         }
 
         public ViewResult Index(string category = "all")
-        //TODO: add all category
         {
             var viewModel = new MaterialsListViewModel
             {
@@ -131,14 +131,7 @@ namespace TextumReader.WebUI.Controllers
         [HttpPost]
         public ActionResult Create(MaterialViewModel viewModel)
         {
-            var material = new Material()
-            {
-                ForeignText = viewModel.ForeignText,
-                NativeText = viewModel.NativeText,
-                MaterialId = viewModel.MaterialId,
-                CategoryId = viewModel.CategoryId,
-                Title = viewModel.Title
-            };
+            var material = Mapper.Map<Material>(viewModel);
 
             _repository.Add(material);
             _repository.SaveChanges();

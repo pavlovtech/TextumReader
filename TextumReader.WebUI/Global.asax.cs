@@ -9,6 +9,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using TextumReader.DataLayer.Concrete;
 using TextumReader.DataLayer.Migrations;
+using TextumReader.WebUI.App_Start;
 
 namespace TextumReader.WebUI
 {
@@ -27,6 +28,8 @@ namespace TextumReader.WebUI
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<TextumReaderDbContext, Configuration>());
+
+            AutoMapperWebConfig.Configure();
             //Database.SetInitializer(new DropCreateDatabaseAlways<TextumReaderDbContext>());
         }
     }
