@@ -1,7 +1,9 @@
-﻿namespace Linguistics.Dictionary
+﻿using System.Threading.Tasks;
+
+namespace Linguistics.Dictionary
 {
     public interface IDictionary
     {
-        WordTranslation GetTranslation(string word, string translationDirection);
+        Task<WordTranslation> GetTranslation(string word, string translationDirection);
     }
 }

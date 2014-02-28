@@ -1,7 +1,9 @@
-1. Set up a cool background
-2. Implement adding a new dictionary
-3. Implement binding a dictionary to a material
-4. Add a new column with added words
-5. Implement removing translatins as a user clicks on a translation a second time
-6. Refactor javascript
-7. Add support for other dictionaries
+1. Add paging
+2. Add highlighting added words in the text
+3. Add translations of sentences
+4. Add selection of arbitrary text
+5. Implement adding a new dictionary
+6. Implement removing translatins as a user clicks on a translation a second time
+7. Refactor javascript
+8. Add support for other dictionaries
+9. Add bookmarks

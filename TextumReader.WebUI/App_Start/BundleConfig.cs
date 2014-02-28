@@ -51,8 +51,7 @@ namespace TextumReader.WebUI
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css",
-                "~/Content/tablesorter/style.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
         }
     }
 }

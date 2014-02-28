@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
 using TextumReader.ProblemDomain;
@@ -52,7 +53,6 @@ namespace TextumReader.WebUI.Controllers
 
             return View(viewModel);
         }
-
 
         public PartialViewResult DictionaryInfo(MaterialViewModel material)
         {
@@ -121,13 +121,13 @@ namespace TextumReader.WebUI.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetTranslation(string word)
+        public async Task<JsonResult> GetTranslation(string word)
         {
             WordTranslation translation;
 
             try
             {
-                translation = _dictionary.GetTranslation(word, "английский-русский");
+                translation = await _dictionary.GetTranslation(word, "английский-русский");
             }
             catch (Exception)
             {

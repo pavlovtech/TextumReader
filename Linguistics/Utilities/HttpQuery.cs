@@ -10,12 +10,12 @@ namespace Linguistics.Utilities
 {
     public static class HttpQuery
     {
-        public static string Get(string query)
+        public static async Task<string> Get(string query)
         {
             string Out = "";
             WebRequest req = WebRequest.Create(query);
 
-            WebResponse resp = req.GetResponse();
+            WebResponse resp = await req.GetResponseAsync();
             Stream stream = resp.GetResponseStream();
             StreamReader sr = new StreamReader(stream);
             Out = sr.ReadToEnd();

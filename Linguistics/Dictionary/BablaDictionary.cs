@@ -11,14 +11,14 @@ namespace Linguistics.Dictionary
 {
     public class BablaDictionary: IDictionary
     {
-        public WordTranslation GetTranslation(string word, string translationDirection)
+        public async Task<WordTranslation> GetTranslation(string word, string translationDirection)
         {
             string query = String.Format("http://www.babla.ru/{0}/{1}", translationDirection, word);
 
             string result;
             try
             {
-                result = HttpQuery.Get(query);
+                result = await HttpQuery.Get(query);
             }
             catch(Exception ex)
             {
