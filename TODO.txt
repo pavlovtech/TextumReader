@@ -7,3 +7,4 @@
 7. Refactor javascript
 8. Add support for other dictionaries
 9. Add bookmarks
+10. Implement authentication

@@ -11,15 +11,20 @@
             <div class="panel-heading"><h4 class="panel-title">@Model.Title</h4></div>
             <div class="word_split panel-body">@MvcHtmlString.Create(Model.ForeignText)</div>
         </div>
-        <ul class="pagination pagination-sm" style="padding: 0; margin: 0">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action("Material", new {id = Model.MaterialId, page = x}))
-        </ul>
     </div>
     <div class="col-md-3">
         @Html.Action("DictionaryInfo", Model)
     </div>
 </div>
-<div id="light-pagination" class="pagination light-theme simple-pagination"></div>
+
+<div class="row">
+    <div class="col-md-9" style="text-align: center; vertical-align: middle;">
+        <ul class="pagination" style="padding: 0; margin: 0">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("Material", new { id = Model.MaterialId, page = x }), 9)
+        </ul>
+    </div>
+</div>
+
 @{ Html.RenderPartial("_DialogPartial"); }
 
 

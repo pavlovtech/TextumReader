@@ -360,6 +360,7 @@
     <Content Include="Content\kendo\2013.3.1119\Uniform\slider-v.gif" />
     <Content Include="Content\kendo\2013.3.1119\Uniform\sprite.png" />
     <Content Include="Content\kendo\2013.3.1119\Uniform\sprite_2x.png" />
+    <Content Include="Content\logo.png" />
     <Content Include="Content\tablesorter\asc.gif" />
     <Content Include="Content\tablesorter\bg.gif" />
     <Content Include="Content\tablesorter\desc.gif" />

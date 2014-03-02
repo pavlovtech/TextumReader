@@ -2,7 +2,6 @@
 
 @{
     Layout = null;
-    var cat = new SelectList(Model.Dictionaries, "DictionaryId", "Title");
 }
 
 <div class="panel panel-default">
@@ -11,6 +10,9 @@
         {
             @Html.DropDownList("DictionaryId", Model.Dictionaries, null, new { @class = "form-control", style = "height: 25px; padding: 0; margin: 0;" })
             @Html.HiddenFor(x => x.MaterialId)
+            @Html.Hidden("currentPage", Model.PagingInfo.CurrentPage)
+            @Html.Hidden("itemsPerPage", Model.PagingInfo.ItemsPerPage)
+            @Html.Hidden("totalItems", Model.PagingInfo.TotalItems)
             <input type="submit" value="Submit" style="display: none;" />
         }
     </div>

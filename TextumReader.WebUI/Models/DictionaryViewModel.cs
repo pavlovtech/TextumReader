@@ -12,5 +12,7 @@ namespace TextumReader.WebUI.Models
         public int MaterialId { get; set; }
         public Dictionary CurrentDictionary { get; set; }
         public IEnumerable<SelectListItem> Dictionaries { get; set; }
+
+        public PagingInfo PagingInfo { get; set; }
     }
 }

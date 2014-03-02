@@ -79,20 +79,35 @@ namespace TextumReader.WebUI.Controllers
             {
                 Dictionaries = _repository.Get<Dictionary>().DictionariesToSelectListItems(_repository.GetSingle<Material>(m => m.MaterialId == material.MaterialId).MaterialId),
                 CurrentDictionary = _repository.GetSingle<Dictionary>(c => c.DictionaryId == material.DictionaryId),
-                MaterialId = _repository.GetSingle<Material>(m => m.MaterialId == material.MaterialId).MaterialId
+                MaterialId = _repository.GetSingle<Material>(m => m.MaterialId == material.MaterialId).MaterialId,
+                PagingInfo = material.PagingInfo
             };
 
             return PartialView("_DictionaryInfo", model);
         }
 
         [HttpPost]
-        public ViewResult ChangeDictionary(MaterialViewModel material)
+        public ViewResult ChangeDictionary(int materialId, int dictionaryId, int currentPage, int itemsPerPage, int totalItems)
         {
-            var single = _repository.GetSingle<Material>(m => m.MaterialId == material.MaterialId);
-            single.DictionaryId = material.DictionaryId;
+            var single = _repository.GetSingle<Material>(m => m.MaterialId == materialId);
+            single.DictionaryId = dictionaryId;
             _repository.SaveChanges();
 
+            int size = 40;
+            var sencences = single.ForeignText.Split(new char[] { '.' });
+            var selectedSentences = sencences.Skip((currentPage - 1) * size).Take(size).ToArray();
+
+            StringBuilder sb = new StringBuilder();
+            Parallel.ForEach(selectedSentences, sencence =>
+            {
+                lock (sb) { sb.Append(sencence + '.'); }
+            });
+
             var viewModel = Mapper.Map<MaterialViewModel>(single);
+
+            viewModel.ForeignText = sb.ToString();
+
+            viewModel.PagingInfo = new PagingInfo() {CurrentPage = currentPage, ItemsPerPage = itemsPerPage, TotalItems = totalItems};
 
             return View("Material", viewModel);
         }
@@ -132,7 +147,7 @@ namespace TextumReader.WebUI.Controllers
         {
             var material = Mapper.Map<Material>(viewModel);
 
-            material.CategoryId = _repository.Get<Category>().First().CategoryId;
+            material.DictionaryId = _repository.Get<Dictionary>().First().DictionaryId;
 
             _repository.Add(material);
             _repository.SaveChanges();
