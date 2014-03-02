@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
@@ -42,14 +43,32 @@ namespace TextumReader.WebUI.Controllers
             return PartialView("MaterialListPartial", materials.Reverse());
         }
 
-        public ViewResult Material(int id)
+        public ViewResult Material(int id, int page = 1)
         {
             var material = _repository.GetSingle<Material>(p => p.MaterialId == id);
 
+            int size = 40;
+            var sencences = material.ForeignText.Split(new char[] {'.'});
+            var selectedSentences = sencences.Skip((page - 1) * size).Take(size).ToArray();
+
+            StringBuilder sb = new StringBuilder();
+            Parallel.ForEach(selectedSentences, sencence =>
+            {
+                lock (sb) { sb.Append(sencence + '.'); }
+            });
+
             var viewModel = Mapper.Map<MaterialViewModel>(material);
 
+            viewModel.PagingInfo = new PagingInfo()
+            {
+                CurrentPage = page,
+                ItemsPerPage = size,
+                TotalItems = sencences.Count()
+            };
+
+            viewModel.ForeignText = sb.ToString();
+
             var dictionaries = _repository.Get<Dictionary>().ToList();
-            ViewData["Dictionaries"] = new SelectList(dictionaries, "DictionaryId", "Title");
 
             return View(viewModel);
         }
@@ -112,6 +131,8 @@ namespace TextumReader.WebUI.Controllers
         public ActionResult Create(MaterialViewModel viewModel)
         {
             var material = Mapper.Map<Material>(viewModel);
+
+            material.CategoryId = _repository.Get<Category>().First().CategoryId;
 
             _repository.Add(material);
             _repository.SaveChanges();

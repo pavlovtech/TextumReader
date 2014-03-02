@@ -24,6 +24,13 @@ namespace TextumReader.WebUI
                 "{controller}/{action}/{category}",
                 new { controller = "Material", action = "Index", category = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                "Material",
+                "{controller}/{action}/{id}/{page}",
+                new { controller = "Material", action = "Material", id = UrlParameter.Optional, page = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                 "DictRoute",
                 "{controller}/{action}",

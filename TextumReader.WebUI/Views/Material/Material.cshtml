@@ -11,37 +11,40 @@
             <div class="panel-heading"><h4 class="panel-title">@Model.Title</h4></div>
             <div class="word_split panel-body">@MvcHtmlString.Create(Model.ForeignText)</div>
         </div>
+        <ul class="pagination pagination-sm" style="padding: 0; margin: 0">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("Material", new {id = Model.MaterialId, page = x}))
+        </ul>
     </div>
     <div class="col-md-3">
         @Html.Action("DictionaryInfo", Model)
     </div>
 </div>
 <div id="light-pagination" class="pagination light-theme simple-pagination"></div>
-    @{ Html.RenderPartial("_DialogPartial"); }
+@{ Html.RenderPartial("_DialogPartial"); }
 
 
-    @section scripts
+@section scripts
 {
-        <script>
-            $(document).ready(function() {
-                hideDialogWhenUserClicksOutside("#dialog");
+    <script>
+        $(document).ready(function() {
+            hideDialogWhenUserClicksOutside("#dialog");
 
-                wrapAllWords(".word_split", "w");
-                highlightWords("w", "lighted");
-                submitFormAutomatically("#DictionaryId");
+            wrapAllWords(".word_split", "w");
+            highlightWords("w", "lighted");
+            submitFormAutomatically("#DictionaryId");
 
-                var params =
-                {
-                    getTranslationAction: '@Url.Action("GetTranslation")',
-                    addWordAction: '@Url.Action("AddWord", "Dictionary")',
-                    getSavedTranslationsAction: '@Url.Action("GetTranslations", "Dictionary")',
-                    dialogId: "#dialog",
-                    wordTagName: "w",
-                    translationTagName: "translation",
-                    dictionaryId: @Model.DictionaryId
-                    };
+            var params =
+            {
+                getTranslationAction: '@Url.Action("GetTranslation")',
+                addWordAction: '@Url.Action("AddWord", "Dictionary")',
+                getSavedTranslationsAction: '@Url.Action("GetTranslations", "Dictionary")',
+                dialogId: "#dialog",
+                wordTagName: "w",
+                translationTagName: "translation",
+                dictionaryId: @Model.DictionaryId
+            };
 
-                setDialog(params);
-            });
-        </script>
-    }
+            setDialog(params);
+        });
+    </script>
+}

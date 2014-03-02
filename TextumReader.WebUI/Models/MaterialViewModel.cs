@@ -10,6 +10,8 @@ namespace TextumReader.WebUI.Models
 {
     public class MaterialViewModel
     {
+        public PagingInfo PagingInfo { get; set; }
+
         [HiddenInput(DisplayValue = false)]
         public int MaterialId { get; set; }
 

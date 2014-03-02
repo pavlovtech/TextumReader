@@ -1,4 +1,4 @@
-1. Add paging
+1. Add pagination
 2. Add highlighting added words in the text
 3. Add translations of sentences
 4. Add selection of arbitrary text
