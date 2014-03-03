@@ -6,7 +6,7 @@
 
 @if (!Model.Any())
 {
-    <p class="text-info">This category doesn't have any materials</p>
+    <div class="alert alert-info">This category doesn't have any materials</div>
 }
 else
 {
@@ -16,30 +16,30 @@ else
                 <thead>
                     <tr>
                         <th>@Html.DisplayNameFor(model => model.Title)</th>
-                        <th width="100" class="centered-column" style="padding-right: 15px">@Html.DisplayNameFor(model => model.CategoryName)</th>
-                        <th width="180" class="centered-column">Actions</th>
+                        <th width="100" class="centered-column hidden-xs" style="padding-right: 15px">@Html.DisplayNameFor(model => model.CategoryName)</th>
+                        <th width="180" class="centered-column hidden-xs">Actions</th>
                     </tr>
                 </thead>
                 @foreach (var m in Model)
                 {
                     <tr>
-                        <td>@Html.ActionLink(m.Title, "Material", new { id = m.MaterialId }) </td>
-                        <td class="centered-column">@m.CategoryName</td>
-                        <td class="buttons centered-column">
-                            @Html.ActionLink("Edit", "Edit", new { id = m.MaterialId }, new { @class = "btn btn-primary btn-sm" })
-                            @Ajax.ActionLink("Delete", "Delete", new { id = m.MaterialId },
-                                new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "list" },
-                                new { @class = "btn btn-danger btn-sm" })
+                        <td>@Html.ActionLink(m.Title, "Material", new {id = m.MaterialId}) </td>
+                        <td class="centered-column hidden-xs">@m.CategoryName</td>
+                        <td class="buttons centered-column hidden-xs">
+                            @Html.ActionLink("Edit", "Edit", new {id = m.MaterialId}, new {@class = "btn btn-primary btn-sm"})
+                            @Ajax.ActionLink("Delete", "Delete", new {id = m.MaterialId},
+                                new AjaxOptions {HttpMethod = "POST", UpdateTargetId = "list"},
+                                new {@class = "btn btn-primary btn-sm"})
                         </td>
                     </tr>
                 }
             </table>
         </div>
     </div>
-    
-     <script>
-        $(function () {
-            $(document).ready(function () {
+
+    <script>
+        $(function() {
+            $(document).ready(function() {
                 $("table").tablesorter({ headers: { 2: { sorter: false }, } });
             }
             );

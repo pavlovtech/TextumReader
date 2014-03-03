@@ -184,6 +184,7 @@
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaterialController.cs" />
+    <Compile Include="Extensions\HtmlHelpers.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\PagingHelper.cs" />
     <Compile Include="Global.asax.cs">
@@ -1307,6 +1308,7 @@
     <Content Include="Views\Dictionary\Edit.cshtml" />
     <Content Include="Views\Material\Create.cshtml" />
     <Content Include="Views\Shared\_DictionaryInfo.cshtml" />
+    <Content Include="Views\Dictionary\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

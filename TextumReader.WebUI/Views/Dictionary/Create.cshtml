@@ -1,0 +1,17 @@
+﻿@model TextumReader.ProblemDomain.Dictionary
+
+@{
+    ViewBag.Title = "Textum Reader - Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="well">
+    @using (Html.BeginForm("Create", "Dictionary", FormMethod.Post, new { role = "form" }))
+    {
+        <div class="form-group">
+            @Html.LabelFor(x => x.Title)
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+        </div>
+        <input type="submit" value="Add" class="btn btn-default" />
+    }
+</div>

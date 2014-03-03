@@ -16,7 +16,7 @@
             <input type="submit" value="Submit" style="display: none;" />
         }
     </div>
-    <div class="panel-body">
+    <div id="words" class="panel-body" style="overflow-y: auto;">
         <div class="list-group">
             @foreach (var d in Model.CurrentDictionary.Words)
             {

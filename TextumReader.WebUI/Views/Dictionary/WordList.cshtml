@@ -4,49 +4,55 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    
-<script>
-    $((function() {
-        $("table").tablesorter({ headers: { 2: { sorter: false }, } });
-    }));
-</script>
+@if (Model.Any())
+{
+    <script>
+        $((function() {
+            $("table").tablesorter({ headers: { 2: { sorter: false }, } });
+        }));
+    </script>
 
-<table class="table table-striped table-bordered table-hover table-condensed tablesorter">
-    <thead>
-        <tr>
-            <th>Word Name</th>
-            <th>Translations</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var m in Model)
-        {
+    <table class="table table-striped table-bordered table-hover table-condensed tablesorter">
+        <thead>
             <tr>
-                <td>@m.WordName</td>
-                <td>
-                    @{
-                        var translations = new List<Translation>(m.Translations);
-                    }
-
-                    @for (var i = 0; i < translations.Count; i++)
-                    {
-                        if (i == translations.Count-1)
-                        {
-                            @translations[i].Value
-                            break;
-                        }
-                        @translations[i].Value@:,
-                    }
-                </td>
-
-                <td class="buttons">
-                    @using (Html.BeginForm("DeleteWord", "Dictionary", new {id = m.WordId}, FormMethod.Post, new {style = "display:inline;"}))
-                    {
-                        <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
-                    }
-                </td>
+                <th>Word Name</th>
+                <th>Translations</th>
+                <th>Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var m in Model)
+            {
+                <tr>
+                    <td style="width: 140px;">@m.WordName</td>
+                    <td>
+                        @{
+                            var translations = new List<Translation>(m.Translations);
+                        }
+
+                        @for (var i = 0; i < translations.Count; i++)
+                        {
+                            if (i == translations.Count - 1)
+                            {
+                                @translations[i].Value
+                                break;
+                            }
+                            @translations[i].Value@:,
+                        }
+                    </td>
+
+                    <td class="buttons centered-column" style="width: 110px;">
+                        @using (Html.BeginForm("DeleteWord", "Dictionary", new {id = m.WordId}, FormMethod.Post, new {style = "display:inline;"}))
+                        {
+                            <input type="submit" value="Delete" class="btn btn-primary btn-sm" />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+  <div class="alert alert-info"><strong>This dictionary doesn't have any words</strong></div>
+}

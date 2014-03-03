@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using TextumReader.DataLayer.Abstract;
 using TextumReader.ProblemDomain;
+using TextumReader.WebUI.Models;
 
 namespace TextumReader.WebUI.Controllers
 {
@@ -106,6 +108,21 @@ namespace TextumReader.WebUI.Controllers
             _repository.SaveChanges();
 
             TempData["message"] = string.Format("Dictionary has been saved");
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Create()
+        {
+            return View("Create", new Dictionary());
+        }
+
+        [HttpPost]
+        public ActionResult Create(Dictionary dictionary)
+        {
+            _repository.Add(dictionary);
+            _repository.SaveChanges();
+
+            TempData["message"] = string.Format("Dictionary has been added");
             return RedirectToAction("Index");
         }
 	}

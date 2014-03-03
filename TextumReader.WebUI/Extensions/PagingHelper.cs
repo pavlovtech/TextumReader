@@ -24,45 +24,70 @@ namespace TextumReader.WebUI.Extensions
             var navBack = BuildNavItem(pagingInfo, pageUrl, Direction.Forward);
             result.Append(navBack);
 
+            if (amountOfPages >= pagingInfo.TotalPages)
+            {
+                for (int i = 1; i <= pagingInfo.TotalPages; i++)
+                {
+                    FormPagingItems(pagingInfo, pageUrl, i, result);
+                }
+
+                var navForward = BuildNavItem(pagingInfo, pageUrl, Direction.Back);
+                result.Append(navForward);
+                return MvcHtmlString.Create(result.ToString());
+            }
+            else
+            {
+                AddNavItems(pagingInfo, pageUrl, result);
+
+                int startIndex;
+
+                if (pagingInfo.CurrentPage == 1)
+                    startIndex = 1;
+                else
+                    startIndex = pagingInfo.CurrentPage - 1;
+
+                if (pagingInfo.CurrentPage == pagingInfo.TotalPages)
+                    startIndex = pagingInfo.TotalPages - amountOfPages;
+
+
+                for (int i = startIndex; i <= startIndex + amountOfPages; i++)
+                {
+                    FormPagingItems(pagingInfo, pageUrl, i, result);
+                }
+
+                if (pagingInfo.CurrentPage != pagingInfo.TotalPages)
+                {
+                    result.Append("<li><a>...</a></li>");
+
+                    result.Append(CreateItem(pageUrl, pagingInfo.TotalPages).ToString());
+                }
+
+                var navForward = BuildNavItem(pagingInfo, pageUrl, Direction.Back);
+                result.Append(navForward);
+                return MvcHtmlString.Create(result.ToString());
+            }
+        }
+
+        private static void FormPagingItems(PagingInfo pagingInfo, Func<int, string> pageUrl, int i,
+            StringBuilder result)
+        {
+            var item = CreateItem(pageUrl, i);
+
+            if (i == pagingInfo.CurrentPage)
+                item.AddCssClass("active");
+
+            result.Append(item.ToString());
+        }
+
+        private static void AddNavItems(PagingInfo pagingInfo, Func<int, string> pageUrl, StringBuilder result)
+        {
             if (pagingInfo.CurrentPage != 1 && pagingInfo.CurrentPage != 2)
             {
                 result.Append(CreateItem(pageUrl, 1));
 
                 if (pagingInfo.CurrentPage != 3)
-                result.Append("<li><a>...</a></li>");
+                    result.Append("<li><a>...</a></li>");
             }
-
-            int startIndex;
-
-            if (pagingInfo.CurrentPage == 1)
-                startIndex = 1;
-            else
-                startIndex = pagingInfo.CurrentPage - 1;
-
-            if (pagingInfo.CurrentPage == pagingInfo.TotalPages)
-                startIndex = pagingInfo.TotalPages - amountOfPages;
-
-
-            for (int i = startIndex; i <= startIndex + amountOfPages; i++)
-            {
-                var item = CreateItem(pageUrl, i);
-
-                if (i == pagingInfo.CurrentPage)
-                    item.AddCssClass("active");
-
-                result.Append(item.ToString());
-            }
-
-            if (pagingInfo.CurrentPage != pagingInfo.TotalPages)
-            {
-                result.Append("<li><a>...</a></li>");
-
-                result.Append(CreateItem(pageUrl, pagingInfo.TotalPages).ToString());
-            }
-
-            var navForward = BuildNavItem(pagingInfo, pageUrl, Direction.Back);
-            result.Append(navForward);
-            return MvcHtmlString.Create(result.ToString());
         }
 
         private static TagBuilder CreateItem(Func<int, string> pageUrl, int pageNumber)

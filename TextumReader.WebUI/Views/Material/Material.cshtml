@@ -9,19 +9,17 @@
     <div class="col-md-9" id="article">
         <div class="panel panel-default">
             <div class="panel-heading"><h4 class="panel-title">@Model.Title</h4></div>
-            <div class="word_split panel-body">@MvcHtmlString.Create(Model.ForeignText)</div>
+            <div id="text" class="word_split panel-body" style="min-height: 521px; text-align: justify;">@MvcHtmlString.Create(Model.ForeignText)</div>
+        </div>
+        <div style="text-align: center; vertical-align: middle;">
+            <ul class="pagination" style="padding: 0; margin: 0">
+                @Html.PageLinks(Model.PagingInfo, x => Url.Action("Material", new { id = Model.MaterialId, page = x }), 9)
+            </ul>
         </div>
     </div>
+    
     <div class="col-md-3">
         @Html.Action("DictionaryInfo", Model)
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-9" style="text-align: center; vertical-align: middle;">
-        <ul class="pagination" style="padding: 0; margin: 0">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action("Material", new { id = Model.MaterialId, page = x }), 9)
-        </ul>
     </div>
 </div>
 
@@ -50,6 +48,8 @@
             };
 
             setDialog(params);
+
+            $("#words").height($('#text').height());
         });
     </script>
 }

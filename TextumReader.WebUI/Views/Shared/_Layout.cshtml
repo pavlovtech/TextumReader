@@ -10,9 +10,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/myscripts")
    
-    
     @Styles.Render("~/Content/themes/base/css")
-    
     
     @Styles.Render("~/Content/bootstrap")
     @Styles.Render("~/Content/bootstrap-theme")
@@ -28,6 +26,7 @@
             <div id="menu" class="navbar navbar-default navbar-fixed-top">
                 <div class="container">
                     <div class="navbar-header">
+  
                         @Html.ActionLink("Textum Reader","Index","Home", null, new { @class = "navbar-brand" })
                         <button class="btn btn-success navbar-toggle"
                                 data-toggle="collapse"
@@ -37,9 +36,10 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="nav">@Html.ActionLink("Add material", "Create", "Material")</li>
-                            <li class="nav">@Html.ActionLink("Materials", "Index", "Material")</li>
-                            <li class="nav">@Html.ActionLink("Dictionaries", "Index", "Dictionary")</li>
+                            @Html.MenuLink("Add a material", "Create", "Material")
+                            @Html.MenuLink("Add a dictionary", "Create", "Dictionary")
+                            @Html.MenuLink("Materials", "Index", "Material")
+                            @Html.MenuLink("Dictionaries", "Index", "Dictionary")
                         </ul>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
             @RenderBody()
         </section>
         <hr />
-        <footer id="footer" class="container"><p>© 2014 TextumReader</p></footer>
+        <footer id="footer" class="container"><p class="text-muted">© 2014 TextumReader</p></footer>
     </div>
     
     @RenderSection("scripts", required: false)

@@ -155,6 +155,12 @@ namespace TextumReader.WebUI.Controllers
             TempData["message"] = string.Format("Material has been saved");
             return RedirectToAction("Index");
         }
+        public ActionResult Create()
+        {
+            var categories = _repository.Get<Category>();
+            ViewData["Categories"] = new SelectList(categories, "CategoryId", "Name");
+            return View("Create", new MaterialViewModel());
+        }
 
         [HttpPost]
         public async Task<JsonResult> GetTranslation(string word)
@@ -181,13 +187,6 @@ namespace TextumReader.WebUI.Controllers
             _repository.SaveChanges();
 
             return RedirectToAction("MaterialList");
-        }
-
-        public ActionResult Create()
-        {
-            var categories = _repository.Get<Category>();
-            ViewData["Categories"] = new SelectList(categories, "CategoryId", "Name");
-            return View("Create", new MaterialViewModel());
         }
 
         #region Utility methods
