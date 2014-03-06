@@ -1307,8 +1307,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Dictionary\Edit.cshtml" />
     <Content Include="Views\Material\Create.cshtml" />
-    <Content Include="Views\Shared\_DictionaryInfo.cshtml" />
     <Content Include="Views\Dictionary\Create.cshtml" />
+    <Content Include="Views\Shared\_WordListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

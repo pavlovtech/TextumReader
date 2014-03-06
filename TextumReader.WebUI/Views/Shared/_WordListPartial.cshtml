@@ -1,0 +1,12 @@
+﻿@model IEnumerable<TextumReader.ProblemDomain.Word>
+
+<div class="list-group">
+    @foreach (var d in Model)
+    {
+        <a href="#" class="list-group-item active">@d.WordName</a>
+        foreach (var t in d.Translations)
+        {
+            <a href="#" class="list-group-item">@t.Value</a>
+        }
+    }
+</div>

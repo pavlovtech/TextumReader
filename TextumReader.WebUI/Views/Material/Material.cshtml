@@ -3,6 +3,11 @@
 @{
     ViewBag.Title = "Material";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    AjaxOptions ajaxOpts = new AjaxOptions
+    {
+        UpdateTargetId = "words",
+    };
 }
 
 <div class="row">
@@ -13,13 +18,25 @@
         </div>
         <div style="text-align: center; vertical-align: middle;">
             <ul class="pagination" style="padding: 0; margin: 0">
-                @Html.PageLinks(Model.PagingInfo, x => Url.Action("Material", new { id = Model.MaterialId, page = x }), 9)
+                @Html.PageLinks(Model.PagingInfo, x => Url.Action("Material", new {id = Model.MaterialId, page = x}), 9)
             </ul>
         </div>
     </div>
     
     <div class="col-md-3 hidden-xs">
-        @Html.Action("DictionaryInfo", Model)
+        <div class="panel panel-default">
+            <div class="panel-heading" style="padding: 7px;">
+                @using (Ajax.BeginForm("ChangeDictionary", "Material", null, ajaxOpts, new {role = "form"}))
+                {
+                    @Html.DropDownList("DictionaryId", Model.AllDictionaries, new {@class = "form-control", style = "height: 25px; padding: 0; margin: 0;"})
+                    @Html.HiddenFor(x => x.MaterialId)
+                    <input type="submit" value="Submit" style="display: none;" />
+                }
+            </div>
+            <div id="words" class="panel-body" style="overflow-y: auto;">
+                @Html.Action("WordList", "Material", new { dictionaryId = Model.DictionaryId })
+            </div>
+        </div>
     </div>
 </div>
 

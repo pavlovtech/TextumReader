@@ -68,48 +68,30 @@ namespace TextumReader.WebUI.Controllers
 
             viewModel.ForeignText = sb.ToString();
 
-            var dictionaries = _repository.Get<Dictionary>().ToList();
+            viewModel.AllDictionaries =
+                _repository.Get<Dictionary>()
+                    .DictionariesToSelectListItems(
+                        _repository.GetSingle<Material>(m => m.MaterialId == material.MaterialId).MaterialId);
 
             return View(viewModel);
         }
 
-        public PartialViewResult DictionaryInfo(MaterialViewModel material)
+        public PartialViewResult WordList(int dictionaryId)
         {
-            DictionaryViewModel model = new DictionaryViewModel()
-            {
-                Dictionaries = _repository.Get<Dictionary>().DictionariesToSelectListItems(_repository.GetSingle<Material>(m => m.MaterialId == material.MaterialId).MaterialId),
-                CurrentDictionary = _repository.GetSingle<Dictionary>(c => c.DictionaryId == material.DictionaryId),
-                MaterialId = _repository.GetSingle<Material>(m => m.MaterialId == material.MaterialId).MaterialId,
-                PagingInfo = material.PagingInfo
-            };
-
-            return PartialView("_DictionaryInfo", model);
+            var words = _repository.Get<Word>(w => w.DictionaryId == dictionaryId);
+            return PartialView("_WordListPartial", words);
         }
 
         [HttpPost]
-        public ViewResult ChangeDictionary(int materialId, int dictionaryId, int currentPage, int itemsPerPage, int totalItems)
+        public PartialViewResult ChangeDictionary(int materialId, int dictionaryId)
         {
             var single = _repository.GetSingle<Material>(m => m.MaterialId == materialId);
             single.DictionaryId = dictionaryId;
             _repository.SaveChanges();
 
-            int size = 40;
-            var sencences = single.ForeignText.Split(new char[] { '.' });
-            var selectedSentences = sencences.Skip((currentPage - 1) * size).Take(size).ToArray();
+            var words = _repository.Get<Word>(w => w.DictionaryId == dictionaryId);
 
-            StringBuilder sb = new StringBuilder();
-            Parallel.ForEach(selectedSentences, sencence =>
-            {
-                lock (sb) { sb.Append(sencence + '.'); }
-            });
-
-            var viewModel = Mapper.Map<MaterialViewModel>(single);
-
-            viewModel.ForeignText = sb.ToString();
-
-            viewModel.PagingInfo = new PagingInfo() {CurrentPage = currentPage, ItemsPerPage = itemsPerPage, TotalItems = totalItems};
-
-            return View("Material", viewModel);
+            return PartialView("_WordListPartial", words);
         }
 
         public ViewResult Edit(int id)
@@ -119,7 +101,7 @@ namespace TextumReader.WebUI.Controllers
             var viewModel = Mapper.Map<MaterialViewModel>(material);
 
             var categories = _repository.Get<Category>();
-            ViewData["Categories"] = new SelectList(categories, "CategoryId", "Name"); // TODO: Revome this or something
+            ViewData["Categories"] = new SelectList(categories, "CategoryId", "Name"); 
 
             return View(viewModel);
         }
@@ -131,6 +113,7 @@ namespace TextumReader.WebUI.Controllers
                 return View(viewModel);
 
             var material = _repository.GetSingle<Material>(m => m.MaterialId == viewModel.MaterialId);
+
             material.CategoryId = viewModel.CategoryId;
             material.ForeignText = viewModel.ForeignText;
             material.NativeText = viewModel.NativeText;

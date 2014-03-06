@@ -37,5 +37,7 @@ namespace TextumReader.WebUI.Models
         [Display(Name = "Translation")]
         [DataType(DataType.MultilineText)]
         public string NativeText { get; set; }
+
+        public IEnumerable<SelectListItem> AllDictionaries { get; set; }
     }
 }

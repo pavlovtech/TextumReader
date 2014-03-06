@@ -308,10 +308,12 @@ C:\TextumReader test\TextumReader.WebUI\bin\HtmlAgilityPack.xml
 C:\TextumReader test\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.csprojResolveAssemblyReference.cache
 C:\TextumReader test\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.dll
 C:\TextumReader test\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.pdb
+C:\TextumReader\TextumReader.WebUI\bin\AutoMapper.Net4.dll
 C:\TextumReader\TextumReader.WebUI\bin\TextumReader.WebUI.dll.config
 C:\TextumReader\TextumReader.WebUI\bin\TextumReader.WebUI.dll
 C:\TextumReader\TextumReader.WebUI\bin\TextumReader.WebUI.pdb
 C:\TextumReader\TextumReader.WebUI\bin\Antlr3.Runtime.dll
+C:\TextumReader\TextumReader.WebUI\bin\AutoMapper.dll
 C:\TextumReader\TextumReader.WebUI\bin\EntityFramework.dll
 C:\TextumReader\TextumReader.WebUI\bin\EntityFramework.SqlServer.dll
 C:\TextumReader\TextumReader.WebUI\bin\Linguistics.dll
@@ -346,6 +348,7 @@ C:\TextumReader\TextumReader.WebUI\bin\TextumReader.Utilities.pdb
 C:\TextumReader\TextumReader.WebUI\bin\TextumReader.DataLayer.pdb
 C:\TextumReader\TextumReader.WebUI\bin\TextumReader.ProblemDomain.pdb
 C:\TextumReader\TextumReader.WebUI\bin\Antlr3.Runtime.pdb
+C:\TextumReader\TextumReader.WebUI\bin\AutoMapper.xml
 C:\TextumReader\TextumReader.WebUI\bin\EntityFramework.xml
 C:\TextumReader\TextumReader.WebUI\bin\EntityFramework.SqlServer.xml
 C:\TextumReader\TextumReader.WebUI\bin\Newtonsoft.Json.xml
@@ -373,6 +376,3 @@ C:\TextumReader\TextumReader.WebUI\bin\HtmlAgilityPack.xml
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.csprojResolveAssemblyReference.cache
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.dll
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.pdb
-C:\TextumReader\TextumReader.WebUI\bin\AutoMapper.Net4.dll
-C:\TextumReader\TextumReader.WebUI\bin\AutoMapper.dll
-C:\TextumReader\TextumReader.WebUI\bin\AutoMapper.xml
