@@ -49,7 +49,6 @@ namespace TextumReader.DataLayer.Configurations
 
             HasRequired(_ => _.Category).WithMany(_ => _.Materials).HasForeignKey(_ => _.CategoryId);
             HasRequired(_ => _.Dictionary).WithMany(_ => _.Materials).HasForeignKey(_ => _.DictionaryId);
-            HasRequired(_ => _.User).WithMany(_ => _.Materials).HasForeignKey(_ => _.UserId);
         }
     }
 
@@ -59,15 +58,6 @@ namespace TextumReader.DataLayer.Configurations
         {
             Map(_ => _.ToTable("Categories"));
             HasKey(_ => _.CategoryId);
-        }
-    }
-
-    public class UserConfiguration : EntityTypeConfiguration<User>
-    {
-        public UserConfiguration()
-        {
-            Map(_ => _.ToTable("Users"));
-            HasKey(_ => _.UserId);
         }
     }
 }

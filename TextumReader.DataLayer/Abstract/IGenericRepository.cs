@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.AspNet.Identity;
 
 namespace TextumReader.DataLayer.Abstract
 {
@@ -13,7 +14,7 @@ namespace TextumReader.DataLayer.Abstract
 
         void Add<T>(T item) where T : class;
 
-        void Remove<T>(T item)where T: class;
+        void Remove<T>(T item) where T: class;
 
         void SaveChanges();
     }

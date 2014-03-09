@@ -27,7 +27,7 @@
                 <div class="container">
                     <div class="navbar-header">
   
-                        @Html.ActionLink("Textum Reader","Index","Home", null, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Textum Reader", "Index","Home", null, new { @class = "navbar-brand" })
                         <button class="btn btn-success navbar-toggle"
                                 data-toggle="collapse"
                                 data-target=".navbar-collapse">
@@ -40,6 +40,7 @@
                             @Html.MenuLink("Add a dictionary", "Create", "Dictionary")
                             @Html.MenuLink("Materials", "Index", "Material")
                             @Html.MenuLink("Dictionaries", "Index", "Dictionary")
+                            @Html.Partial("_LoginPartial")
                         </ul>
                     </div>
                 </div>

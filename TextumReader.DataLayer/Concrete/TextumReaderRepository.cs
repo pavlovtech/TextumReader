@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using Microsoft.AspNet.Identity;
 using TextumReader.DataLayer.Abstract;
 
 namespace TextumReader.DataLayer.Concrete

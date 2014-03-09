@@ -84,3 +84,5 @@ C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.Properties.Resources.resou
 C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.csproj.GenerateResource.Cache
 C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.exe
 C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.pdb
+C:\TextumReader\LingvoDictApp\bin\Debug\Newtonsoft.Json.dll
+C:\TextumReader\LingvoDictApp\bin\Debug\Newtonsoft.Json.xml

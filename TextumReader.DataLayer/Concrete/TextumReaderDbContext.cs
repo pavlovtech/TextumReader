@@ -22,14 +22,10 @@ namespace TextumReader.DataLayer.Concrete
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            modelBuilder.Configurations.Add(new CategoryConfiguration());
             modelBuilder.Configurations.Add(new WordConfiguration());
-            modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new CategoryConfiguration());
             modelBuilder.Configurations.Add(new MaterialConfiguration());
             modelBuilder.Configurations.Add(new TranslationConfiguration());
-            modelBuilder.Configurations.Add(new DictionaryConfiguration());
         }
     }
 }

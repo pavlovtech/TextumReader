@@ -68,3 +68,5 @@ C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.Migratio
 C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.csproj.GenerateResource.Cache
 C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.dll
 C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.pdb
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\Microsoft.AspNet.Identity.Core.xml

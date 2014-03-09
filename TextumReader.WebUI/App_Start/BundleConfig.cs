@@ -18,13 +18,14 @@ namespace TextumReader.WebUI
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/myscripts").Include("~/Scripts/submit-helper.js",
-                "~/Scripts/word-lighter.js",
-                "~/Scripts/translation-dialog.js",
-                "~/Scripts/dialog-hider.js",
-                "~/Scripts/translation-saver.js",
-                "~/Scripts/translation-processing.js",
-                "~/Scripts/word-wrapper.js",
+            bundles.Add(new ScriptBundle("~/bundles/myscripts").Include(
+                "~/Scripts/MyScripts/submit-helper.js",
+                "~/Scripts/MyScripts/word-lighter.js",
+                "~/Scripts/MyScripts/translation-dialog.js",
+                "~/Scripts/MyScripts/dialog-hider.js",
+                "~/Scripts//MyScripts/translation-saver.js",
+                "~/Scripts//MyScripts/word-wrapper.js",
+                "~/Scripts//MyScripts/google-translation-api.js",
                 "~/Scripts/jquery.tablesorter.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include("~/Scripts/kendo/2013.3.1119/kendo.web.min.js"));

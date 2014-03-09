@@ -1,4 +1,9 @@
-﻿.buttons .btn {
+﻿.centered {
+    float: none;
+    margin: 0 auto;
+} 
+
+.buttons .btn {
     height: 33px;
     width: 60px;
     text-decoration: none;

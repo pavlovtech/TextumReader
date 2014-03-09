@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
+using Microsoft.AspNet.Identity;
 using TextumReader.ProblemDomain;
 using TextumReader.DataLayer.Abstract;
 using Linguistics.Dictionary;
@@ -14,9 +15,10 @@ using TextumReader.Utilities;
 
 namespace TextumReader.WebUI.Controllers
 {
+    [Authorize]
     public class MaterialController : Controller
     {
-        readonly IDictionary _dictionary = new BablaDictionary();
+        readonly IDictionary _dictionary = new GoogleTranslate();
         private readonly IGenericRepository _repository;
 
         public MaterialController(IGenericRepository repository)
@@ -43,9 +45,12 @@ namespace TextumReader.WebUI.Controllers
             return PartialView("MaterialListPartial", materials.Reverse());
         }
 
-        public ViewResult Material(int id, int page = 1)
+        public ActionResult Material(int id, int page = 1)
         {
-            var material = _repository.GetSingle<Material>(p => p.MaterialId == id);
+            var material = _repository.GetSingle<Material>(p => p.MaterialId == id && p.UserId == User.Identity.GetUserId());
+
+            if (material == null)
+                return RedirectToAction("Index");
 
             int size = 40;
             var sencences = material.ForeignText.Split(new char[] {'.'});
@@ -132,12 +137,15 @@ namespace TextumReader.WebUI.Controllers
 
             material.DictionaryId = _repository.Get<Dictionary>().First().DictionaryId;
 
+            material.UserId = User.Identity.GetUserId();
+
             _repository.Add(material);
             _repository.SaveChanges();
 
             TempData["message"] = string.Format("Material has been saved");
             return RedirectToAction("Index");
         }
+
         public ActionResult Create()
         {
             var categories = _repository.Get<Category>();
@@ -178,9 +186,9 @@ namespace TextumReader.WebUI.Controllers
         {
             IEnumerable<Material> materials;
             if (category == "all" || string.IsNullOrEmpty(category))
-                materials = _repository.Get<Material>();
+                materials = _repository.GetMaterialsByUserId(User.Identity.GetUserId());
             else
-                materials = _repository.Get<Material>(m => m.Category.Name == category);
+                materials = _repository.GetMaterialsByUserId(User.Identity.GetUserId()).Where(m => m.Category.Name == category);
 
             return materials.ToList().Select(Mapper.Map<MaterialViewModel>);
         }
