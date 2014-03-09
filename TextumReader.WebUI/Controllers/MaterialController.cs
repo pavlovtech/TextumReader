@@ -18,12 +18,13 @@ namespace TextumReader.WebUI.Controllers
     [Authorize]
     public class MaterialController : Controller
     {
-        readonly IDictionary _dictionary = new GoogleTranslate();
+        readonly IWebDictionary _webDictionary;
         private readonly IGenericRepository _repository;
 
-        public MaterialController(IGenericRepository repository)
+        public MaterialController(IGenericRepository repository, IWebDictionary webDictionary)
         {
             _repository = repository;
+            _webDictionary = webDictionary;
         }
 
         public ViewResult Index(string category = "all")
@@ -74,16 +75,15 @@ namespace TextumReader.WebUI.Controllers
             viewModel.ForeignText = sb.ToString();
 
             viewModel.AllDictionaries =
-                _repository.Get<Dictionary>()
-                    .DictionariesToSelectListItems(
-                        _repository.GetSingle<Material>(m => m.MaterialId == material.MaterialId).MaterialId);
+                _repository.GetDictionariesByUserId(User.Identity.GetUserId())
+                    .DictionariesToSelectListItems(id);
 
             return View(viewModel);
         }
 
         public PartialViewResult WordList(int dictionaryId)
         {
-            var words = _repository.Get<Word>(w => w.DictionaryId == dictionaryId);
+            var words = _repository.Get<Word>(w => w.DictionaryId == dictionaryId).Reverse();
             return PartialView("_WordListPartial", words);
         }
 
@@ -160,7 +160,7 @@ namespace TextumReader.WebUI.Controllers
 
             try
             {
-                translation = await _dictionary.GetTranslation(word, "английский-русский");
+                translation = await _webDictionary.GetTranslation(word, Lang.en, Lang.ru);
             }
             catch (Exception)
             {

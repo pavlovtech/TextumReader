@@ -1,10 +1,8 @@
-1. Add pagination
-2. Add highlighting added words in the text
-3. Add translations of sentences
-4. Add selection of arbitrary text
-5. Implement adding a new dictionary
-6. Implement removing translatins as a user clicks on a translation a second time
-7. Refactor javascript
-8. Add support for other dictionaries
-9. Add bookmarks
-10. Implement authentication
+1. Add highlighting added words in the text
+2. Add translations of sentences
+3. Add selection of arbitrary text
+4. Implement removing translatins as a user clicks on a translation a second time
+5. Refactor javascript
+6. Add support for other dictionaries
+7. Add bookmarks
+8. Implement authentication

@@ -50,9 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dictionary\BablaDictionary.cs" />
+    <Compile Include="Dictionary\BablaWebDictionary.cs" />
     <Compile Include="Dictionary\GoogleTranslate.cs" />
-    <Compile Include="Dictionary\IDictionary.cs" />
+    <Compile Include="Dictionary\IWebDictionary.cs" />
+    <Compile Include="Dictionary\Lang.cs" />
     <Compile Include="Dictionary\WordTranslation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\HttpQuery.cs" />

@@ -7,12 +7,11 @@ using Linguistics.Utilities;
 
 namespace Linguistics.Dictionary
 {
-    public class GoogleTranslate: IDictionary
+    public class GoogleTranslate: IWebDictionary
     {
-        public async Task<WordTranslation> GetTranslation(string word, string translationDirection)
+        public async Task<WordTranslation> GetTranslation(string word, Lang inputLang, Lang outputLang)
         {
-            string url = "http://translate.google.com/translate_a/t?client=t&sl=en&tl=ru&hl=en&sc=2&ie=UTF-8&oe=UTF-8&ssel=0&tsel=0&q=" +
-                         word;
+            string url = String.Format("http://translate.google.com/translate_a/t?client=t&sl={0}&tl={1}&hl={0}&sc=2&ie=UTF-8&oe=UTF-8&ssel=0&tsel=0&q={2}", inputLang, outputLang, word);
 
             string result = "";
             try
@@ -32,6 +31,8 @@ namespace Linguistics.Dictionary
             var list = data.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
 
             var allWords = data.Split(new string[] { "[", "]", ",", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "\"", "\\", "true", "false" }, StringSplitOptions.RemoveEmptyEntries);
+
+            string wordName = allWords[1];
 
             int amountToTake = 2;
 
@@ -69,7 +70,7 @@ namespace Linguistics.Dictionary
 
             if (normalFormOfWord.Length == 2)
             {
-                normalFormOfWord = allWords[1];
+                normalFormOfWord = wordName;
             }
 
             return new WordTranslation() { Translations = result.Distinct().ToArray(), WordName = normalFormOfWord };

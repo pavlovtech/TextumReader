@@ -15,11 +15,13 @@ function setDialog(params) {
         height: 200
     });
 
-    $(params.wordTagName).click(function(e) {
+    $(params.wordTagName).click(function (e) {
+        var currentDict = $("#DictionaryId option:selected").attr("value");
+
         var selectedWord = $(this).text().toLocaleLowerCase();
         var wordName;
         
-        $.post(params.getSavedTranslationsAction, { word: selectedWord, dictionaryId: params.dictionaryId }, function(savedTranslations) {
+        $.post(params.getSavedTranslationsAction, { word: selectedWord, dictionaryId: currentDict }, function (savedTranslations) {
             var formattedData = ""; // Data with translations
 
             for (var i = 0; i < savedTranslations.length; i++) {
@@ -49,13 +51,16 @@ function setDialog(params) {
                 $.post(params.addWordAction, {
                         word: selectedWord,
                         translation: selectedTranslation,
-                        dictionaryId: params.dictionaryId
+                        dictionaryId: currentDict
                     }, function(data) {
                         if (data) {
                             throw "Haven't added data to" + params.addWordAction;
                         } else {
                             $(params.dialogId).dialog("close");
-                            //$(this).html(formatTranslation(selectedTranslation));
+
+                            $.post(params.wordListAction, { dictionaryId: currentDict }, function (data) {
+                                $("#words").html(data);
+                            });
                         }
                     });
             });

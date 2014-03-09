@@ -22,6 +22,5 @@ namespace TextumReader.ProblemDomain
 
         public virtual Category Category { get; set; }
         public virtual Dictionary Dictionary { get; set; }
-        //public virtual IdentityUser User { get; set; }
     }
 }

@@ -13,5 +13,10 @@ namespace TextumReader.WebUI.Extensions
         {
             return repo.Get<Material>(m => m.UserId == userId).ToList();
         }
+
+        public static ICollection<Dictionary> GetDictionariesByUserId(this IGenericRepository repo, string userId)
+        {
+            return repo.Get<Dictionary>(d => d.UserId == userId).ToList();
+        }
     }
 }

@@ -34,7 +34,7 @@
                 }
             </div>
             <div id="words" class="panel-body" style="overflow-y: auto;">
-                @Html.Action("WordList", "Material", new { dictionaryId = Model.DictionaryId })
+                @Html.Action("WordList", "Material", new {dictionaryId = Model.DictionaryId})
             </div>
         </div>
     </div>
@@ -61,13 +61,13 @@
                 dialogId: "#dialog",
                 wordTagName: "w",
                 translationTagName: "translation",
-                dictionaryId: @Model.DictionaryId
+                wordListAction: '@Url.Action("WordList")'
             };
 
             setDialog(params);
 
             $("#words").height($('#text').height());
-            
+
             getTranslations("hello", "en", "ru");
         });
     </script>

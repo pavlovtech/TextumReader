@@ -17,7 +17,7 @@ namespace LingvoDictApp
 {
     public partial class Form1 : Form
     {
-        IDictionary dictionary = new BablaDictionary();
+        IWebDictionary _webDictionary = new BablaWebDictionary();
 
         public Form1()
         {

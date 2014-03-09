@@ -4,12 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using Microsoft.AspNet.Identity;
 using TextumReader.DataLayer.Abstract;
 using TextumReader.ProblemDomain;
 using TextumReader.WebUI.Models;
+using TextumReader.WebUI.Extensions;
 
 namespace TextumReader.WebUI.Controllers
 {
+    [Authorize]
     public class DictionaryController : Controller
     {
         private readonly IGenericRepository _repository;
@@ -21,7 +24,7 @@ namespace TextumReader.WebUI.Controllers
 
         public ActionResult Index()
         {
-            var dictionaries = _repository.Get<Dictionary>().Select(d => d).ToList();
+            var dictionaries = _repository.GetDictionariesByUserId(User.Identity.GetUserId());
             return View(dictionaries);
         }
 
@@ -119,6 +122,8 @@ namespace TextumReader.WebUI.Controllers
         [HttpPost]
         public ActionResult Create(Dictionary dictionary)
         {
+            dictionary.UserId = User.Identity.GetUserId();
+
             _repository.Add(dictionary);
             _repository.SaveChanges();
 

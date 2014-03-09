@@ -1,5 +1,6 @@
 using System.Configuration;
 using System.Data.Entity;
+using Linguistics.Dictionary;
 using TextumReader.DataLayer.Abstract;
 using TextumReader.DataLayer.Concrete;
 
@@ -62,6 +63,7 @@ namespace TextumReader.WebUI.App_Start
 
             kernel.Bind<DbContext>().To<TextumReaderDbContext>().WithConstructorArgument("connectionString", connectionString);
             kernel.Bind<IGenericRepository>().To<TextumReaderRepository>();
+            kernel.Bind<IWebDictionary>().To<GoogleTranslate>();
         }        
     }
 }
