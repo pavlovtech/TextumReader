@@ -5,7 +5,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using TextumReader.WebUI.Models;
-using WebApplication1.Models;
 
 namespace TextumReader.WebUI.Controllers
 {

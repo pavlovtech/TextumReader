@@ -10,14 +10,18 @@ namespace Linguistics.Utilities
 {
     public static class HttpQuery
     {
-        public static async Task<string> Get(string query)
+        public static async Task<string> Make(string query, CookieContainer cookies = null, string method = "GET")
         {
             string Out = "";
-            WebRequest req = WebRequest.Create(query);
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(query);
+            req.Method = method;
+            req.CookieContainer = cookies;
 
-            WebResponse resp = await req.GetResponseAsync();
+            HttpWebResponse resp = (HttpWebResponse)await req.GetResponseAsync();
+
             Stream stream = resp.GetResponseStream();
             StreamReader sr = new StreamReader(stream);
+            sr = new StreamReader(stream);
             Out = sr.ReadToEnd();
             sr.Close();
 

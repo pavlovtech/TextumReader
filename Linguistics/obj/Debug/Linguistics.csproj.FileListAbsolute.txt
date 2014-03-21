@@ -37,3 +37,5 @@ C:\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.xml
 C:\TextumReader\Linguistics\obj\Debug\Linguistics.dll
 C:\TextumReader\Linguistics\obj\Debug\Linguistics.pdb
 C:\TextumReader\Linguistics\obj\Debug\Linguistics.csprojResolveAssemblyReference.cache
+C:\TextumReader\Linguistics\bin\Debug\Newtonsoft.Json.dll
+C:\TextumReader\Linguistics\bin\Debug\Newtonsoft.Json.xml

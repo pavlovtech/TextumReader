@@ -15,13 +15,13 @@ function setDialog(params) {
         height: 200
     });
 
-    $(params.wordTagName).click(function (e) {
+    $(params.wordTagName).click(function(e) {
         var currentDict = $("#DictionaryId option:selected").attr("value");
 
         var selectedWord = $(this).text().toLocaleLowerCase();
         var wordName;
-        
-        $.post(params.getSavedTranslationsAction, { word: selectedWord, dictionaryId: currentDict }, function (savedTranslations) {
+
+        $.post(params.getSavedTranslationsAction, { word: selectedWord, dictionaryId: currentDict }, function(savedTranslations) {
             var formattedData = ""; // Data with translations
 
             for (var i = 0; i < savedTranslations.length; i++) {
@@ -30,7 +30,7 @@ function setDialog(params) {
 
             if (navigator.onLine == true) {
                 $.ajaxSetup({ async: false });
-                $.post(params.getTranslationAction, { word: selectedWord }, function (data) {
+                $.post(params.getTranslationAction, { word: selectedWord }, function(data) {
                     wordName = data.WordName;
                     for (var i = 0; i < data.Translations.length; i++) {
                         if (savedTranslations.indexOf(data.Translations[i]) == -1) {
@@ -49,7 +49,7 @@ function setDialog(params) {
             $(params.translationTagName).click(function(e) {
                 var selectedTranslation = $(this).text();
                 $.post(params.addWordAction, {
-                        word: selectedWord,
+                        word: wordName,
                         translation: selectedTranslation,
                         dictionaryId: currentDict
                     }, function(data) {
@@ -58,7 +58,7 @@ function setDialog(params) {
                         } else {
                             $(params.dialogId).dialog("close");
 
-                            $.post(params.wordListAction, { dictionaryId: currentDict }, function (data) {
+                            $.post(params.wordListAction, { dictionaryId: currentDict }, function(data) {
                                 $("#words").html(data);
                             });
                         }

@@ -1,4 +1,22 @@
-﻿.centered {
+﻿table a {
+    color: #2C3E50;
+    text-decoration: none !important;
+    
+}
+
+table a:hover {
+    color: #537291;
+}
+
+.nav a:hover {
+    color: #178cba !important;  
+}
+
+.navbar-header a:hover {
+    color: #178cba !important;  
+}
+
+.centered {
     float: none;
     margin: 0 auto;
 } 

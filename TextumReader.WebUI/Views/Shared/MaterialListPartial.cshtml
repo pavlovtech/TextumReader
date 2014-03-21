@@ -23,7 +23,7 @@ else
                 @foreach (var m in Model)
                 {
                     <tr>
-                        <td>@Html.ActionLink(m.Title, "Material", new {id = m.MaterialId}) </td>
+                        <td>@Html.ActionLink(m.Title, "Material", new { id = m.MaterialId }, new { @class = "materialTitle" }) </td>
                         <td class="centered-column hidden-xs">@m.CategoryName</td>
                         <td class="buttons centered-column hidden-xs">
                             @Html.ActionLink("Edit", "Edit", new {id = m.MaterialId}, new {@class = "btn btn-primary btn-sm"})
