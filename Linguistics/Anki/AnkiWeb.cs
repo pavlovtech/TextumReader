@@ -13,26 +13,33 @@ namespace Linguistics.Anki
     public class AnkiWeb
     {
         private CookieContainer cookie = new CookieContainer();
-        private bool isAutorized = false;
+        public bool IsAutorized { get; private set; }
+
+        public AnkiWeb()
+        {
+            IsAutorized = false;
+        }
 
         public AnkiWeb(string login, string password)
         {
+            IsAutorized = false;
+
             Login = login;
             Password = password;
 
             Autorize();
 
-            isAutorized = true;
+            IsAutorized = true;
         }
 
         public string Login { get; set; }
         public string Password { get; set; }
 
-        public async Task<IEnumerable<Card>> GetCards()
+        public IEnumerable<Card> GetCards()
         {
             AutorizationCheck();
 
-            string htmlPage = await HttpQuery.Make("https://ankiweb.net/edit/", cookie, "POST");
+            string htmlPage = HttpQuery.Make("https://ankiweb.net/edit/", cookie, "POST");
 
             string startPattern = "editor.models = ";
             string endPattern = ";\neditor.decks = ";
@@ -49,11 +56,11 @@ namespace Linguistics.Anki
             return cards;
         }
 
-        public async Task<IEnumerable<string>> GetDecks()
+        public IEnumerable<string> GetDecks()
         {
             AutorizationCheck();
 
-            string htmlPage = await HttpQuery.Make("https://ankiweb.net/edit/", cookie, "POST");
+            string htmlPage = HttpQuery.Make("https://ankiweb.net/edit/", cookie, "POST");
 
             string startPattern = "editor.decks = ";
             string endPattern = ";\neditor.curModelID = ";
@@ -67,32 +74,35 @@ namespace Linguistics.Anki
             return deckNames;
         }
 
-        public  async void AddWord(string word, string translation, string deckName, string cardId)
+        public  void AddWord(string word, string translation, string deckName, string cardId)
         {
             AutorizationCheck();
 
-            Card card = (await GetCards()).SingleOrDefault(x => x.Id == cardId);
+            Card card = GetCards().SingleOrDefault(x => x.Id == cardId);
             if(card == null)
                 throw new Exception("The card with the id of " + cardId + " doesn't exist");
 
             string fields = String.Format("[\"{0}\",\"{1}\",", word, translation);
             for (int i = 0; i < card.FieldCount-2; i++)
             {
-                fields += "\"\"";
+                if (i == card.FieldCount - 3)
+                    fields += "\"\"";
+                else
+                    fields += "\"\",";
             }
             fields += "]";
 
             string json = String.Format("[{0},\"\"]", fields);
             string encodedData = HttpUtility.UrlEncode(json);
 
-            string url = String.Format("https://ankiweb.net/edit/save?data{0}=&mid={1}&deck={2}", encodedData, card.Id, deckName);
+            string url = String.Format("https://ankiweb.net/edit/save?data={0}&mid={1}&deck={2}", encodedData, card.Id, deckName);
 
-            string result = await HttpQuery.Make(url, cookie, "POST");
+            string result = HttpQuery.Make(url, cookie, "POST");
         }
 
         private void AutorizationCheck()
         {
-            if (isAutorized != true)
+            if (IsAutorized != true)
                 throw new Exception("You are not autorized");
         }
 
@@ -103,7 +113,7 @@ namespace Linguistics.Anki
 
             HttpQuery.Make(url, cookie, "POST");
 
-            isAutorized = true;
+            IsAutorized = true;
         }
 
         private string findJSON(string htmlPage, string startPattern, string endPattern)

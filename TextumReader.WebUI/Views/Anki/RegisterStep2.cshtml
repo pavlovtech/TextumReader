@@ -1,0 +1,23 @@
+﻿@model TextumReader.WebUI.Models.AnkiUserAggregateViewModel
+
+@{
+    ViewBag.Title = "RegisterStep2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("RegisterStep2", "Anki", FormMethod.Post, new {role = "form"}))
+{
+    <div class="form-group">
+        @Html.Label("Choose one of your cards")
+        @Html.DropDownListFor(x => x.Step2.CardId, Model.Step2.AllCards, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Choose one of your decks")
+        @Html.DropDownListFor(x => x.Step2.DeckName, Model.Step2.AllDecks, new { @class = "form-control" })
+    </div>
+    
+    @Html.HiddenFor(x => x.Step1.Login)
+    @Html.HiddenFor(x => x.Step1.Password)
+
+    <input type="submit" value="Finish" class="btn btn-default" />
+}

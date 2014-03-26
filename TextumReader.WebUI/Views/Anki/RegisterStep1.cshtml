@@ -1,0 +1,19 @@
+﻿@model TextumReader.WebUI.Models.AnkiUserAggregateViewModel
+
+@{
+    ViewBag.Title = "RegisterStep1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("RegisterStep1", "Anki", FormMethod.Post, new { role = "form" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.Step1.Login)
+        @Html.TextBoxFor(x => x.Step1.Login, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Step1.Password)
+        @Html.TextBoxFor(x => x.Step1.Password, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="Next" class="btn btn-default" />
+}

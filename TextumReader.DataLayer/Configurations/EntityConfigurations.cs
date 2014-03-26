@@ -8,6 +8,17 @@ using TextumReader.ProblemDomain;
 
 namespace TextumReader.DataLayer.Configurations
 {
+    public class AnkiUserConfiguration : EntityTypeConfiguration<AnkiUser>
+    {
+        public AnkiUserConfiguration()
+        {
+            Map(_ => _.ToTable("AnkiUsers"));
+            HasKey(_ => _.AnkiUserId);
+            Property(_ => _.UserId).HasColumnName("UserId");
+        }
+    }
+
+
     public class WordConfiguration : EntityTypeConfiguration<Word>
     {
         public WordConfiguration()

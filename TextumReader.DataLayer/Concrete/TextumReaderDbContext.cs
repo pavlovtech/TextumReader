@@ -26,6 +26,7 @@ namespace TextumReader.DataLayer.Concrete
             modelBuilder.Configurations.Add(new CategoryConfiguration());
             modelBuilder.Configurations.Add(new MaterialConfiguration());
             modelBuilder.Configurations.Add(new TranslationConfiguration());
+            modelBuilder.Configurations.Add(new AnkiUserConfiguration());
         }
     }
 }

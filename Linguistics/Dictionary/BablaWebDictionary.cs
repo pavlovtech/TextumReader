@@ -22,7 +22,7 @@ namespace Linguistics.Dictionary
             string result;
             try
             {
-                result = await HttpQuery.Make(query);
+                result = HttpQuery.Make(query);
             }
             catch(Exception ex)
             {

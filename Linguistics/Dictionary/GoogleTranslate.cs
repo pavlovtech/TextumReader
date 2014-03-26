@@ -17,7 +17,7 @@ namespace Linguistics.Dictionary
             string result = "";
             try
             {
-                result = await HttpQuery.Make(url);
+                result = HttpQuery.Make(url);
                 //JArray a = JArray.Parse(result);
             }
             catch (Exception ex)

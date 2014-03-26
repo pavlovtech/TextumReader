@@ -6,7 +6,7 @@
         @Html.AntiForgeryToken()
     }
     
-    @Html.MenuLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account")
+    @Html.MenuLink("Settings", "Manage", "Account")
     <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
 }
 else

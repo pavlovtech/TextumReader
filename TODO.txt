@@ -5,4 +5,4 @@
 5. Refactor javascript
 6. Add support for other dictionaries
 7. Add bookmarks
-8. Implement authentication
+8. Fix the bug with the navbar
