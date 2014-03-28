@@ -23,6 +23,11 @@ namespace TextumReader.WebUI.App_Start
             Mapper.CreateMap<MaterialViewModel, Material>();
             Mapper.CreateMap<Material, MaterialViewModel>();
 
+            Mapper.CreateMap<Word, WordViewModel>()
+                .ForMember(dest => dest.Translations, opt => opt.MapFrom(src => src.Translations.Select(x => x.Value)));
+
+            Mapper.CreateMap<WordViewModel, Word>();
+
             Mapper.CreateMap<AnkiUserAggregateViewModel, AnkiUser>()
                 .ForMember(dest => dest.Login, opt => opt.MapFrom(src => src.Step1.Login))
                 .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Step1.Password))

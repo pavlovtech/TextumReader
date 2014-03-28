@@ -393,3 +393,7 @@ C:\TextumReader\TextumReader.WebUI\bin\HtmlAgilityPack.xml
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.csprojResolveAssemblyReference.cache
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.dll
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.pdb
+C:\TextumReader\TextumReader.WebUI\bin\LemmaSharp.dll
+C:\TextumReader\TextumReader.WebUI\bin\LemmaSharpPrebuiltCompact.dll
+C:\TextumReader\TextumReader.WebUI\bin\LemmaSharpPrebuilt.dll
+C:\TextumReader\TextumReader.WebUI\bin\Lzma#.dll

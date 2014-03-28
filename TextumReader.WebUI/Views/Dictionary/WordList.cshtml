@@ -1,5 +1,4 @@
-﻿@using TextumReader.ProblemDomain
-@model IEnumerable<TextumReader.ProblemDomain.Word>
+﻿@model IList<TextumReader.WebUI.Models.WordViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,51 +7,50 @@
 {
     <script>
         $((function() {
-            $("table").tablesorter({ headers: { 2: { sorter: false }, } });
+            $("table").tablesorter({ headers: { 0: { sorter: false }, 3: { sorter: false } } });
         }));
     </script>
-
-    <table class="table table-striped table-bordered table-hover table-condensed tablesorter">
-        <thead>
-            <tr>
-                <th>Word Name</th>
-                <th>Translations</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-            @foreach (var m in Model)
-            {
+    using (Html.BeginForm())
+    {
+        <input type="submit" formaction="DeleteWords" value="Delete" class="btn btn-primary btn-sm" />
+        <input type="submit" formaction="AddToAnki" value="Add to Anki" class="btn btn-primary btn-sm" />
+        <table class="table table-striped table-bordered table-hover table-condensed tablesorter">
+            <thead>
                 <tr>
-                    <td style="width: 140px;">@m.WordName</td>
-                    <td>
-                        @{
-                            var translations = new List<Translation>(m.Translations);
-                        }
-
-                        @for (var i = 0; i < translations.Count; i++)
-                        {
-                            if (i == translations.Count - 1)
-                            {
-                                @translations[i].Value
-                                break;
-                            }
-                            @translations[i].Value@:,
-                        }
-                    </td>
-
-                    <td class="buttons centered-column" style="width: 110px;">
-                        @using (Html.BeginForm("DeleteWord", "Dictionary", new {id = m.WordId}, FormMethod.Post, new {style = "display:inline;"}))
-                        {
-                            <input type="submit" value="Delete" class="btn btn-primary btn-sm" />
-                        }
-                    </td>
+                    <th></th>
+                    <th>Word Name</th>
+                    <th>Translations</th>
+                    <th>Actions</th>
                 </tr>
-            }
-        </tbody>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <tr>
+                        <td class="centered-column" style="width: 40px">
+                            @Html.HiddenFor(x => Model[i].WordId)
+                            @Html.HiddenFor(x => Model[i].DictionaryId)
+                            @Html.CheckBoxFor(x => Model[i].IsSelected, new {style = "width: 20px; height: 20px;"})
+                        </td>
+                        <td style="width: 140px;">@Model[i].WordName</td>
+                        <td>
+                            @foreach (var t in Model[i].Translations)
+{
+    <span class="well well-sm translation">@t<button class="closeBtn">&times;</button></span>
+}
+                        </td>
+                        <td class="buttons centered-column" style="width: 110px;">
+                            @using (Html.BeginForm("DeleteWord", "Dictionary", new {id = Model[i].WordId}, FormMethod.Post, new {style = "display:inline;"}))
+                            {
+                                <input type="submit" value="Delete" class="btn btn-primary btn-sm" />
+                            }
+                        </td>
+                    </tr>
+                }
 
-    </table>
+            </tbody>
+        </table>
+    }
 }
 else
 {

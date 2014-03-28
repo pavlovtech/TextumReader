@@ -84,3 +84,7 @@ C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.Properties.Resources.resou
 C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.csproj.GenerateResource.Cache
 C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.exe
 C:\TextumReader\LingvoDictApp\obj\Debug\LingvoDictApp.pdb
+C:\TextumReader\LingvoDictApp\bin\Debug\LemmaSharp.dll
+C:\TextumReader\LingvoDictApp\bin\Debug\LemmaSharpPrebuiltCompact.dll
+C:\TextumReader\LingvoDictApp\bin\Debug\LemmaSharpPrebuilt.dll
+C:\TextumReader\LingvoDictApp\bin\Debug\Lzma#.dll

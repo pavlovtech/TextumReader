@@ -50,3 +50,7 @@ C:\TextumReader\TextProcessing\bin\Debug\Newtonsoft.Json.xml
 C:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.csprojResolveAssemblyReference.cache
 C:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.dll
 C:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.pdb
+C:\TextumReader\TextProcessing\bin\Debug\LemmaSharp.dll
+C:\TextumReader\TextProcessing\bin\Debug\LemmaSharpPrebuiltCompact.dll
+C:\TextumReader\TextProcessing\bin\Debug\LemmaSharpPrebuilt.dll
+C:\TextumReader\TextProcessing\bin\Debug\Lzma#.dll

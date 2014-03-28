@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using Linguistics.Anki;
 using Microsoft.AspNet.Identity;
 using TextumReader.DataLayer.Abstract;
 using TextumReader.ProblemDomain;
@@ -16,6 +17,7 @@ namespace TextumReader.WebUI.Controllers
     public class DictionaryController : Controller
     {
         private readonly IGenericRepository _repository;
+        AnkiWeb ankiWeb = new AnkiWeb();
 
         public DictionaryController(IGenericRepository repository)
         {
@@ -30,7 +32,10 @@ namespace TextumReader.WebUI.Controllers
 
         public ActionResult WordList(int dictionaryId)
         {
-            var words = _repository.Get<Word>().Where(w => w.DictionaryId == dictionaryId).AsEnumerable().Reverse();
+            var words = _repository.Get<Word>()
+                .Where(w => w.DictionaryId == dictionaryId)
+                .ToList().
+                Select(Mapper.Map<WordViewModel>).ToList();
             return View(words);
         }
 
@@ -129,6 +134,62 @@ namespace TextumReader.WebUI.Controllers
 
             TempData["message"] = string.Format("Dictionary has been added");
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteWords(IEnumerable<WordViewModel> words)
+        {
+            int dictId = 0;
+            if (words.Any())
+            {
+                dictId = words.ToList()[0].DictionaryId;
+            }
+
+            foreach (var wordViewModel in words.Where(m => m.IsSelected))
+            {
+                var word = _repository.GetSingle<Word>(w => w.WordId == wordViewModel.WordId);
+                _repository.Remove<Word>(word);
+            }
+            _repository.SaveChanges();
+
+            return RedirectToAction("WordList", new { dictionaryId = dictId });
+        }
+
+        [HttpPost]
+        public ActionResult AddToAnki(IEnumerable<WordViewModel> words)
+        {
+            int dictId = 0;
+            if (words.Any())
+            {
+                dictId = words.ToList()[0].DictionaryId;
+            }
+
+            var user = _repository.GetSingle<AnkiUser>(u => u.UserId == User.Identity.GetUserId());
+            if (!ankiWeb.IsAutorized)
+            {
+                if (user == null)
+                    RedirectToAction("WordList", new { dictionaryId = dictId });
+
+                ankiWeb.Login = user.Login;
+                ankiWeb.Password = user.Password;
+                ankiWeb.Autorize();
+            }
+
+            foreach (var wordViewModel in words.Where(m => m.IsSelected))
+            {
+                var word = _repository.GetSingle<Word>(w => w.WordId == wordViewModel.WordId);
+
+                string translations = "";
+
+                foreach (var translation in word.Translations)
+                {
+                    translations += translation.Value + "<br>";
+                }
+
+                ankiWeb.AddWord(word.WordName, translations, user.DeckName, user.CardId);
+            }
+
+            return RedirectToAction("WordList", new { dictionaryId = dictId });
         }
 	}
 }

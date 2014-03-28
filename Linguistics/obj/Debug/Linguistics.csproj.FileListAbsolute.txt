@@ -39,3 +39,7 @@ C:\TextumReader\Linguistics\bin\Debug\Newtonsoft.Json.xml
 C:\TextumReader\Linguistics\obj\Debug\Linguistics.dll
 C:\TextumReader\Linguistics\obj\Debug\Linguistics.pdb
 C:\TextumReader\Linguistics\obj\Debug\Linguistics.csprojResolveAssemblyReference.cache
+C:\TextumReader\Linguistics\bin\Debug\LemmaSharp.dll
+C:\TextumReader\Linguistics\bin\Debug\LemmaSharpPrebuilt.dll
+C:\TextumReader\Linguistics\bin\Debug\LemmaSharpPrebuiltCompact.dll
+C:\TextumReader\Linguistics\bin\Debug\Lzma#.dll
