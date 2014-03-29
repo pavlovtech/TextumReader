@@ -8,3 +8,4 @@
 8. Do over the Dictionary View
 9. Implement removeng translation from word list
 10. Redisign the registration process
+11. Make the word list fixed on the web page

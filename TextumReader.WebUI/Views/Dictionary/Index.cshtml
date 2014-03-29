@@ -18,6 +18,10 @@
 {
     <div class="alert alert-success"><strong>@TempData["message"]</strong></div>
 }
+@if (TempData["alert"] != null)
+{
+    <div class="alert alert-danger"><strong>@TempData["alert"]</strong></div>
+}
 @if (!Model.Any())
 {
     <div class="alert alert-info">You don't have any dictionary</div>
@@ -26,6 +30,7 @@ else
 {
     <div class="row">
         <div class="col-md-12">
+            <a style="margin-bottom: 20px;" class="btn btn-primary btn-sm" href="@Url.Action("Create")"><span class="glyphicon glyphicon-plus"></span> Add a dictionary</a>
             <table class="table table-striped table-bordered table-hover tablesorter">
                 <thead>
                     <tr>

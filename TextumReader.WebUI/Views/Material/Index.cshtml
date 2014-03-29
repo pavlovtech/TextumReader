@@ -20,6 +20,7 @@
             <input type="submit" value="Submit" style="display: none;" />
         }
     </div>
+    <a class="btn btn-primary btn-sm" href="@Url.Action("Create")"><span class="glyphicon glyphicon-plus"></span> Add a material</a>
 </div>
 <div class="row">
     <!-- The list of materials (updates through ajax as a category is changed by a user) -->
@@ -30,7 +31,6 @@
             <div class="alert alert-success"><strong>@TempData["message"]</strong></div>
         }
 
-
         @Html.Action("MaterialList", new {category = Model.CurrentCategory})
     </section>
 </div>
@@ -40,7 +40,7 @@
     <script>
         $(function() {
             submitFormAutomatically("#category");
-            $(".alert").fadeOut(3000);
+            $(".alert").fadeOut(4000);
         });
     </script>
 }

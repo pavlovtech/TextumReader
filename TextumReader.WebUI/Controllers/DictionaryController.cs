@@ -82,6 +82,12 @@ namespace TextumReader.WebUI.Controllers
         {
             var dict = _repository.GetSingle<Dictionary>(m => m.DictionaryId == id);
 
+            if (dict.Title == "Default")
+            {
+                TempData["alert"] = "Sorry, but you cannot delete the default dictionary";
+                return RedirectToAction("Index");
+            }
+
             var defaultDict = _repository.GetSingle<Dictionary>(m => m.Title == "Default");
             var materials = _repository.Get<Material>(x => x.DictionaryId == dict.DictionaryId);
             foreach (var material in materials)
