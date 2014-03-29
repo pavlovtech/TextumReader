@@ -81,6 +81,14 @@ namespace TextumReader.WebUI.Controllers
         public ActionResult Delete(int id)
         {
             var dict = _repository.GetSingle<Dictionary>(m => m.DictionaryId == id);
+
+            var defaultDict = _repository.GetSingle<Dictionary>(m => m.Title == "Default");
+            var materials = _repository.Get<Material>(x => x.DictionaryId == dict.DictionaryId);
+            foreach (var material in materials)
+            {
+                material.DictionaryId = defaultDict.DictionaryId;
+            }
+            _repository.SaveChanges();
             _repository.Remove(dict);
             _repository.SaveChanges();
 
