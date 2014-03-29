@@ -9,7 +9,10 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/myscripts")
-   
+   @Scripts.Render("~/bundles/alertify")
+
+    
+    @Styles.Render("~/Content/alertify")
     @Styles.Render("~/Content/themes/base/css")
     
     @Styles.Render("~/Content/bootstrap")
@@ -22,29 +25,27 @@
 </head>
 <body>
     <div id="page">
-        <header>
-            <div id="menu" class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        @Html.ActionLink("Textum Reader", "Index","Home", null, new { @class = "navbar-brand" })
-                        <button class="btn btn-success navbar-toggle"
-                                data-toggle="collapse"
-                                data-target=".navbar-collapse">
-                            <span class="glyphicon glyphicon-chevron-down"></span>
-                        </button>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            @Html.MenuLink("Add a material", "Create", "Material")
-                            @Html.MenuLink("Add a dictionary", "Create", "Dictionary")
-                            @Html.MenuLink("Materials", "Index", "Material")
-                            @Html.MenuLink("Dictionaries", "Index", "Dictionary")
-                            @Html.Partial("_LoginPartial")
-                        </ul>
-                    </div>
+        <div id="menu" class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    @Html.ActionLink("Textum Reader", "Index", "Home", null, new { @class = "navbar-brand" })
+                    <button class="btn btn-success navbar-toggle"
+                            data-toggle="collapse"
+                            data-target=".navbar-collapse">
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        @Html.MenuLink("Add a material", "Create", "Material")
+                        @Html.MenuLink("Add a dictionary", "Create", "Dictionary")
+                        @Html.MenuLink("Materials", "Index", "Material")
+                        @Html.MenuLink("Dictionaries", "Index", "Dictionary")
+                        @Html.Partial("_LoginPartial")
+                    </ul>
                 </div>
             </div>
-        </header>
+        </div>
 
         <section id="content" class="container">
             @RenderBody()

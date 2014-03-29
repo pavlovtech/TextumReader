@@ -23,7 +23,6 @@ namespace Linguistics.Dictionary
             try
             {
                 result = HttpQuery.Make(url);
-                //JArray a = JArray.Parse(result);
             }
             catch (Exception ex)
             {
@@ -35,54 +34,17 @@ namespace Linguistics.Dictionary
 
         private WordTranslation getTranslations(string word, string data)
         {
-            var list = data.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
+            JArray a = JArray.Parse(data);
+            var trans = a[1].Select(x => x[1]); 
 
-            string[] allWords;
+            var result = new List<string>();
 
-            if(word != "true" && word != "false")
-                allWords = data.Split(new string[] { "[", "]", ",", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "\"", "\\", ".", "true", "false", "!" }, StringSplitOptions.RemoveEmptyEntries);
-            else
-                allWords = data.Split(new string[] { "[", "]", ",", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "\"", "\\", ".", "!" }, StringSplitOptions.RemoveEmptyEntries);
-
-            int amountToTake = 2;
-
-            string[] result = new string[] { allWords[0] };
-
-            for (int i = 0; i < list.Length; i++)
+            foreach (var t in trans)
             {
-                if (list[i].Contains("verb"))
-                {
-                    result = result.Concat(SplitIntoWords(list[++i], amountToTake)).ToArray();
-                }
-                if (list[i].Contains("noun"))
-                {
-                    result = result.Concat(SplitIntoWords(list[++i], amountToTake)).ToArray();
-                }
-                if (list[i].Contains("particle"))
-                {
-                    result = result.Concat(SplitIntoWords(list[++i], amountToTake)).ToArray();
-                }
-                if (list[i].Contains("adjective"))
-                {
-                    result = result.Concat(SplitIntoWords(list[++i], amountToTake)).ToArray();
-                }
-                if (list[i].Contains("adverb"))
-                {
-                    result = result.Concat(SplitIntoWords(list[++i], amountToTake)).ToArray();
-                }
-                if (list[i].Contains("preposition"))
-                {
-                    result = result.Concat(SplitIntoWords(list[++i], amountToTake)).ToArray();
-                }
+                result.AddRange(t.Take(2).Select(x => x.ToString()));
             }
 
-            return new WordTranslation() { Translations = result.Distinct().ToArray(), WordName = word };
-        }
-
-        private static string[] SplitIntoWords(string data, int amountToTake)
-        {
-            return data.Split(new char[] { ',', '"', '\\' }, StringSplitOptions.RemoveEmptyEntries)
-                .Take(amountToTake).ToArray();
+            return new WordTranslation() { Translations = result.ToArray(), WordName = word };
         }
     }
 }

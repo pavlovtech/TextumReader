@@ -167,6 +167,10 @@ namespace TextumReader.WebUI.Controllers
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
 
+            var wordFreq = _repository.GetSingle<WordFrequency>(x => x.Word == translation.WordName);
+            if (wordFreq != null)
+                translation.WordFrequencyIndex = wordFreq.Position;
+
             return Json(translation, JsonRequestBehavior.AllowGet);
         }
 

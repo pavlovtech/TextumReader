@@ -11,8 +11,7 @@ function setDialog(params) {
     $(params.dialogId).dialog({
         autoOpen: false,
         resizable: false,
-        width: 200,
-        height: 200
+        width: 200
     });
 
     $(params.wordTagName).click(function(e) {
@@ -20,6 +19,7 @@ function setDialog(params) {
 
         var selectedWord = $(this).text().toLocaleLowerCase();
         var wordName;
+        var wordFrequency;
 
         $.post(params.getSavedTranslationsAction, { word: selectedWord, dictionaryId: currentDict }, function(savedTranslations) {
             var formattedData = ""; // Data with translations
@@ -32,16 +32,20 @@ function setDialog(params) {
                 $.ajaxSetup({ async: false });
                 $.post(params.getTranslationAction, { word: selectedWord }, function(data) {
                     wordName = data.WordName;
+                    wordFrequency = data.WordFrequencyIndex;
                     for (var i = 0; i < data.Translations.length; i++) {
                         if (savedTranslations.indexOf(data.Translations[i]) == -1) {
                             formattedData += formatTranslation(params.translationTagName, data.Translations[i]);
                         }
                     }
+                    
+                    if (wordFrequency != 0)
+                        formattedData += wordFrequency.toString() + " of 12527";
                 });
                 $.ajaxSetup({ async: true });
             }
 
-            $(params.dialogId).html(formattedData);
+            $("#translations").html(formattedData);
 
             // highlights translations by adding class translationLight
             highlightWords("translation", "translationLight");

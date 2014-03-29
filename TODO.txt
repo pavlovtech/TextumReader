@@ -5,4 +5,6 @@
 5. Refactor javascript
 6. Add support for other dictionaries
 7. Add bookmarks
-8. Fix the bug with the navbar
+8. Do over the Dictionary View
+9. Implement removeng translation from word list
+10. Redisign the registration process

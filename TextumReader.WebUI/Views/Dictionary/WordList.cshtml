@@ -3,13 +3,24 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (Model.Any())
+    
+@section scripts
 {
     <script>
         $((function() {
             $("table").tablesorter({ headers: { 0: { sorter: false }, 3: { sorter: false } } });
+            $(".alert").fadeOut(3000);
         }));
     </script>
+}
+
+@if (Model.Any())
+{
+    if (TempData["message"] != null)
+    {
+        <div class="alert alert-success"><strong>@TempData["message"]</strong></div>
+    }
+
     using (Html.BeginForm())
     {
         <input type="submit" formaction="DeleteWords" value="Delete" class="btn btn-primary btn-sm" />
@@ -30,14 +41,14 @@
                         <td class="centered-column" style="width: 40px">
                             @Html.HiddenFor(x => Model[i].WordId)
                             @Html.HiddenFor(x => Model[i].DictionaryId)
-                            @Html.CheckBoxFor(x => Model[i].IsSelected, new {style = "width: 20px; height: 20px;"})
+                            @Html.CheckBoxFor(x => Model[i].IsSelected)
                         </td>
                         <td style="width: 140px;">@Model[i].WordName</td>
                         <td>
                             @foreach (var t in Model[i].Translations)
-{
-    <span class="well well-sm translation">@t<button class="closeBtn">&times;</button></span>
-}
+                            {
+                                <span class="well well-sm translation">@t<button class="closeBtn">&times;</button></span>
+                            }
                         </td>
                         <td class="buttons centered-column" style="width: 110px;">
                             @using (Html.BeginForm("DeleteWord", "Dictionary", new {id = Model[i].WordId}, FormMethod.Post, new {style = "display:inline;"}))

@@ -27,11 +27,7 @@ namespace TextumReader.WebUI
                 "~/Scripts//MyScripts/word-wrapper.js",
                 "~/Scripts//MyScripts/google-translation-api.js",
                 "~/Scripts/jquery.tablesorter.min.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/kendo").Include("~/Scripts/kendo/2013.3.1119/kendo.web.min.js"));
-            bundles.Add(new StyleBundle("~/bundles/kendo.css").Include(
-                "~/Content/kendo/2013.3.1119/kendo.common.min.css",
-                "~/Content/kendo/2013.3.1119/kendo.moonlight.min.css"));
+  
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

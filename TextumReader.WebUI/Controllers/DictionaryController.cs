@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 using AutoMapper;
 using Linguistics.Anki;
 using Microsoft.AspNet.Identity;
@@ -18,6 +20,7 @@ namespace TextumReader.WebUI.Controllers
     {
         private readonly IGenericRepository _repository;
         AnkiWeb ankiWeb = new AnkiWeb();
+        private IEnumerable<WordFrequency> wordFrequencyList;
 
         public DictionaryController(IGenericRepository repository)
         {
@@ -188,6 +191,8 @@ namespace TextumReader.WebUI.Controllers
 
                 ankiWeb.AddWord(word.WordName, translations, user.DeckName, user.CardId);
             }
+
+            TempData["message"] = "The words have successfully been added to Anki";
 
             return RedirectToAction("WordList", new { dictionaryId = dictId });
         }
