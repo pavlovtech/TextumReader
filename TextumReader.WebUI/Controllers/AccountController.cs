@@ -4,13 +4,17 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
+using TextumReader.DataLayer.Abstract;
+using TextumReader.ProblemDomain;
 using TextumReader.WebUI.Models;
+using Microsoft.AspNet.Identity;
 
 namespace TextumReader.WebUI.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {

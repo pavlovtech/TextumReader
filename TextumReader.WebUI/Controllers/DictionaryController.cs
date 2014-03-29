@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -29,6 +30,8 @@ namespace TextumReader.WebUI.Controllers
 
         public ActionResult Index()
         {
+            AddDefaultDictionaryToDB();
+
             var dictionaries = _repository.GetDictionariesByUserId(User.Identity.GetUserId());
             return View(dictionaries);
         }
@@ -209,6 +212,24 @@ namespace TextumReader.WebUI.Controllers
             TempData["message"] = "The words have successfully been added to Anki";
 
             return RedirectToAction("WordList", new { dictionaryId = dictId });
+        }
+
+        private void AddDefaultDictionaryToDB()
+        {
+            var id = User.Identity.GetUserId();
+            var dict =
+                _repository.Get<Dictionary>(d => d.UserId == id).FirstOrDefault(d => d.Title == "Default");
+
+            if (dict != null)
+                return;
+
+            _repository.Add<Dictionary>(new Dictionary()
+            {
+                UserId = User.Identity.GetUserId(),
+                Title = "Default",
+                Words = new Collection<Word>()
+            });
+            _repository.SaveChanges();
         }
 	}
 }

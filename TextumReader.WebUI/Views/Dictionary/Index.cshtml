@@ -25,6 +25,7 @@
 @if (!Model.Any())
 {
     <div class="alert alert-info">You don't have any dictionary</div>
+    <a style="margin-bottom: 20px;" class="btn btn-primary btn-sm" href="@Url.Action("Create")"><span class="glyphicon glyphicon-plus"></span> Add a dictionary</a>  
 }
 else
 {

@@ -70,9 +70,7 @@ namespace TextumReader.WebUI.Controllers
             _repository.Add(ankiUser);
             _repository.SaveChanges();
 
-            TempData["message"] = "Anki synchronisation was established";
-
-            return RedirectToAction("Index", "Material");
+            return View("AnkiRegistrationFinish");
         }
 
 //        public PartialViewResult Settings()

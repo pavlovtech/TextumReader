@@ -1365,6 +1365,7 @@
     <Content Include="Views\Anki\RegisterStep1.cshtml" />
     <Content Include="Views\Anki\RegisterStep2.cshtml" />
     <Content Include="Views\Account\RegistrationFinish.cshtml" />
+    <Content Include="Views\Anki\AnkiRegistrationFinish.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
