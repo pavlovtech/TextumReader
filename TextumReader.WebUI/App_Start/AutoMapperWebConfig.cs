@@ -24,7 +24,7 @@ namespace TextumReader.WebUI.App_Start
             Mapper.CreateMap<Material, MaterialViewModel>();
 
             Mapper.CreateMap<Word, WordViewModel>()
-                .ForMember(dest => dest.Translations, opt => opt.MapFrom(src => src.Translations.Select(x => x.Value)));
+                .ForMember(dest => dest.Translations, opt => opt.MapFrom(src => src.Translations));
 
             Mapper.CreateMap<WordViewModel, Word>();
 

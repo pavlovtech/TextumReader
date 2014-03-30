@@ -1,4 +1,7 @@
-﻿.translation { background-color: #dee6e9; }
+﻿.translation {
+     background-color: #dee6e9;
+     margin: 3px;
+}
 
 .closeBtn {
     background-color: transparent;

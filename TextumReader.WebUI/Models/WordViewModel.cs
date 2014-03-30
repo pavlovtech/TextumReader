@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TextumReader.ProblemDomain;
 
 namespace TextumReader.WebUI.Models
 {
@@ -12,7 +13,7 @@ namespace TextumReader.WebUI.Models
 
         public string WordName { get; set; }
 
-        public ICollection<string> Translations { get; set; }
+        public ICollection<Translation> Translations { get; set; }
         public bool IsSelected { get; set; }
     }
 }

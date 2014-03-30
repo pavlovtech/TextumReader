@@ -117,6 +117,25 @@ namespace TextumReader.WebUI.Controllers
             return RedirectToAction("WordList", new { DictionaryId = dictId });
         }
 
+        [HttpPost]
+        public ActionResult DeleteTranslation(int id)
+        {
+            var translation = _repository.GetSingle<Translation>(m => m.TranslationId == id);
+
+            int dictId = translation.Word.DictionaryId;
+
+            if (translation.Word.Translations.Count == 1)
+            {
+                DeleteWord(translation.Word.WordId);
+                return RedirectToAction("WordList", new { DictionaryId = dictId });
+            }
+
+            _repository.Remove(translation);
+            _repository.SaveChanges();
+
+            return RedirectToAction("WordList", new { DictionaryId = dictId });
+        }
+
         public ViewResult Edit(int id)
         {
             var dict = _repository.GetSingle<Dictionary>(m => m.DictionaryId == id);

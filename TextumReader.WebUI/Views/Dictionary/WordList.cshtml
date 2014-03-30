@@ -1,6 +1,6 @@
 ﻿@model IList<TextumReader.WebUI.Models.WordViewModel>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Textum Reader - Word List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
     
@@ -11,11 +11,10 @@
             $("table").tablesorter({ headers: { 0: { sorter: false }, 3: { sorter: false } } });
             $(".alert").fadeOut(3000);
 
-            $("[type=checkbox]").click(function () {
+            $("[type=checkbox]").click(function() {
                 if ($(":checkbox:checked.wcheckbox").length > 0) {
                     $("#tools").show("slow");
-                }
-                else {
+                } else {
                     $("#tools").hide("slow");
                 }
             });
@@ -52,15 +51,25 @@
                         <td class="centered-column" style="width: 40px">
                             @Html.HiddenFor(x => Model[i].WordId)
                             @Html.HiddenFor(x => Model[i].DictionaryId)
-                            @Html.CheckBoxFor(x => Model[i].IsSelected, new { @class = "wcheckbox" })
+                            @Html.CheckBoxFor(x => Model[i].IsSelected, new {@class = "wcheckbox"})
                         </td>
                         <td style="width: 140px;">@Model[i].WordName</td>
                         <td>
                             @foreach (var t in Model[i].Translations)
                             {
-                                <span class="well well-sm translation">@t<button class="closeBtn">&times;</button></span>
+                                <span class="well well-sm translation">
+                                    @t.Value
+                                    @using (Html.BeginForm("DeleteTranslation", "Dictionary",
+                                        new {id = t.TranslationId}, FormMethod.Post,
+                                        new { style = "display:inline;" }))
+                                    {
+                                        <input class="closeBtn" type="submit" value="&times;" />
+                                    }
+                                </span>
                             }
                         </td>
+
+
                         <td class="buttons centered-column" style="width: 110px;">
                             @using (Html.BeginForm("DeleteWord", "Dictionary", new {id = Model[i].WordId}, FormMethod.Post, new {style = "display:inline;"}))
                             {
