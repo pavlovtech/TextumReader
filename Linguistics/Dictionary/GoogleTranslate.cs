@@ -34,17 +34,24 @@ namespace Linguistics.Dictionary
 
         private WordTranslation getTranslations(string word, string data)
         {
-            JArray a = JArray.Parse(data);
-            var trans = a[1].Select(x => x[1]); 
+            JArray jsonArray = JArray.Parse(data);
+            var translationsSourse = jsonArray[1].Select(x => x[1]);
 
-            var result = new List<string>();
 
-            foreach (var t in trans)
+            var translations = new List<string>();
+            if (!translationsSourse.Any())
             {
-                result.AddRange(t.Take(2).Select(x => x.ToString()));
+                string translation = jsonArray[0].Select(x => x[0]).FirstOrDefault().ToString();
+                translations.Add(translation);
+                return new WordTranslation() { Translations = translations.ToArray(), WordName = word };
             }
 
-            return new WordTranslation() { Translations = result.ToArray(), WordName = word };
+            foreach (var t in translationsSourse)
+            {
+                translations.AddRange(t.Take(2).Select(x => x.ToString()));
+            }
+
+            return new WordTranslation() { Translations = translations.ToArray(), WordName = word };
         }
     }
 }

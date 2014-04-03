@@ -31,7 +31,8 @@ namespace TextumReader.WebUI.Models
         public string UserId { get; set; }
 
         [Required]
-        [DisplayName("Anki Login")]
+        [DisplayName("Anki Login (email)")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Login { get; set; }
 
         [Required]

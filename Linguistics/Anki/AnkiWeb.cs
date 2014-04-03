@@ -106,14 +106,19 @@ namespace Linguistics.Anki
                 throw new Exception("You are not autorized");
         }
 
-        public void Autorize()
+        public bool Autorize()
         {
             string url = String.Format("https://ankiweb.net/account/login?submitted=1&username={0}&password={1}",
                 HttpUtility.UrlEncode(Login), Password);
 
-            HttpQuery.Make(url, cookie, "POST");
+            string result = HttpQuery.Make(url, cookie, "POST");
+            if (result.Contains("Incorrect username/email or password"))
+            {
+                return false;;
+            }
 
             IsAutorized = true;
+            return true;
         }
 
         private string findJSON(string htmlPage, string startPattern, string endPattern)

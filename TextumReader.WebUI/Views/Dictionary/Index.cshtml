@@ -7,7 +7,17 @@
 @section scripts
 {
     <script>
-        $((function() {
+        $((function () {
+            $("form.confirmable").submit(function (e) {
+                e.preventDefault();
+                var currentForm = this;
+                bootbox.confirm("Are you sure?", function (result) {
+                    if (result) {
+                        currentForm.submit();
+                    }
+                });
+            });
+
             $("table").tablesorter({ headers: { 2: { sorter: false }, } });
             $(".alert").fadeOut(3000);
         }));
@@ -47,9 +57,10 @@ else
                             <td>@Html.ActionLink(@m.Title, "WordList", new {dictionaryId = m.DictionaryId})</td>
                             <td class="centered-column" width="100">@m.Words.Count</td>
                             <td class="buttons centered-column" width="180">
-                                @Html.ActionLink("Edit", "Edit", new {id = m.DictionaryId}, new {@class = "btn btn-primary btn-sm"})
+                                @Html.ActionLink("Edit", "Edit", new { id = m.DictionaryId }, new { @class = "btn btn-primary btn-sm" })
 
-                                @using (Html.BeginForm("Delete", "Dictionary", new {id = m.DictionaryId}, FormMethod.Post, new {style = "display:inline;"}))
+                                @using (Html.BeginForm("Delete", "Dictionary", new { id = m.DictionaryId }, FormMethod.Post,
+                                    new { style = "display:inline;", @class = "confirmable" }))
                                 {
                                     <input type="submit" value="Delete" class="btn btn-primary btn-sm" />
                                 }

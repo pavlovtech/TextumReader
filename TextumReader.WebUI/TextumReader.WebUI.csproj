@@ -246,6 +246,7 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fantasy_space-wide.jpg" />
     <Content Include="Content\intro-bg.jpg" />
     <Content Include="Content\kendo\2013.3.1119\Black\editor.png" />
     <Content Include="Content\kendo\2013.3.1119\Black\imagebrowser.png" />
@@ -471,6 +472,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\MyScripts\dialog-hider.js" />
@@ -907,11 +910,8 @@
     <Content Include="Scripts\knockout-3.0.0.debug.js" />
     <Content Include="Scripts\knockout-3.0.0.js" />
     <Content Include="Scripts\modernizr-2.7.1.js" />
-    <Content Include="Scripts\MyScripts\google-translation-api.js" />
     <Content Include="Scripts\MyScripts\submit-helper.js" />
     <Content Include="Scripts\MyScripts\translation-dialog.js" />
-    <Content Include="Scripts\MyScripts\translation-processing.js" />
-    <Content Include="Scripts\MyScripts\translation-saver.js" />
     <Content Include="Scripts\MyScripts\word-lighter.js" />
     <Content Include="Scripts\MyScripts\word-wrapper.js" />
     <Content Include="Scripts\_references.js" />
@@ -1358,14 +1358,16 @@
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Anki\Settings.cshtml" />
     <Content Include="Views\Anki\RegisterStep1.cshtml" />
     <Content Include="Views\Anki\RegisterStep2.cshtml" />
     <Content Include="Views\Account\RegistrationFinish.cshtml" />
     <Content Include="Views\Anki\AnkiRegistrationFinish.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Settings.cshtml" />
+    <Content Include="Views\Dictionary\WordEditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

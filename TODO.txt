@@ -8,4 +8,4 @@
 8. Do over the Dictionary View
 9. Implement removeng translation from word list
 10. Make the word list fixed on the web page
-11. Add email checking
+11. Add saving a current page of a material

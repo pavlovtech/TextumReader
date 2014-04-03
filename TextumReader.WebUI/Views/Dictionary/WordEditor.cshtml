@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "WordEditor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    <script>
+        var model = {
+            words: ko.observableArray()
+        };
+        
+        function sendAjaxRequest(httpMethod, callback, url, reqData) {
+            $.ajax("/api/web" + (url ? "/" + url : ""), {
+                type: httpMethod,
+                success: callback,
+                data: reqData
+            });
+        }
+
+        function getAllWords() {
+            
+        }
+
+        function removeWord(word) {
+            
+        }
+
+        function removeTranslation(id) {
+            
+        }
+        
+
+    </script>
+}

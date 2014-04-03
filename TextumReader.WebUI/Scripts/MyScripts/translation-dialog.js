@@ -38,10 +38,12 @@ function setDialog(params) {
                             formattedData += formatTranslation(params.translationTagName, data.Translations[i]);
                         }
                     }
-                    
-                    if (wordFrequency != 0)
+
+                    if (wordFrequency != 0) {
                         formattedData += wordFrequency.toString() + " of 12527";
+                    }
                 });
+                
                 $.ajaxSetup({ async: true });
             }
 

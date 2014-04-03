@@ -1,4 +1,5 @@
-﻿@model IList<TextumReader.WebUI.Models.WordViewModel>
+﻿@using TextumReader.ProblemDomain
+@model IList<TextumReader.WebUI.Models.WordViewModel>
 @{
     ViewBag.Title = "Textum Reader - Word List";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,9 +8,19 @@
 @section scripts
 {
     <script>
-        $((function() {
+        $((function () {
+            $("form.confirmable").submit(function (e) {
+                e.preventDefault();
+                var currentForm = this;
+                bootbox.confirm("Are you sure?", function (result) {
+                    if (result) {
+                        currentForm.submit();
+                    }
+                });
+            });
+
             $("table").tablesorter({ headers: { 0: { sorter: false }, 3: { sorter: false } } });
-            $(".alert").fadeOut(3000);
+            $(".alert").fadeOut(4000);
 
             $("[type=checkbox]").click(function() {
                 if ($(":checkbox:checked.wcheckbox").length > 0) {
@@ -35,7 +46,7 @@
             <input type="submit" formaction="DeleteWords" value="Delete" class="btn btn-primary btn-sm" />
             <input type="submit" formaction="AddToAnki" value="Add to Anki" class="btn btn-primary btn-sm" />
         </div>
-        <table class="table table-striped table-bordered table-hover table-condensed tablesorter">
+        <table class="table table-striped table-bordered table-hover table-condensed tablesorter wordlist">
             <thead>
                 <tr>
                     <th></th>
@@ -55,12 +66,12 @@
                         </td>
                         <td style="width: 140px;">@Model[i].WordName</td>
                         <td>
-                            @foreach (var t in Model[i].Translations)
+                            @foreach (Translation t in Model[i].Translations)
                             {
                                 <span class="well well-sm translation">
                                     @t.Value
                                     @using (Html.BeginForm("DeleteTranslation", "Dictionary",
-                                        new {id = t.TranslationId}, FormMethod.Post,
+                                        new { id = t.TranslationId }, FormMethod.Post,
                                         new { style = "display:inline;" }))
                                     {
                                         <input class="closeBtn" type="submit" value="&times;" />
@@ -69,13 +80,18 @@
                             }
                         </td>
 
-
                         <td class="buttons centered-column" style="width: 110px;">
-                            @using (Html.BeginForm("DeleteWord", "Dictionary", new {id = Model[i].WordId}, FormMethod.Post, new {style = "display:inline;"}))
+                            @using (Html.BeginForm("DeleteWord", "Dictionary", new { id = Model[i].WordId }, FormMethod.Post,
+                                new
+                                {
+                                    style = "display:inline;",
+                                    @class = "confirmable"
+                                }))
                             {
                                 <input type="submit" value="Delete" class="btn btn-primary btn-sm" />
                             }
                         </td>
+
                     </tr>
                 }
 

@@ -27,7 +27,19 @@ namespace TextumReader.WebUI.Controllers
 
         public ActionResult RegisterStep1()
         {
-            return View("RegisterStep1", new AnkiUserAggregateViewModel());
+            var viewModel = new AnkiUserAggregateViewModel();
+
+            var user = _repository.GetSingle<AnkiUser>(u => u.UserId == User.Identity.GetUserId());
+            if (!ankiWeb.IsAutorized)
+            {
+                if (user == null)
+                    return View("RegisterStep1", viewModel);
+
+                viewModel.Step1.Login = user.Login;
+                viewModel.Step1.Password = user.Password;
+            }
+
+            return View("RegisterStep1", viewModel);
         }
 
         [HttpPost]
@@ -51,6 +63,7 @@ namespace TextumReader.WebUI.Controllers
             }
             else
             {
+                ModelState.AddModelError("Data", "Incorrect username/email or password");
                 return View(viewModel);
             }
         }

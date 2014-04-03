@@ -61,6 +61,11 @@ namespace TextumReader.WebUI.Controllers
             return View(model);
         }
 
+        public ActionResult Settings()
+        {
+            return View();
+        }
+
         //
         // GET: /Account/Register
         [AllowAnonymous]

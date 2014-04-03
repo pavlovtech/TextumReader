@@ -40,8 +40,9 @@ namespace TextumReader.WebUI.Controllers
         {
             var words = _repository.Get<Word>()
                 .Where(w => w.DictionaryId == dictionaryId)
-                .ToList().
-                Select(Mapper.Map<WordViewModel>).ToList();
+                .ToList()
+                .Select(Mapper.Map<WordViewModel>).ToList();
+
             return View(words);
         }
 
@@ -49,14 +50,14 @@ namespace TextumReader.WebUI.Controllers
         public void AddWord(string word, string translation, int dictionaryId)
         {
             Dictionary dict = _repository.GetSingle<Dictionary>(d => d.DictionaryId == dictionaryId);
-            Word findedWord = dict.Words.FirstOrDefault(w => w.WordName == word);
+            Word foundWords = dict.Words.FirstOrDefault(w => w.WordName == word);
 
-            if (findedWord != null)
+            if (foundWords != null)
             {
-                if (findedWord.Translations.Any(t => t.Value == translation))
+                if (foundWords.Translations.Any(t => t.Value == translation))
                     return;
 
-                findedWord.Translations.Add(new Translation() { WordId = findedWord.WordId, Value = translation });
+                foundWords.Translations.Add(new Translation() { WordId = foundWords.WordId, Value = translation });
             }
             else
             {

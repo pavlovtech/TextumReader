@@ -1,7 +1,7 @@
 ﻿@model TextumReader.WebUI.Models.MaterialViewModel
 
 @{
-    ViewBag.Title = "Material";
+    ViewBag.Title = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     AjaxOptions ajaxOpts = new AjaxOptions
@@ -16,7 +16,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title">@Model.Title</h3>
             </div>
-            <div id="text" class="word_split panel-body" style="min-height: 521px; text-align: justify;">@MvcHtmlString.Create(Model.ForeignText)</div>
+            <div id="text" class="word_split panel-body" style="font-family: Verdana; min-height: 521px; text-align: justify;">@MvcHtmlString.Create(Model.ForeignText)</div>
         </div>
         <div style="text-align: center; vertical-align: middle;">
             <ul class="pagination" style="padding: 0; margin: 0 0 0 0">
@@ -69,8 +69,6 @@
             setDialog(params);
 
             $("#words").height($('#text').height());
-
-            getTranslations("hello", "en", "ru");
         });
     </script>
 }

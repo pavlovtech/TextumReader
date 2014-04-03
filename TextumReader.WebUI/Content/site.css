@@ -18,6 +18,7 @@
     color: #000000;
     text-shadow: 0 1px 0 #ffffff;
     opacity: 0.2;
+    opacity: 0.2;
     filter: alpha(opacity=20);
     text-decoration: none;
 }
@@ -56,7 +57,9 @@ table a:hover { color: #537291; }
 
 .centered-column { text-align: center; }
 
-body { margin-top: 80px; }
+body {
+     margin-top: 80px;
+}
 
 #category {
     height: 30px;
@@ -90,8 +93,9 @@ body { margin-top: 80px; }
 }
 
 .lighted {
-    color: blue;
-    background-color: #ffffff;
+    color: #ffffff;
+    background-color: #115c7a;
+    cursor: pointer;
 }
 
 

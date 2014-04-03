@@ -18,16 +18,16 @@ namespace TextumReader.WebUI
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/myscripts").Include(
-                "~/Scripts/MyScripts/submit-helper.js",
-                "~/Scripts/MyScripts/word-lighter.js",
-                "~/Scripts/MyScripts/translation-dialog.js",
-                "~/Scripts/MyScripts/dialog-hider.js",
-                "~/Scripts//MyScripts/translation-saver.js",
-                "~/Scripts//MyScripts/word-wrapper.js",
-                "~/Scripts//MyScripts/google-translation-api.js",
-                "~/Scripts/jquery.tablesorter.min.js"));
-  
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery.unobtrusive*",
+                        "~/Scripts/jquery.validate*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/myscripts")
+                .IncludeDirectory("~/Scripts/MyScripts/", "*.js", searchSubdirectories: false));
+
+            bundles.Add(new ScriptBundle("~/bundles/jsextlibs").Include(
+                    "~/Scripts/jquery.tablesorter.min.js",
+                    "~/Scripts/bootbox.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

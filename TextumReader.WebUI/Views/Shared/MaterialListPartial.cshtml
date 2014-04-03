@@ -29,7 +29,7 @@ else
                             @Html.ActionLink("Edit", "Edit", new {id = m.MaterialId}, new {@class = "btn btn-primary btn-sm"})
                             @Ajax.ActionLink("Delete", "Delete", new {id = m.MaterialId},
                                 new AjaxOptions {HttpMethod = "POST", UpdateTargetId = "list"},
-                                new {@class = "btn btn-primary btn-sm"})
+                             new { @class = "btn btn-primary btn-sm confirmable" })
                         </td>
                     </tr>
                 }
@@ -39,7 +39,7 @@ else
 
     <script>
         $(function() {
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $("table").tablesorter({ headers: { 2: { sorter: false }, } });
             }
             );

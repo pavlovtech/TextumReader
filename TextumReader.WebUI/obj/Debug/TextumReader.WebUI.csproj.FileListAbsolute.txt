@@ -351,7 +351,11 @@ C:\TextumReader\TextumReader.WebUI\bin\WebActivatorEx.dll
 C:\TextumReader\TextumReader.WebUI\bin\WebGrease.dll
 C:\TextumReader\TextumReader.WebUI\bin\WebMatrix.Data.dll
 C:\TextumReader\TextumReader.WebUI\bin\WebMatrix.WebData.dll
+C:\TextumReader\TextumReader.WebUI\bin\LemmaSharp.dll
 C:\TextumReader\TextumReader.WebUI\bin\HtmlAgilityPack.dll
+C:\TextumReader\TextumReader.WebUI\bin\LemmaSharpPrebuiltCompact.dll
+C:\TextumReader\TextumReader.WebUI\bin\LemmaSharpPrebuilt.dll
+C:\TextumReader\TextumReader.WebUI\bin\Lzma#.dll
 C:\TextumReader\TextumReader.WebUI\bin\Linguistics.pdb
 C:\TextumReader\TextumReader.WebUI\bin\TextumReader.Utilities.pdb
 C:\TextumReader\TextumReader.WebUI\bin\TextumReader.DataLayer.pdb
@@ -393,7 +397,3 @@ C:\TextumReader\TextumReader.WebUI\bin\HtmlAgilityPack.xml
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.csprojResolveAssemblyReference.cache
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.dll
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.pdb
-C:\TextumReader\TextumReader.WebUI\bin\LemmaSharp.dll
-C:\TextumReader\TextumReader.WebUI\bin\LemmaSharpPrebuiltCompact.dll
-C:\TextumReader\TextumReader.WebUI\bin\LemmaSharpPrebuilt.dll
-C:\TextumReader\TextumReader.WebUI\bin\Lzma#.dll
