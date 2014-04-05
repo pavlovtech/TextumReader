@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Linguistics.Models;
 using TextumReader.ProblemDomain;
 
 namespace TextumReader.WebUI.Models
@@ -14,6 +15,9 @@ namespace TextumReader.WebUI.Models
 
         [HiddenInput(DisplayValue = false)]
         public int MaterialId { get; set; }
+
+        public Language InputLanguage { get; set; }
+        public Language OutputLanguage { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         [Display(Name = "Category")]

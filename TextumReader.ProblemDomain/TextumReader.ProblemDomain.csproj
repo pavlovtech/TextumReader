@@ -65,6 +65,7 @@
     <Compile Include="AnkiUser.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Dictionary.cs" />
+    <Compile Include="Language.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="Translation.cs" />
     <Compile Include="User.cs" />
@@ -75,6 +76,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Linguistics\Linguistics.csproj">
+      <Project>{C1664656-D441-4921-A11A-A6C5B851C20F}</Project>
+      <Name>Linguistics</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
+using Linguistics.Models;
 using Microsoft.AspNet.Identity;
 using TextumReader.ProblemDomain;
 using TextumReader.DataLayer.Abstract;
@@ -106,7 +107,10 @@ namespace TextumReader.WebUI.Controllers
             var viewModel = Mapper.Map<MaterialViewModel>(material);
 
             var categories = _repository.Get<Category>();
-            ViewData["Categories"] = new SelectList(categories, "CategoryId", "Name"); 
+            ViewData["Categories"] = new SelectList(categories, "CategoryId", "Name");
+
+            viewModel.InputLanguage = material.InputLanguage;
+            viewModel.OutputLanguage = material.OutputLanguage;
 
             return View(viewModel);
         }
@@ -119,10 +123,7 @@ namespace TextumReader.WebUI.Controllers
 
             var material = _repository.GetSingle<Material>(m => m.MaterialId == viewModel.MaterialId);
 
-            material.CategoryId = viewModel.CategoryId;
-            material.ForeignText = viewModel.ForeignText;
-            material.NativeText = viewModel.NativeText;
-            material.Title = viewModel.Title;
+            AutoMapper.Mapper.Map(viewModel, material);
 
             _repository.SaveChanges();
 
@@ -150,28 +151,37 @@ namespace TextumReader.WebUI.Controllers
         {
             var categories = _repository.Get<Category>();
             ViewData["Categories"] = new SelectList(categories, "CategoryId", "Name");
-            return View("Create", new MaterialViewModel());
+
+            var viewModel = new MaterialViewModel()
+            {
+                InputLanguage = Language.English,
+                OutputLanguage = Language.English
+            };
+
+            return View("Create", viewModel);
         }
 
         [HttpPost]
-        public async Task<JsonResult> GetTranslation(string word)
+        public async Task<JsonResult> GetTranslations(string word, string inputLanguage, string outputLanguage)
         {
-            WordTranslation translation;
+            WordTranslations translations;
 
             try
             {
-                translation = await _webDictionary.GetTranslation(word, Lang.en, Lang.ru);
+                translations = await _webDictionary.GetTranslations(word,
+                    (Language)Enum.Parse(typeof(Language), inputLanguage),
+                    (Language)Enum.Parse(typeof(Language), outputLanguage));
             }
             catch (Exception)
             {
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
 
-            var wordFreq = _repository.GetSingle<WordFrequency>(x => x.Word == translation.WordName);
+            var wordFreq = _repository.GetSingle<WordFrequency>(x => x.Word == translations.WordName);
             if (wordFreq != null)
-                translation.WordFrequencyIndex = wordFreq.Position;
+                translations.WordFrequencyIndex = wordFreq.Position;
 
-            return Json(translation, JsonRequestBehavior.AllowGet);
+            return Json(translations, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

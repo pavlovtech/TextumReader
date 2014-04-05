@@ -35,11 +35,11 @@ namespace Linguistics.Anki
         public string Login { get; set; }
         public string Password { get; set; }
 
-        public IEnumerable<Card> GetCards()
+        public async Task<IEnumerable<Card>> GetCards()
         {
             AutorizationCheck();
 
-            string htmlPage = HttpQuery.Make("https://ankiweb.net/edit/", cookie, "POST");
+            string htmlPage = await HttpQuery.Make("https://ankiweb.net/edit/", cookie, "POST");
 
             string startPattern = "editor.models = ";
             string endPattern = ";\neditor.decks = ";
@@ -56,11 +56,11 @@ namespace Linguistics.Anki
             return cards;
         }
 
-        public IEnumerable<string> GetDecks()
+        public async Task<IEnumerable<string>> GetDecks()
         {
             AutorizationCheck();
 
-            string htmlPage = HttpQuery.Make("https://ankiweb.net/edit/", cookie, "POST");
+            string htmlPage = await HttpQuery.Make("https://ankiweb.net/edit/", cookie, "POST");
 
             string startPattern = "editor.decks = ";
             string endPattern = ";\neditor.curModelID = ";
@@ -74,11 +74,13 @@ namespace Linguistics.Anki
             return deckNames;
         }
 
-        public  void AddWord(string word, string translation, string deckName, string cardId)
+        public async void AddWord(string word, string translation, string deckName, string cardId)
         {
             AutorizationCheck();
 
-            Card card = GetCards().SingleOrDefault(x => x.Id == cardId);
+            var cards = await GetCards();
+
+            Card card = cards.SingleOrDefault(x => x.Id == cardId);
             if(card == null)
                 throw new Exception("The card with the id of " + cardId + " doesn't exist");
 
@@ -97,7 +99,7 @@ namespace Linguistics.Anki
 
             string url = String.Format("https://ankiweb.net/edit/save?data={0}&mid={1}&deck={2}", encodedData, card.Id, deckName);
 
-            string result = HttpQuery.Make(url, cookie, "POST");
+            string result = await HttpQuery.Make(url, cookie, "POST");
         }
 
         private void AutorizationCheck()
@@ -106,12 +108,12 @@ namespace Linguistics.Anki
                 throw new Exception("You are not autorized");
         }
 
-        public bool Autorize()
+        public async Task<bool> Autorize()
         {
             string url = String.Format("https://ankiweb.net/account/login?submitted=1&username={0}&password={1}",
                 HttpUtility.UrlEncode(Login), Password);
 
-            string result = HttpQuery.Make(url, cookie, "POST");
+            string result = await HttpQuery.Make(url, cookie, "POST");
             if (result.Contains("Incorrect username/email or password"))
             {
                 return false;;

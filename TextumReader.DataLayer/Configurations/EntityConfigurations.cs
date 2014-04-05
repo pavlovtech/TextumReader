@@ -64,6 +64,8 @@ namespace TextumReader.DataLayer.Configurations
         {
             Map(_ => _.ToTable("Materials"));
             HasKey(_ => _.MaterialId);
+
+
             Property(_ => _.DictionaryId).HasColumnName("Dictionary_DictionaryId");
             Property(_ => _.UserId).HasColumnName("User_UserId");
 

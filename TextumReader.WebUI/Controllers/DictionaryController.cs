@@ -21,7 +21,6 @@ namespace TextumReader.WebUI.Controllers
     {
         private readonly IGenericRepository _repository;
         AnkiWeb ankiWeb = new AnkiWeb();
-        private IEnumerable<WordFrequency> wordFrequencyList;
 
         public DictionaryController(IGenericRepository repository)
         {
@@ -70,7 +69,7 @@ namespace TextumReader.WebUI.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetTranslations(string word, int dictionaryId)
+        public JsonResult GetSavedTranslations(string word, int dictionaryId)
         {
             Dictionary dict = _repository.GetSingle<Dictionary>(d => d.DictionaryId == dictionaryId);
             Word findedWord = dict.Words.FirstOrDefault(w => w.WordName == word);
@@ -140,7 +139,6 @@ namespace TextumReader.WebUI.Controllers
         public ViewResult Edit(int id)
         {
             var dict = _repository.GetSingle<Dictionary>(m => m.DictionaryId == id);
-
             return View(dict);
         }
 

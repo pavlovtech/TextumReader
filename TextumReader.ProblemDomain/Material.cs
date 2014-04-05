@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Linguistics.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace TextumReader.ProblemDomain
@@ -14,11 +15,14 @@ namespace TextumReader.ProblemDomain
     {
         public int MaterialId { get; set; }
         public int CategoryId { get; set; }
-        public int? DictionaryId { get; set; }
+        public int DictionaryId { get; set; }
         public string UserId { get; set; }
         public string Title { get; set; }
         public string ForeignText { get; set; }
         public string NativeText { get; set; }
+
+        public Language InputLanguage { get; set; }
+        public Language OutputLanguage { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual Dictionary Dictionary { get; set; }

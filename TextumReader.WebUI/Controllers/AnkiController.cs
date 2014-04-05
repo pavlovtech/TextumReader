@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
@@ -43,7 +44,7 @@ namespace TextumReader.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegisterStep1(AnkiUserAggregateViewModel viewModel)
+        public async Task<ActionResult> RegisterStep1(AnkiUserAggregateViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -52,12 +53,12 @@ namespace TextumReader.WebUI.Controllers
 
             ankiWeb.Login = viewModel.Step1.Login;
             ankiWeb.Password = viewModel.Step1.Password;
-            ankiWeb.Autorize();
+            await ankiWeb.Autorize();
 
             if (ankiWeb.IsAutorized)
             {
-                viewModel.Step2.AllCards = ankiWeb.GetCards().CardsToSelectListItems();
-                viewModel.Step2.AllDecks = ankiWeb.GetDecks().DecksToSelectListItems();
+                viewModel.Step2.AllCards = (await ankiWeb.GetCards()).CardsToSelectListItems();
+                viewModel.Step2.AllDecks = (await ankiWeb.GetDecks()).DecksToSelectListItems();
 
                 return View("RegisterStep2", viewModel);
             }

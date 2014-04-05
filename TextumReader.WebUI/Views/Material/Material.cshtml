@@ -18,25 +18,28 @@
             </div>
             <div id="text" class="word_split panel-body" style="font-family: Verdana; min-height: 521px; text-align: justify;">@MvcHtmlString.Create(Model.ForeignText)</div>
         </div>
-        <div style="text-align: center; vertical-align: middle;">
-            <ul class="pagination" style="padding: 0; margin: 0 0 0 0">
-                @Html.PageLinks(Model.PagingInfo, x => Url.Action("Material", new { id = Model.MaterialId, page = x }), 8)
-            </ul>
-        </div>
+        @if (Model.PagingInfo.TotalPages > 1)
+        {
+            <div style="text-align: center; vertical-align: middle;">
+                <ul class="pagination" style="padding: 0; margin: 0 0 0 0">                
+                    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Material", new {id = Model.MaterialId, page = x}), 8)
+                </ul>
+            </div>
+        }
     </div>
 
     <div class="col-md-3 hidden-xs">
         <div class="panel panel-default">
             <div class="panel-heading" style="padding: 7px;">
-                @using (Ajax.BeginForm("ChangeDictionary", "Material", null, ajaxOpts, new { role = "form" }))
+                @using (Ajax.BeginForm("ChangeDictionary", "Material", null, ajaxOpts, new {role = "form"}))
                 {
-                    @Html.DropDownList("DictionaryId", Model.AllDictionaries, new { @class = "form-control", style = "height: 25px; padding: 0; margin: 0;" })
+                    @Html.DropDownList("DictionaryId", Model.AllDictionaries, new {@class = "form-control", style = "height: 25px; padding: 0; margin: 0;"})
                     @Html.HiddenFor(x => x.MaterialId)
                     <input type="submit" value="Submit" style="display: none;" />
                 }
             </div>
             <div id="words" class="panel-body" style="overflow-y: auto;">
-                @Html.Action("WordList", "Material", new { dictionaryId = Model.DictionaryId })
+                @Html.Action("WordList", "Material", new {dictionaryId = Model.DictionaryId})
             </div>
         </div>
     </div>
@@ -48,7 +51,7 @@
 @section scripts
 {
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             hideDialogWhenUserClicksOutside("#dialog");
 
             wrapAllWords(".word_split", "w");
@@ -57,13 +60,15 @@
 
             var params =
             {
-                getTranslationAction: '@Url.Action("GetTranslation")',
+                getTranslationAction: '@Url.Action("GetTranslations")',
                 addWordAction: '@Url.Action("AddWord", "Dictionary")',
-                getSavedTranslationsAction: '@Url.Action("GetTranslations", "Dictionary")',
+                getSavedTranslationsAction: '@Url.Action("GetSavedTranslations", "Dictionary")',
                 dialogId: "#dialog",
                 wordTagName: "w",
                 translationTagName: "translation",
-                wordListAction: '@Url.Action("WordList")'
+                wordListAction: '@Url.Action("WordList")',
+                inputLanguage: '@Model.InputLanguage',
+                outputLanguage: '@Model.OutputLanguage'
             };
 
             setDialog(params);

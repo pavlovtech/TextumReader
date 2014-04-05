@@ -7,7 +7,6 @@ using Microsoft.Owin.Security;
 using TextumReader.DataLayer.Abstract;
 using TextumReader.ProblemDomain;
 using TextumReader.WebUI.Models;
-using Microsoft.AspNet.Identity;
 
 namespace TextumReader.WebUI.Controllers
 {

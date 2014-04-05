@@ -30,7 +30,11 @@ function setDialog(params) {
 
             if (navigator.onLine == true) {
                 $.ajaxSetup({ async: false });
-                $.post(params.getTranslationAction, { word: selectedWord }, function(data) {
+                $.post(params.getTranslationAction, {
+                    word: selectedWord,
+                    inputLanguage: params.inputLanguage,
+                    outputLanguage: params.outputLanguage
+                }, function (data) {
                     wordName = data.WordName;
                     wordFrequency = data.WordFrequencyIndex;
                     for (var i = 0; i < data.Translations.length; i++) {
