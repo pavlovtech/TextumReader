@@ -17,19 +17,6 @@ C:\TextumReader test\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDo
 C:\TextumReader test\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.pdb
 C:\TextumReader test\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.dll
 C:\TextumReader test\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.pdb
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.dll.config
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.dll
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.pdb
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\EntityFramework.dll
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\EntityFramework.SqlServer.dll
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.Core.dll
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\EntityFramework.xml
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\EntityFramework.SqlServer.xml
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.Core.xml
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.dll
-C:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.pdb
 F:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.dll.config
 F:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.dll
 F:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.pdb
@@ -44,12 +31,25 @@ F:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.E
 F:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.csprojResolveAssemblyReference.cache
 F:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.dll
 F:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.pdb
-C:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.csprojResolveAssemblyReference.cache
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.dll.config
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.dll
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.pdb
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\EntityFramework.dll
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\EntityFramework.SqlServer.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Linguistics.dll
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\LemmaSharp.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Newtonsoft.Json.dll
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\LemmaSharpPrebuiltCompact.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\LemmaSharpPrebuilt.dll
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\LemmaSharpPrebuiltCompact.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Lzma#.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Linguistics.pdb
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\EntityFramework.xml
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\EntityFramework.SqlServer.xml
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Newtonsoft.Json.xml
+C:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.csprojResolveAssemblyReference.cache
+C:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.dll
+C:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.pdb

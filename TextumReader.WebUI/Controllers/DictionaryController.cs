@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
 using AutoMapper;
 using Linguistics.Anki;
+using Linguistics.Models;
 using Microsoft.AspNet.Identity;
 using TextumReader.DataLayer.Abstract;
 using TextumReader.ProblemDomain;
 using TextumReader.WebUI.Models;
 using TextumReader.WebUI.Extensions;
+using LemmaSharp;
 
 namespace TextumReader.WebUI.Controllers
 {
@@ -20,17 +23,19 @@ namespace TextumReader.WebUI.Controllers
     public class DictionaryController : Controller
     {
         private readonly IGenericRepository _repository;
-        AnkiWeb ankiWeb = new AnkiWeb();
+        private AnkiWeb ankiWeb = new AnkiWeb();
+
+        private LanguagePrebuilt currentLanguage = LanguagePrebuilt.English;
+        private ILemmatizer lmtz;
 
         public DictionaryController(IGenericRepository repository)
         {
+            lmtz = new LemmatizerPrebuiltCompact(currentLanguage);
             _repository = repository;
         }
 
         public ActionResult Index()
         {
-            AddDefaultDictionaryToDB();
-
             var dictionaries = _repository.GetDictionariesByUserId(User.Identity.GetUserId());
             return View(dictionaries);
         }
@@ -61,6 +66,8 @@ namespace TextumReader.WebUI.Controllers
             else
             {
                 Word newWord = new Word() { WordName = word, DictionaryId = dictionaryId };
+                newWord.AddDate = DateTime.Now;
+
                 _repository.Add<Word>(newWord);
 
                 newWord.Translations.Add(new Translation() { Value = translation });
@@ -69,14 +76,22 @@ namespace TextumReader.WebUI.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetSavedTranslations(string word, int dictionaryId)
+        public JsonResult GetSavedTranslations(string word, int dictionaryId, string inputLang)
         {
+            if (currentLanguage != inputLang.ToEnum<LanguagePrebuilt>())
+            {
+                lmtz = new LemmatizerPrebuiltCompact(inputLang.ToEnum<LanguagePrebuilt>());
+            }
+
+            word = lmtz.Lemmatize(word);
+
             Dictionary dict = _repository.GetSingle<Dictionary>(d => d.DictionaryId == dictionaryId);
             Word findedWord = dict.Words.FirstOrDefault(w => w.WordName == word);
 
             if (findedWord != null)
                 return Json(findedWord.Translations.Select(t => t.Value).ToArray());
-            
+
+            //return Json(Enumerable.Empty<string>());
             return null;
         }
 
@@ -194,7 +209,7 @@ namespace TextumReader.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToAnki(IEnumerable<WordViewModel> words)
+        public async Task<ActionResult> AddToAnki(IEnumerable<WordViewModel> words)
         {
             int dictId = 0;
             if (words.Any())
@@ -210,9 +225,10 @@ namespace TextumReader.WebUI.Controllers
 
                 ankiWeb.Login = user.Login;
                 ankiWeb.Password = user.Password;
-                ankiWeb.Autorize();
+                await ankiWeb.Autorize();
             }
 
+            bool success = false;
             foreach (var wordViewModel in words.Where(m => m.IsSelected))
             {
                 var word = _repository.GetSingle<Word>(w => w.WordId == wordViewModel.WordId);
@@ -224,30 +240,15 @@ namespace TextumReader.WebUI.Controllers
                     translations += translation.Value + "<br>";
                 }
 
-                ankiWeb.AddWord(word.WordName, translations, user.DeckName, user.CardId);
+                success = await ankiWeb.AddWord(word.WordName, translations, user.DeckName, user.CardId);
             }
 
-            TempData["message"] = "The words have successfully been added to Anki";
+            if (success)
+                TempData["message"] = "The words have successfully been added to Anki";
+            else
+                TempData["alert"] = "The words have not been added to Anki";
 
             return RedirectToAction("WordList", new { dictionaryId = dictId });
-        }
-
-        private void AddDefaultDictionaryToDB()
-        {
-            var id = User.Identity.GetUserId();
-            var dict =
-                _repository.Get<Dictionary>(d => d.UserId == id).FirstOrDefault(d => d.Title == "Default");
-
-            if (dict != null)
-                return;
-
-            _repository.Add<Dictionary>(new Dictionary()
-            {
-                UserId = User.Identity.GetUserId(),
-                Title = "Default",
-                Words = new Collection<Word>()
-            });
-            _repository.SaveChanges();
-        }
+        }    
 	}
 }

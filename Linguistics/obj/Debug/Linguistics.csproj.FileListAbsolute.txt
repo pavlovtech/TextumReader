@@ -29,19 +29,6 @@ C:\TextumReader test\Linguistics\bin\Debug\HtmlAgilityPack.pdb
 C:\TextumReader test\Linguistics\bin\Debug\HtmlAgilityPack.xml
 C:\TextumReader test\Linguistics\obj\Debug\Linguistics.dll
 C:\TextumReader test\Linguistics\obj\Debug\Linguistics.pdb
-C:\TextumReader\Linguistics\bin\Debug\Linguistics.dll
-C:\TextumReader\Linguistics\bin\Debug\Linguistics.pdb
-C:\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.dll
-C:\TextumReader\Linguistics\bin\Debug\LemmaSharp.dll
-C:\TextumReader\Linguistics\bin\Debug\LemmaSharpPrebuilt.dll
-C:\TextumReader\Linguistics\bin\Debug\LemmaSharpPrebuiltCompact.dll
-C:\TextumReader\Linguistics\bin\Debug\Lzma#.dll
-C:\TextumReader\Linguistics\bin\Debug\Newtonsoft.Json.dll
-C:\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.pdb
-C:\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.xml
-C:\TextumReader\Linguistics\bin\Debug\Newtonsoft.Json.xml
-C:\TextumReader\Linguistics\obj\Debug\Linguistics.dll
-C:\TextumReader\Linguistics\obj\Debug\Linguistics.pdb
 F:\TextumReader\Linguistics\bin\Debug\Linguistics.dll
 F:\TextumReader\Linguistics\bin\Debug\Linguistics.pdb
 F:\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.dll
@@ -56,4 +43,17 @@ F:\TextumReader\Linguistics\bin\Debug\Newtonsoft.Json.xml
 F:\TextumReader\Linguistics\obj\Debug\Linguistics.csprojResolveAssemblyReference.cache
 F:\TextumReader\Linguistics\obj\Debug\Linguistics.dll
 F:\TextumReader\Linguistics\obj\Debug\Linguistics.pdb
+C:\TextumReader\Linguistics\bin\Debug\Linguistics.dll
+C:\TextumReader\Linguistics\bin\Debug\Linguistics.pdb
+C:\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader\Linguistics\bin\Debug\LemmaSharp.dll
+C:\TextumReader\Linguistics\bin\Debug\LemmaSharpPrebuilt.dll
+C:\TextumReader\Linguistics\bin\Debug\LemmaSharpPrebuiltCompact.dll
+C:\TextumReader\Linguistics\bin\Debug\Lzma#.dll
+C:\TextumReader\Linguistics\bin\Debug\Newtonsoft.Json.dll
+C:\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader\Linguistics\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader\Linguistics\bin\Debug\Newtonsoft.Json.xml
+C:\TextumReader\Linguistics\obj\Debug\Linguistics.dll
+C:\TextumReader\Linguistics\obj\Debug\Linguistics.pdb
 C:\TextumReader\Linguistics\obj\Debug\Linguistics.csprojResolveAssemblyReference.cache

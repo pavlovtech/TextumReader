@@ -19,6 +19,8 @@ namespace TextumReader.ProblemDomain
 
         public string WordName { get; set; }
 
+        public DateTime AddDate { get; set; }
+
         public virtual Dictionary Dictionary { get; set; }
 
         public virtual ICollection<Translation> Translations { get; set; }

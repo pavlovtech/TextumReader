@@ -8,6 +8,15 @@ using TextumReader.ProblemDomain;
 
 namespace TextumReader.DataLayer.Configurations
 {
+    public class SharedMaterialConfiguration : EntityTypeConfiguration<SharedMaterial>
+    {
+        public SharedMaterialConfiguration()
+        {
+            Map(_ => _.ToTable("SharedMaterials"));
+            HasKey(_ => _.SharedMaterialId);
+        }
+    }
+
     public class WordFrequencyConfiguration : EntityTypeConfiguration<WordFrequency>
     {
         public WordFrequencyConfiguration()
@@ -34,7 +43,7 @@ namespace TextumReader.DataLayer.Configurations
         {
             Map(_ => _.ToTable("Words"));
             HasKey(_ => _.WordId);
-            Property(_ => _.DictionaryId).HasColumnName("Dictionary_DictionaryId");
+            Property(_ => _.DictionaryId).HasColumnName("DictionaryId");
             HasRequired(_ => _.Dictionary).WithMany(_ => _.Words).HasForeignKey(_ => _.DictionaryId).WillCascadeOnDelete(true);
         }
     }
@@ -66,8 +75,8 @@ namespace TextumReader.DataLayer.Configurations
             HasKey(_ => _.MaterialId);
 
 
-            Property(_ => _.DictionaryId).HasColumnName("Dictionary_DictionaryId");
-            Property(_ => _.UserId).HasColumnName("User_UserId");
+            Property(_ => _.DictionaryId).HasColumnName("DictionaryId");
+            Property(_ => _.UserId).HasColumnName("UserId");
 
             HasRequired(_ => _.Category).WithMany(_ => _.Materials).HasForeignKey(_ => _.CategoryId);
             HasRequired(_ => _.Dictionary).WithMany(_ => _.Materials).HasForeignKey(_ => _.DictionaryId);

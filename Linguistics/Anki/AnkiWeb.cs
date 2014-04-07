@@ -74,7 +74,7 @@ namespace Linguistics.Anki
             return deckNames;
         }
 
-        public async void AddWord(string word, string translation, string deckName, string cardId)
+        public async Task<bool> AddWord(string word, string translation, string deckName, string cardId)
         {
             AutorizationCheck();
 
@@ -100,6 +100,11 @@ namespace Linguistics.Anki
             string url = String.Format("https://ankiweb.net/edit/save?data={0}&mid={1}&deck={2}", encodedData, card.Id, deckName);
 
             string result = await HttpQuery.Make(url, cookie, "POST");
+
+            if(result != "2")
+                return false;
+            
+            return true;
         }
 
         private void AutorizationCheck()

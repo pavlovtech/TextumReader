@@ -13,6 +13,8 @@ namespace TextumReader.WebUI.Models
 
         public string WordName { get; set; }
 
+        public DateTime AddDate { get; set; }
+
         public ICollection<Translation> Translations { get; set; }
         public bool IsSelected { get; set; }
     }

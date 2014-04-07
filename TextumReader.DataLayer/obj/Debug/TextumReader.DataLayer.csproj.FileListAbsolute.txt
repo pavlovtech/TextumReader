@@ -54,22 +54,6 @@ C:\TextumReader test\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.Mig
 C:\TextumReader test\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.csproj.GenerateResource.Cache
 C:\TextumReader test\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.dll
 C:\TextumReader test\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.pdb
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.dll.config
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.dll
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.pdb
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.dll
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.SqlServer.dll
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\Microsoft.AspNet.Identity.Core.dll
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.ProblemDomain.dll
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.ProblemDomain.pdb
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.xml
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.SqlServer.xml
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\Microsoft.AspNet.Identity.Core.xml
-C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.csprojResolveAssemblyReference.cache
-C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.Migrations.InitialCreate.resources
-C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.csproj.GenerateResource.Cache
-C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.dll
-C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.pdb
 F:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.dll.config
 F:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.dll
 F:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.pdb
@@ -92,11 +76,27 @@ F:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.Migratio
 F:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.csproj.GenerateResource.Cache
 F:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.dll
 F:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.pdb
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.dll.config
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.dll
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.DataLayer.pdb
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.dll
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.ProblemDomain.dll
 C:\TextumReader\TextumReader.DataLayer\bin\Debug\Linguistics.dll
 C:\TextumReader\TextumReader.DataLayer\bin\Debug\LemmaSharp.dll
 C:\TextumReader\TextumReader.DataLayer\bin\Debug\Newtonsoft.Json.dll
-C:\TextumReader\TextumReader.DataLayer\bin\Debug\LemmaSharpPrebuiltCompact.dll
 C:\TextumReader\TextumReader.DataLayer\bin\Debug\LemmaSharpPrebuilt.dll
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\LemmaSharpPrebuiltCompact.dll
 C:\TextumReader\TextumReader.DataLayer\bin\Debug\Lzma#.dll
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\TextumReader.ProblemDomain.pdb
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.xml
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\TextumReader\TextumReader.DataLayer\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\TextumReader\TextumReader.DataLayer\bin\Debug\Linguistics.pdb
 C:\TextumReader\TextumReader.DataLayer\bin\Debug\Newtonsoft.Json.xml
+C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.csprojResolveAssemblyReference.cache
+C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.Migrations.InitialCreate.resources
+C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.csproj.GenerateResource.Cache
+C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.dll
+C:\TextumReader\TextumReader.DataLayer\obj\Debug\TextumReader.DataLayer.pdb

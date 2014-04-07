@@ -38,22 +38,6 @@ C:\TextumReader test\TextProcessing\bin\Debug\HtmlAgilityPack.xml
 C:\TextumReader test\TextProcessing\obj\Debug\TextumReader.Utilities.csprojResolveAssemblyReference.cache
 C:\TextumReader test\TextProcessing\obj\Debug\TextumReader.Utilities.dll
 C:\TextumReader test\TextProcessing\obj\Debug\TextumReader.Utilities.pdb
-C:\TextumReader\TextProcessing\bin\Debug\TextumReader.Utilities.dll
-C:\TextumReader\TextProcessing\bin\Debug\TextumReader.Utilities.pdb
-C:\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.dll
-C:\TextumReader\TextProcessing\bin\Debug\Linguistics.dll
-C:\TextumReader\TextProcessing\bin\Debug\LemmaSharp.dll
-C:\TextumReader\TextProcessing\bin\Debug\Newtonsoft.Json.dll
-C:\TextumReader\TextProcessing\bin\Debug\LemmaSharpPrebuiltCompact.dll
-C:\TextumReader\TextProcessing\bin\Debug\LemmaSharpPrebuilt.dll
-C:\TextumReader\TextProcessing\bin\Debug\Lzma#.dll
-C:\TextumReader\TextProcessing\bin\Debug\Linguistics.pdb
-C:\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.pdb
-C:\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.xml
-C:\TextumReader\TextProcessing\bin\Debug\Newtonsoft.Json.xml
-C:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.csprojResolveAssemblyReference.cache
-C:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.dll
-C:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.pdb
 F:\TextumReader\TextProcessing\bin\Debug\TextumReader.Utilities.dll
 F:\TextumReader\TextProcessing\bin\Debug\TextumReader.Utilities.pdb
 F:\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.dll
@@ -70,3 +54,19 @@ F:\TextumReader\TextProcessing\bin\Debug\Newtonsoft.Json.xml
 F:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.csprojResolveAssemblyReference.cache
 F:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.dll
 F:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.pdb
+C:\TextumReader\TextProcessing\bin\Debug\TextumReader.Utilities.dll
+C:\TextumReader\TextProcessing\bin\Debug\TextumReader.Utilities.pdb
+C:\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.dll
+C:\TextumReader\TextProcessing\bin\Debug\Linguistics.dll
+C:\TextumReader\TextProcessing\bin\Debug\LemmaSharp.dll
+C:\TextumReader\TextProcessing\bin\Debug\Newtonsoft.Json.dll
+C:\TextumReader\TextProcessing\bin\Debug\LemmaSharpPrebuilt.dll
+C:\TextumReader\TextProcessing\bin\Debug\LemmaSharpPrebuiltCompact.dll
+C:\TextumReader\TextProcessing\bin\Debug\Lzma#.dll
+C:\TextumReader\TextProcessing\bin\Debug\Linguistics.pdb
+C:\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.pdb
+C:\TextumReader\TextProcessing\bin\Debug\HtmlAgilityPack.xml
+C:\TextumReader\TextProcessing\bin\Debug\Newtonsoft.Json.xml
+C:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.csprojResolveAssemblyReference.cache
+C:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.dll
+C:\TextumReader\TextProcessing\obj\Debug\TextumReader.Utilities.pdb

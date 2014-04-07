@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using TextumReader.DataLayer.Configurations;
+using TextumReader.ProblemDomain;
 
 namespace TextumReader.DataLayer.Concrete
 {
@@ -22,6 +23,7 @@ namespace TextumReader.DataLayer.Concrete
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new SharedMaterialConfiguration());
             modelBuilder.Configurations.Add(new WordConfiguration());
             modelBuilder.Configurations.Add(new CategoryConfiguration());
             modelBuilder.Configurations.Add(new MaterialConfiguration());

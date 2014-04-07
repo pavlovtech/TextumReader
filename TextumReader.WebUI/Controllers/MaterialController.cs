@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,6 @@ using TextumReader.DataLayer.Abstract;
 using Linguistics.Dictionary;
 using TextumReader.WebUI.Extensions;
 using TextumReader.WebUI.Models;
-using TextumReader.Utilities;
 
 namespace TextumReader.WebUI.Controllers
 {
@@ -55,7 +55,7 @@ namespace TextumReader.WebUI.Controllers
                 return RedirectToAction("Index");
 
             int size = 40;
-            var sencences = material.ForeignText.Split(new char[] {'.'});
+            var sencences = material.Text.Split(new char[] {'.'});
             var selectedSentences = sencences.Skip((page - 1) * size).Take(size).ToArray();
 
             StringBuilder sb = new StringBuilder();
@@ -73,7 +73,7 @@ namespace TextumReader.WebUI.Controllers
                 TotalItems = sencences.Count()
             };
 
-            viewModel.ForeignText = sb.ToString();
+            viewModel.Text = sb.ToString();
 
             viewModel.AllDictionaries =
                 _repository.GetDictionariesByUserId(User.Identity.GetUserId())
@@ -122,7 +122,6 @@ namespace TextumReader.WebUI.Controllers
                 return View(viewModel);
 
             var material = _repository.GetSingle<Material>(m => m.MaterialId == viewModel.MaterialId);
-
             AutoMapper.Mapper.Map(viewModel, material);
 
             _repository.SaveChanges();
@@ -136,9 +135,9 @@ namespace TextumReader.WebUI.Controllers
         {
             var material = Mapper.Map<Material>(viewModel);
 
-            material.DictionaryId = _repository.Get<Dictionary>().First().DictionaryId;
-
+            material.DictionaryId = _repository.GetSingle<Dictionary>(d => d.Title == "Default").DictionaryId;
             material.UserId = User.Identity.GetUserId();
+            material.AddDate = material.AddDate = DateTime.Now;
 
             _repository.Add(material);
             _repository.SaveChanges();
@@ -165,12 +164,12 @@ namespace TextumReader.WebUI.Controllers
         public async Task<JsonResult> GetTranslations(string word, string inputLanguage, string outputLanguage)
         {
             WordTranslations translations;
-
+      
             try
             {
                 translations = await _webDictionary.GetTranslations(word,
-                    (Language)Enum.Parse(typeof(Language), inputLanguage),
-                    (Language)Enum.Parse(typeof(Language), outputLanguage));
+                    inputLanguage.ToEnum<Language>(),
+                    outputLanguage.ToEnum<Language>());
             }
             catch (Exception)
             {

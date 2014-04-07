@@ -19,6 +19,8 @@ namespace TextumReader.WebUI.Models
         public Language InputLanguage { get; set; }
         public Language OutputLanguage { get; set; }
 
+        public DateTime AddDate { get; set; }
+
         [HiddenInput(DisplayValue = false)]
         [Display(Name = "Category")]
         public string CategoryName { get; set; }
@@ -31,16 +33,12 @@ namespace TextumReader.WebUI.Models
         public string Title { get; set; }
 
         [HiddenInput(DisplayValue = false)]
-        public int? DictionaryId { get; set; }
+        public int DictionaryId { get; set; }
 
         [Display(Name = "Text in a foreign language")]
         [Required]
         [DataType(DataType.MultilineText)]
-        public string ForeignText { get; set; }
-
-        [Display(Name = "Translation")]
-        [DataType(DataType.MultilineText)]
-        public string NativeText { get; set; }
+        public string Text { get; set; }
 
         public IEnumerable<SelectListItem> AllDictionaries { get; set; }
     }

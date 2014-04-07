@@ -24,14 +24,23 @@ namespace Linguistics.Dictionary
             return languageCode;
         }
 
-
-        public async Task<WordTranslations> GetTranslations(string word, Language inputLang, Language outputLang)
+        public async Task<WordTranslations> GetTranslations(string word, Language inputLang, Language outputLang, bool lemmatization = true)
         {
-            LanguagePrebuilt derivedLanguage;
-            LemmaSharp.LanguagePrebuilt.TryParse<LanguagePrebuilt>(inputLang.ToString(), true, out derivedLanguage);
-            lmtz = new LemmatizerPrebuiltCompact(derivedLanguage);
+            string lemma = word;
 
-            string lemma = lmtz.Lemmatize(word.Trim().ToLower());
+            if (lemmatization)
+            {
+                LanguagePrebuilt derivedLanguage;
+                LemmaSharp.LanguagePrebuilt.TryParse<LanguagePrebuilt>(inputLang.ToString(), true, out derivedLanguage);
+                lmtz = new LemmatizerPrebuiltCompact(derivedLanguage);
+
+                lemma = lmtz.Lemmatize(word.Trim().ToLower());
+            }
+
+            if (inputLang == Language.German)
+            { 
+                lemma = SaveUppercaseIfNeeded(word, lemma);
+            }
 
             string url = String.Format("http://translate.google.com/translate_a/t?client=t&sl={0}&tl={1}&hl={0}&sc=2&ie=UTF-8&oe=UTF-8&ssel=0&tsel=0&q={2}",
                 getLangCode(inputLang), getLangCode(outputLang), lemma);
@@ -48,7 +57,25 @@ namespace Linguistics.Dictionary
 
             var translations = parseTranslations(lemma, jsonData);
 
+            if (translations.Length == 1 && lemmatization != false)
+            {
+                if (translations[0] == lemma)
+                {
+                    return await GetTranslations(word, inputLang, outputLang, false);
+                }
+            }
+
             return new WordTranslations() { Translations = translations, WordName = lemma };
+        }
+
+        private string SaveUppercaseIfNeeded(string word, string lemma)
+        {
+            if (char.IsUpper(word[0]))
+            {
+                lemma = lemma.Remove(0, 1);
+                lemma = lemma.Insert(0, word[0].ToString().ToUpper());
+            }
+            return lemma;
         }
 
         private string[] parseTranslations(string word, string jsonData)

@@ -16,7 +16,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title">@Model.Title</h3>
             </div>
-            <div id="text" class="word_split panel-body" style="font-family: Verdana; min-height: 521px; text-align: justify;">@MvcHtmlString.Create(Model.ForeignText)</div>
+            <div id="text" class="word_split panel-body" style="font-family: Verdana; min-height: 521px; text-align: justify;">@MvcHtmlString.Create(Model.Text)</div>
         </div>
         @if (Model.PagingInfo.TotalPages > 1)
         {
@@ -71,7 +71,8 @@
                 outputLanguage: '@Model.OutputLanguage'
             };
 
-            setDialog(params);
+            var tp = new TranslationProcessing(params);
+            tp.setUp();
 
             $("#words").height($('#text').height());
         });

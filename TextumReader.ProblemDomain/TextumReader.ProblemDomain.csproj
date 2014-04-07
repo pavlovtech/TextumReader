@@ -67,6 +67,7 @@
     <Compile Include="Dictionary.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="Material.cs" />
+    <Compile Include="SharedMaterial.cs" />
     <Compile Include="Translation.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Word.cs" />

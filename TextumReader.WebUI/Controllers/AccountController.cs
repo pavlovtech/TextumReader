@@ -1,6 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
@@ -13,14 +17,16 @@ namespace TextumReader.WebUI.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly IGenericRepository _repository;
 
-        public AccountController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+        public AccountController(IGenericRepository repository)
+            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())), repository)
         {
         }
 
-        public AccountController(UserManager<ApplicationUser> userManager)
+        public AccountController(UserManager<ApplicationUser> userManager, IGenericRepository repository)
         {
+            _repository = repository;
             UserManager = userManager;
         }
 
@@ -87,6 +93,10 @@ namespace TextumReader.WebUI.Controllers
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
+                    
+                    var newUser = await UserManager.FindAsync(model.UserName, model.Password);
+                    AddDefaultDataToDatabase(newUser);
+
                     return View("RegistrationFinish");
                 }
                 else
@@ -97,6 +107,30 @@ namespace TextumReader.WebUI.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private void AddDefaultDataToDatabase(ApplicationUser newUser)
+        {
+            AddDefaultDictionaryToDB(newUser.Id);
+
+            var dict = _repository.Get<Dictionary>(d => d.UserId == newUser.Id)
+                .FirstOrDefault(d => d.Title == "Default");
+
+            var sharedMaterials = _repository.Get<SharedMaterial>();
+
+            if (sharedMaterials != null)
+            {
+                foreach (var sharedMaterial in sharedMaterials)
+                {
+                    var m = Mapper.Map<Material>(sharedMaterial);
+                    m.UserId = newUser.Id;
+                    m.DictionaryId = dict.DictionaryId;
+
+                    _repository.Add<Material>(m);
+                }
+            }
+
+            _repository.SaveChanges();
         }
 
         //
@@ -408,5 +442,22 @@ namespace TextumReader.WebUI.Controllers
             }
         }
         #endregion
+
+        private void AddDefaultDictionaryToDB(string userId)
+        {
+            var dict = _repository.Get<Dictionary>(d => d.UserId == userId)
+                .FirstOrDefault(d => d.Title == "Default");
+
+            if (dict != null)
+                return;
+
+            _repository.Add<Dictionary>(new Dictionary()
+            {
+                UserId = userId,
+                Title = "Default",
+                Words = new Collection<Word>()
+            });
+            _repository.SaveChanges();
+        }
     }
 }

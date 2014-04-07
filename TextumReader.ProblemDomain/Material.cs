@@ -18,11 +18,12 @@ namespace TextumReader.ProblemDomain
         public int DictionaryId { get; set; }
         public string UserId { get; set; }
         public string Title { get; set; }
-        public string ForeignText { get; set; }
-        public string NativeText { get; set; }
+        public string Text { get; set; }
 
         public Language InputLanguage { get; set; }
         public Language OutputLanguage { get; set; }
+
+        public DateTime AddDate { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual Dictionary Dictionary { get; set; }
