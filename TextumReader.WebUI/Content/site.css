@@ -40,7 +40,11 @@ table a:hover { color: #537291; }
 
 .nav a:hover { color: #178cba !important; }
 
-.navbar-header a:hover { color: #178cba !important; }
+.nav a:active { color: #178cba !important; }
+
+.navbar-header a:hover{ color: #178cba !important; }
+.navbar-header a:active{ color: #178cba !important; }
+
 
 .centered {
     float: none;

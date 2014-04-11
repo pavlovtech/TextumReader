@@ -13,46 +13,47 @@
     public enum Language
     {
         [LanguageСode(LanguageСode.ru)]
-        Russion,
+        Russian,
 
         [LanguageСode(LanguageСode.en)]
         English,
+
         [LanguageСode(LanguageСode.de)]
-
         German,
+
         [LanguageСode(LanguageСode.fr)]
-
         French,
+
         [LanguageСode(LanguageСode.it)]
-
         Italian,
-        [LanguageСode(LanguageСode.es)]
 
+        [LanguageСode(LanguageСode.es)]
         Spanish,
+
         [LanguageСode(LanguageСode.bg)]
-
         Bulgarian,
+
         [LanguageСode(LanguageСode.cs)]
-
         Czech,
+
         [LanguageСode(LanguageСode.es)]
-
         Estonian,
+
         [LanguageСode(LanguageСode.mk)]
-
         Macedonian,
+
         [LanguageСode(LanguageСode.pl)]
-
         Polish,
+
         [LanguageСode(LanguageСode.ro)]
-
         Romanian,
+
         [LanguageСode(LanguageСode.sr)]
-
         Serbian,
-        [LanguageСode(LanguageСode.sk)]
 
+        [LanguageСode(LanguageСode.sk)]
         Slovak,
+
         [LanguageСode(LanguageСode.uk)]
         Ukrainian
     }

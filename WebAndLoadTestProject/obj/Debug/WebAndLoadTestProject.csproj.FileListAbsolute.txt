@@ -1,8 +1,0 @@
-C:\TextumReader\WebAndLoadTestProject\bin\Debug\WebTest1.webtest
-C:\TextumReader\WebAndLoadTestProject\bin\Debug\WebAndLoadTestProject.dll
-C:\TextumReader\WebAndLoadTestProject\bin\Debug\WebAndLoadTestProject.pdb
-C:\TextumReader\WebAndLoadTestProject\obj\Debug\WebAndLoadTestProject.csprojResolveAssemblyReference.cache
-C:\TextumReader\WebAndLoadTestProject\obj\Debug\WebAndLoadTestProject.dll
-C:\TextumReader\WebAndLoadTestProject\obj\Debug\WebAndLoadTestProject.pdb
-C:\TextumReader\WebAndLoadTestProject\bin\Debug\TextumReaderTest.webtest
-C:\TextumReader\WebAndLoadTestProject\bin\Debug\LoadTest1.loadtest

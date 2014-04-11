@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -109,8 +110,8 @@ namespace TextumReader.WebUI.Controllers
             var categories = _repository.Get<Category>();
             ViewData["Categories"] = new SelectList(categories, "CategoryId", "Name");
 
-            viewModel.InputLanguage = material.InputLanguage;
-            viewModel.OutputLanguage = material.OutputLanguage;
+            viewModel.InputLanguage = (Language)material.InputLanguage;
+            viewModel.OutputLanguage = (Language)material.OutputLanguage;
 
             return View(viewModel);
         }
@@ -151,13 +152,33 @@ namespace TextumReader.WebUI.Controllers
             var categories = _repository.Get<Category>();
             ViewData["Categories"] = new SelectList(categories, "CategoryId", "Name");
 
+            var outputLnaguage = DetectCurrentLanguage();
+
             var viewModel = new MaterialViewModel()
             {
                 InputLanguage = Language.English,
-                OutputLanguage = Language.English
+                OutputLanguage = outputLnaguage
             };
 
             return View("Create", viewModel);
+        }
+
+        private static Language DetectCurrentLanguage()
+        {
+            var culture = CultureInfo.CurrentCulture;
+            string englishName = culture.EnglishName;
+            string outputLang = englishName.Split(new char[] {' '})[0];
+
+            Language outputLnaguage;
+            try
+            {
+                outputLnaguage = outputLang.ToEnum<Language>();
+            }
+            catch
+            {
+                outputLnaguage = Language.English;
+            }
+            return outputLnaguage;
         }
 
         [HttpPost]
@@ -179,6 +200,8 @@ namespace TextumReader.WebUI.Controllers
             var wordFreq = _repository.GetSingle<WordFrequency>(x => x.Word == translations.WordName);
             if (wordFreq != null)
                 translations.WordFrequencyIndex = wordFreq.Position;
+
+            translations.Translations = translations.Translations.Distinct().ToArray();
 
             return Json(translations, JsonRequestBehavior.AllowGet);
         }

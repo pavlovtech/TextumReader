@@ -20,8 +20,9 @@ namespace TextumReader.ProblemDomain
         public string Title { get; set; }
         public string Text { get; set; }
 
-        public Language InputLanguage { get; set; }
-        public Language OutputLanguage { get; set; }
+        // TODO: replace with int
+        public int InputLanguage { get; set; }
+        public int OutputLanguage { get; set; }
 
         public DateTime AddDate { get; set; }
 

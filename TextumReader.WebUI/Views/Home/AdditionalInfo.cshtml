@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "Textum Reader";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    <script>
+        $(function() {
+            $('#theCarousel').carousel();
+        });
+    </script>
+}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Description</h3>
+            </div>
+            <div class="panel-body">
+                <p><b>Textum Reader</b> is a web application aimed at people who are engaged in language learning through reading and memorizing words. This project designed to simplify the process of reading texts in foreign languages by giving the ability to mark unfamiliar words and get their translation.</p>
+                <p>In addition, we support synchronisation with <a href="http://ankisrs.net/">Anki</a>. If you don't know what Anki is, please visit <a target="_blank" href="http://ankisrs.net/">ankisrs.net</a>.</p>
+                <p>We maintain up to fifteen languages at the moment. You can add any text in one of the supported languages and get word translations.</p>
+                <p>
+                    Supported languages: Russian, English, German, French, Italian, Spanish, Bulgarian, Czech, Estonian, Macedonian, Polish, Romanian, Serbian, Slovak, Ukrainian.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Walkthrough</h3>
+            </div>
+            <div class="panel-body">
+                <div class="carousel slide" id="theCarousel">
+
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img class="img-responsive" src="../../Content/walkthrough/1.png" alt="" />
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/2.png" alt="" />
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/3.png" alt="" />
+                            <div class="carousel-caption" style="background-color: rgba(0, 128, 128, 0.5);">
+                                <h2 style="color: #ffffff;">Visit snkisrs.net in order to download the Anki desktop program</h2>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/4.png" alt="" />
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/5.png" alt="" />
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/6.png" alt="" />
+                            <div class="carousel-caption" style="background-color: rgba(0, 128, 128, 0.5);">
+                                <h2 style="color: #ffffff;">After you have downloaded and installed Anki, run it and click on the sync button</h2>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/7.png" alt="" />
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/8.png" alt="" />
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/9.png" alt="" />
+                            <div class="carousel-caption" style="background-color: rgba(0, 128, 128, 0.5);">
+                                <h2 style="color: #ffffff;">Input your email and password</h2>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/10.png" alt="" />
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/11.png" alt="" />
+                            <div class="carousel-caption" style="background-color: rgba(0, 128, 128, 0.5);">
+                                <h2 style="color: #ffffff;">Input the data from your Anki Account</h2>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/12.png" alt="" />
+                            <div class="carousel-caption" style="background-color: rgba(0, 128, 128, 0.5);">
+                                <h2 style="color: #ffffff;">You could choose one of your cards and decks. This data will be used to add words to Anki</h2>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/13.png" alt="" />
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/14.png" alt="" />
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/15.png" alt="" />
+                            <div class="carousel-caption" style="background-color: rgba(0, 128, 128, 0.5);">
+                                <h2 style="color: #ffffff;">Click on words and add translations</h2>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/16.png" alt="" />
+                            <div class="carousel-caption" style="background-color: rgba(0, 128, 128, 0.5);">
+                                <h2 style="color: #ffffff;">Choose a dictionary you have added words in</h2>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/17.png" alt="" />
+                            <div class="carousel-caption" style="background-color: rgba(0, 128, 128, 0.5);">
+                                <h2 style="color: #ffffff;">Choose words and add them to Anki</h2>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="../../Content/walkthrough/18.png" alt="" />
+                            <div class="carousel-caption" style="background-color: rgba(0, 128, 128, 0.5);">
+                                <h2 style="color: #ffffff;">Well done :)</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#theCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#theCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

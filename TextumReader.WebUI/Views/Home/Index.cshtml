@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <div class="jumbotron">
     <div class="row">
         <div class="col-md-4">
@@ -10,8 +11,11 @@
         </div>
         <div class="col-md-8">
             <h1>Textum Reader</h1>
-            <p>This project designed to simplify the process of reading texts in foreign languages by giving the ability to mark unfamiliar words and add their translation. </p>
-            <p>@Html.ActionLink("Learn more", "Index", "Material", null, new { @class = "btn btn-primary btn-lg", role = "button" })</p>
+            <p>This project designed to simplify the process of reading texts in foreign languages by giving the ability to mark unfamiliar words and get their translation.</p>
+            
+            <p>@Html.ActionLink("Learn more", "AdditionalInfo", "Home", null, new { @class = "btn btn-primary btn-lg", role = "button" })</p>
         </div>
+
+        
     </div>
 </div>

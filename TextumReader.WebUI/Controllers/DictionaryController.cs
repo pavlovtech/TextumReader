@@ -86,10 +86,10 @@ namespace TextumReader.WebUI.Controllers
             word = lmtz.Lemmatize(word);
 
             Dictionary dict = _repository.GetSingle<Dictionary>(d => d.DictionaryId == dictionaryId);
-            Word findedWord = dict.Words.FirstOrDefault(w => w.WordName == word);
+            Word foundWord = dict.Words.FirstOrDefault(w => w.WordName == word);
 
-            if (findedWord != null)
-                return Json(findedWord.Translations.Select(t => t.Value).ToArray());
+            if (foundWord != null)
+                return Json(foundWord.Translations.Select(t => t.Value).ToArray());
 
             //return Json(Enumerable.Empty<string>());
             return null;
@@ -218,6 +218,12 @@ namespace TextumReader.WebUI.Controllers
             }
 
             var user = _repository.GetSingle<AnkiUser>(u => u.UserId == User.Identity.GetUserId());
+
+            if (user == null)
+            {
+                return RedirectToAction("RegisterStep1", "Anki");
+            }
+
             if (!ankiWeb.IsAutorized)
             {
                 if (user == null)
