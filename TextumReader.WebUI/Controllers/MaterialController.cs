@@ -182,31 +182,6 @@ namespace TextumReader.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> GetTranslations(string word, string inputLanguage, string outputLanguage)
-        {
-            WordTranslations translations;
-      
-            try
-            {
-                translations = await _webDictionary.GetTranslations(word,
-                    inputLanguage.ToEnum<Language>(),
-                    outputLanguage.ToEnum<Language>());
-            }
-            catch (Exception)
-            {
-                return Json(null, JsonRequestBehavior.AllowGet);
-            }
-
-            var wordFreq = _repository.GetSingle<WordFrequency>(x => x.Word == translations.WordName);
-            if (wordFreq != null)
-                translations.WordFrequencyIndex = wordFreq.Position;
-
-            translations.Translations = translations.Translations.Distinct().ToArray();
-
-            return Json(translations, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
         public ActionResult Delete(int id)
         {
             var material = _repository.GetSingle<Material>(m => m.MaterialId == id);

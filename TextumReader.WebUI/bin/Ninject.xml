@@ -129,6 +129,13 @@
             <param name="isUnique"><c>True</c> if the request should return a unique result; otherwise, <c>false</c>.</param>
             <returns>The created request.</returns>
         </member>
+        <member name="M:Ninject.Syntax.IResolutionRoot.Release(System.Object)">
+            <summary>
+            Deactivates and releases the specified instance if it is currently managed by Ninject.
+            </summary>
+            <param name="instance">The instance to release.</param>
+            <returns><see langword="True"/> if the instance was found and released; otherwise <see langword="false"/>.</returns>
+        </member>
         <member name="T:Ninject.Infrastructure.Disposal.INotifyWhenDisposed">
             <summary>
             An object that fires an event when it is disposed.
@@ -185,6 +192,14 @@
             <param name="isOptional"><c>True</c> if the request is optional; otherwise, <c>false</c>.</param>
             <param name="isUnique"><c>True</c> if the request should return a unique result; otherwise, <c>false</c>.</param>
             <returns>The created request.</returns>
+        </member>
+        <member name="M:Ninject.Activation.Blocks.ActivationBlock.Release(System.Object)">
+            <summary>
+            Deactivates and releases the specified instance if it is currently managed by Ninject.
+            </summary>
+            <param name="instance">The instance to release.</param>
+            <returns><see langword="True"/> if the instance was found and released; otherwise <see langword="false"/>.</returns>
+            <remarks></remarks>
         </member>
         <member name="P:Ninject.Activation.Blocks.ActivationBlock.Parent">
             <summary>
@@ -562,6 +577,26 @@
             Stops pruning.
             </summary>
         </member>
+        <member name="T:Ninject.Activation.Caching.WeakReferenceEqualityComparer">
+            <summary>
+            Compares ReferenceEqualWeakReferences to objects
+            </summary>
+        </member>
+        <member name="M:Ninject.Activation.Caching.WeakReferenceEqualityComparer.Equals(System.Object,System.Object)">
+            <summary>
+            Returns if the specifed objects are equal.
+            </summary>
+            <param name="x">The first object.</param>
+            <param name="y">The second object.</param>
+            <returns>True if the objects are equal; otherwise false</returns>
+        </member>
+        <member name="M:Ninject.Activation.Caching.WeakReferenceEqualityComparer.GetHashCode(System.Object)">
+            <summary>
+            Returns the hash code of the specified object.
+            </summary>
+            <param name="obj">The object for which the hash code is calculated.</param>
+            <returns>The hash code of the specified object.</returns>
+        </member>
         <member name="T:Ninject.Activation.Providers.CallbackProvider`1">
             <summary>
             A provider that delegates to a callback method to create instances.
@@ -882,20 +917,21 @@
             <param name="context">The context.</param>
             <param name="reference">A reference to the instance being activated.</param>
         </member>
-        <member name="M:Ninject.Activation.Strategies.PropertyInjectionStrategy.AssignProperyOverrides(Ninject.Activation.IContext,Ninject.Activation.InstanceReference,System.Collections.Generic.IEnumerable{Ninject.Parameters.IParameter})">
+        <member name="M:Ninject.Activation.Strategies.PropertyInjectionStrategy.AssignProperyOverrides(Ninject.Activation.IContext,Ninject.Activation.InstanceReference,System.Collections.Generic.IList{Ninject.Parameters.IPropertyValue})">
             <summary>
             Applies user supplied override values to instance properties.
             </summary>
             <param name="context">The context.</param>
             <param name="reference">A reference to the instance being activated.</param>
-            <param name="propertyValues">The parameter ovverride value accessors.</param>
+            <param name="propertyValues">The parameter override value accessors.</param>
         </member>
-        <member name="M:Ninject.Activation.Strategies.PropertyInjectionStrategy.GetValue(Ninject.Activation.IContext,Ninject.Planning.Targets.ITarget)">
+        <member name="M:Ninject.Activation.Strategies.PropertyInjectionStrategy.GetValue(Ninject.Activation.IContext,Ninject.Planning.Targets.ITarget,System.Collections.Generic.IEnumerable{Ninject.Parameters.IPropertyValue})">
             <summary>
             Gets the value to inject into the specified target.
             </summary>
             <param name="context">The context.</param>
             <param name="target">The target.</param>
+            <param name="allPropertyValues">all property values of the current request.</param>
             <returns>The value to inject into the specified target.</returns>
         </member>
         <member name="P:Ninject.Activation.Strategies.PropertyInjectionStrategy.InjectorFactory">
@@ -1197,6 +1233,13 @@
             Gets or sets value indicating whether the request should return a unique result.
             </summary>
         </member>
+        <member name="P:Ninject.Activation.IRequest.ForceUnique">
+            <summary>
+            Gets or sets value indicating whether the request should force to return a unique value even if the request is optional.
+            If this value is set true the request will throw an ActivationException if there are multiple satisfying bingings rather
+            than returning null for the request is optional. For none optional requests this parameter does not change anything.
+            </summary>
+        </member>
         <member name="T:Ninject.Activation.Pipeline">
             <summary>
             Drives the activation (injection, etc.) of an instance.
@@ -1330,6 +1373,13 @@
             Gets or sets value indicating whether the request is for a single service.
             </summary>
         </member>
+        <member name="P:Ninject.Activation.Request.ForceUnique">
+            <summary>
+            Gets or sets value indicating whether the request should force to return a unique value even if the request is optional.
+            If this value is set true the request will throw an ActivationException if there are multiple satisfying bingings rather
+            than returning null for the request is optional. For none optional requests this parameter does not change anything.
+            </summary>
+        </member>
         <member name="P:Ninject.Activation.Request.ScopeCallback">
             <summary>
             Gets the callback that resolves the scope for the request, if an external scope was provided.
@@ -1410,6 +1460,13 @@
             </summary>
             <param name="component">The component's type.</param>
         </member>
+        <member name="M:Ninject.Components.IComponentContainer.Remove``2">
+            <summary>
+            Removes the specified registration.
+            </summary>
+            <typeparam name="T">The component type.</typeparam>
+            <typeparam name="TImplementation">The implementation type.</typeparam>
+        </member>
         <member name="M:Ninject.Components.IComponentContainer.Get``1">
             <summary>
             Gets one instance of the specified component.
@@ -1474,6 +1531,13 @@
             Removes all registrations for the specified component.
             </summary>
             <typeparam name="T">The component type.</typeparam>
+        </member>
+        <member name="M:Ninject.Components.ComponentContainer.Remove``2">
+            <summary>
+            Removes the specified registration.
+            </summary>
+            <typeparam name="T">The component type.</typeparam>
+            <typeparam name="TImplementation">The implementation type.</typeparam>
         </member>
         <member name="M:Ninject.Components.ComponentContainer.RemoveAll(System.Type)">
             <summary>
@@ -1546,11 +1610,12 @@
             <param name="name">The module name.</param>
             <returns>The exception message.</returns>
         </member>
-        <member name="M:Ninject.Infrastructure.Introspection.ExceptionFormatter.CouldNotUniquelyResolveBinding(Ninject.Activation.IRequest)">
+        <member name="M:Ninject.Infrastructure.Introspection.ExceptionFormatter.CouldNotUniquelyResolveBinding(Ninject.Activation.IRequest,System.String[])">
             <summary>
             Generates a message saying that the binding could not be uniquely resolved.
             </summary>
             <param name="request">The request.</param>
+            <param name="formattedMatchingBindings">The matching bindings, already formatted as strings</param>
             <returns>The exception message.</returns>
         </member>
         <member name="M:Ninject.Infrastructure.Introspection.ExceptionFormatter.CouldNotResolveBinding(Ninject.Activation.IRequest)">
@@ -1763,6 +1828,36 @@
             <param name="type">The type.</param>
             <returns>An enumerable containing the given type and all its base types</returns>
         </member>
+        <member name="T:Ninject.Infrastructure.BaseWeakReference">
+            <summary>
+            Inheritable weak reference base class for Silverlight
+            </summary>
+        </member>
+        <member name="M:Ninject.Infrastructure.BaseWeakReference.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Infrastructure.ReferenceEqualWeakReference"/> class.
+            </summary>
+            <param name="target">The target.</param>
+        </member>
+        <member name="M:Ninject.Infrastructure.BaseWeakReference.#ctor(System.Object,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Infrastructure.ReferenceEqualWeakReference"/> class.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="trackResurrection">if set to <c>true</c> [track resurrection].</param>
+        </member>
+        <member name="P:Ninject.Infrastructure.BaseWeakReference.IsAlive">
+            <summary>
+            Gets a value indicating whether this instance is alive.
+            </summary>
+            <value><c>true</c> if this instance is alive; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Ninject.Infrastructure.BaseWeakReference.Target">
+            <summary>
+            Gets or sets the target of this weak reference.
+            </summary>
+            <value>The target of this weak reference.</value>
+        </member>
         <member name="T:Ninject.Infrastructure.Future`1">
             <summary>
             Represents a future value.
@@ -1922,18 +2017,6 @@
             A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
             </returns>
         </member>
-        <member name="P:Ninject.Infrastructure.ReferenceEqualWeakReference.IsAlive">
-            <summary>
-            Gets a value indicating whether this instance is alive.
-            </summary>
-            <value><c>true</c> if this instance is alive; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:Ninject.Infrastructure.ReferenceEqualWeakReference.Target">
-            <summary>
-            Gets or sets the target of this weak reference.
-            </summary>
-            <value>The target of this weak reference.</value>
-        </member>
         <member name="T:Ninject.Infrastructure.StandardScopeCallbacks">
             <summary>
             Scope callbacks for standard scopes.
@@ -2081,7 +2164,7 @@
         </member>
         <member name="T:Ninject.Modules.AssemblyNameRetriever.AssemblyChecker">
             <summary>
-            This class is loaded into the temporary appdomain to load and check if the asseblies match the filter.
+            This class is loaded into the temporary appdomain to load and check if the assemblies match the filter.
             </summary>
         </member>
         <member name="M:Ninject.Modules.AssemblyNameRetriever.AssemblyChecker.GetAssemblyNames(System.Collections.Generic.IEnumerable{System.String},System.Predicate{System.Reflection.Assembly})">
@@ -2689,6 +2772,11 @@
             Only one parameter may return true.
             </remarks>
         </member>
+        <member name="T:Ninject.Parameters.IPropertyValue">
+            <summary>
+            Overrides the injected value of a property.
+            </summary>
+        </member>
         <member name="T:Ninject.Parameters.PropertyValue">
             <summary>
             Overrides the injected value of a property.
@@ -2714,6 +2802,133 @@
             </summary>
             <param name="name">The name of the property to override.</param>
             <param name="valueCallback">The callback to invoke to get the value that should be injected.</param>
+        </member>
+        <member name="T:Ninject.Parameters.TypeMatchingConstructorArgument">
+            <summary>
+            Overrides the injected value of a constructor argument.
+            </summary>
+        </member>
+        <member name="M:Ninject.Parameters.TypeMatchingConstructorArgument.#ctor(System.Type,System.Func{Ninject.Activation.IContext,Ninject.Planning.Targets.ITarget,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Parameters.TypeMatchingConstructorArgument"/> class.
+            </summary>
+            <param name="type">The type of the argument to override.</param>
+            <param name="valueCallback">The callback that will be triggered to get the parameter's value.</param>
+        </member>
+        <member name="M:Ninject.Parameters.TypeMatchingConstructorArgument.#ctor(System.Type,System.Func{Ninject.Activation.IContext,Ninject.Planning.Targets.ITarget,System.Object},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Parameters.TypeMatchingConstructorArgument"/> class.
+            </summary>
+            <param name="type">The type of the argument to override.</param>
+            <param name="valueCallback">The callback that will be triggered to get the parameter's value.</param>
+            <param name="shouldInherit">Whether the parameter should be inherited into child requests.</param>
+        </member>
+        <member name="M:Ninject.Parameters.TypeMatchingConstructorArgument.AppliesToTarget(Ninject.Activation.IContext,Ninject.Planning.Targets.ITarget)">
+            <summary>
+            Determines if the parameter applies to the given target.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="target">The target.</param>
+            <returns>
+            True if the parameter applies in the specified context to the specified target.
+            </returns>
+            <remarks>
+            Only one parameter may return true.
+            </remarks>
+        </member>
+        <member name="M:Ninject.Parameters.TypeMatchingConstructorArgument.GetValue(Ninject.Activation.IContext,Ninject.Planning.Targets.ITarget)">
+            <summary>
+            Gets the value for the parameter within the specified context.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="target">The target.</param>
+            <returns>The value for the parameter.</returns>
+        </member>
+        <member name="M:Ninject.Parameters.TypeMatchingConstructorArgument.Equals(Ninject.Parameters.IParameter)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns><c>True</c> if the objects are equal; otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Ninject.Parameters.TypeMatchingConstructorArgument.Equals(System.Object)">
+            <summary>
+            Determines whether the object equals the specified object.
+            </summary>
+            <param name="obj">An object to compare with this object.</param>
+            <returns><c>True</c> if the objects are equal; otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Ninject.Parameters.TypeMatchingConstructorArgument.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <returns>A hash code for the object.</returns>
+        </member>
+        <member name="P:Ninject.Parameters.TypeMatchingConstructorArgument.Name">
+            <summary>
+            Gets the name of the parameter.
+            </summary>
+        </member>
+        <member name="P:Ninject.Parameters.TypeMatchingConstructorArgument.ShouldInherit">
+            <summary>
+            Gets a value indicating whether the parameter should be inherited into child requests.
+            </summary>
+        </member>
+        <member name="P:Ninject.Parameters.TypeMatchingConstructorArgument.ValueCallback">
+            <summary>
+            Gets or sets the callback that will be triggered to get the parameter's value.
+            </summary>
+        </member>
+        <member name="T:Ninject.Parameters.WeakConstructorArgument">
+            <summary>
+            Overrides the injected value of a constructor argument.
+            </summary>
+        </member>
+        <member name="F:Ninject.Parameters.WeakConstructorArgument.weakReference">
+            <summary>
+            A weak reference to the constructor argument value.
+            </summary>
+        </member>
+        <member name="M:Ninject.Parameters.WeakConstructorArgument.#ctor(System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Parameters.ConstructorArgument"/> class.
+            </summary>
+            <param name="name">The name of the argument to override.</param>
+            <param name="value">The value to inject into the property.</param>
+        </member>
+        <member name="M:Ninject.Parameters.WeakConstructorArgument.#ctor(System.String,System.Object,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Parameters.ConstructorArgument"/> class.
+            </summary>
+            <param name="name">The name of the argument to override.</param>
+            <param name="value">The value to inject into the property.</param>
+            <param name="shouldInherit">Whether the parameter should be inherited into child requests.</param>
+        </member>
+        <member name="M:Ninject.Parameters.WeakConstructorArgument.AppliesToTarget(Ninject.Activation.IContext,Ninject.Planning.Targets.ITarget)">
+            <summary>
+            Determines if the parameter applies to the given target.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="target">The target.</param>
+            <returns>
+            Tre if the parameter applies in the specified context to the specified target.
+            </returns>
+            <remarks>
+            Only one parameter may return true.
+            </remarks>
+        </member>
+        <member name="T:Ninject.Parameters.WeakPropertyValue">
+            <summary>
+            Overrides the injected value of a property.
+            Keeps a weak reference to the value.
+            </summary>
+        </member>
+        <member name="M:Ninject.Parameters.WeakPropertyValue.#ctor(System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Parameters.WeakPropertyValue"/> class.
+            </summary>
+            <param name="name">The name of the property to override.</param>
+            <param name="value">The value to inject into the property.</param>
         </member>
         <member name="T:Ninject.Planning.Bindings.Resolvers.DefaultValueBindingResolver">
             <summary>
@@ -3742,7 +3957,7 @@
         </member>
         <member name="M:Ninject.Syntax.IBindingToSyntax`1.ToConstructor``1(System.Linq.Expressions.Expression{System.Func{Ninject.Syntax.IConstructorArgumentSyntax,``0}})">
             <summary>
-            Indicates that the service should be bound to the speecified constructor.
+            Indicates that the service should be bound to the specified constructor.
             </summary>
             <typeparam name="TImplementation">The type of the implementation.</typeparam>
             <param name="newExpression">The expression that specifies the constructor.</param>
@@ -3964,6 +4179,15 @@
             <param name="parent">The type.</param>
             <returns>The fluent syntax.</returns>
         </member>
+        <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenInjectedInto(System.Type[])">
+            <summary>
+            Indicates that the binding should be used only for injections on the specified types.
+            Types that derive from one of the specified types are considered as valid targets.
+            Should match at lease one of the targets.
+            </summary>
+            <param name="parents">The types to match.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
         <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenInjectedExactlyInto``1">
             <summary>
             Indicates that the binding should be used only for injections on the specified type.
@@ -3980,6 +4204,16 @@
             will not be considered as valid target.  
             </summary>
             <param name="parent">The type.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenInjectedExactlyInto(System.Type[])">
+            <summary>
+            Indicates that the binding should be used only for injections on the specified type.
+            The type must match one of the specified types exactly. Types that derive from one of the specified types
+            will not be considered as valid target.  
+            Should match at least one of the specified targets
+            </summary>
+            <param name="parents">The types.</param>
             <returns>The fluent syntax.</returns>
         </member>
         <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenClassHas``1">
@@ -4040,10 +4274,37 @@
         </member>
         <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenAnyAnchestorNamed(System.String)">
             <summary>
-            Indicates that the binding should be used only when the service is being requested
-            by a service bound with the specified name or any of its anchestor services bound with the specified name. 
+            Indicates that the binding should be used only when any ancestor is bound with the specified name.
             </summary>
             <param name="name">The name to expect.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenAnyAncestorNamed(System.String)">
+            <summary>
+            Indicates that the binding should be used only when any ancestor is bound with the specified name.
+            </summary>
+            <param name="name">The name to expect.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenNoAncestorNamed(System.String)">
+            <summary>
+            Indicates that the binding should be used only when no ancestor is bound with the specified name.
+            </summary>
+            <param name="name">The name to expect.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenAnyAncestorMatches(System.Predicate{Ninject.Activation.IContext})">
+            <summary>
+            Indicates that the binding should be used only when any ancestor matches the specified predicate.
+            </summary>
+            <param name="predicate">The predicate to match.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenNoAncestorMatches(System.Predicate{Ninject.Activation.IContext})">
+            <summary>
+            Indicates that the binding should be used only when no ancestor matches the specified predicate.
+            </summary>
+            <param name="predicate">The predicate to match.</param>
             <returns>The fluent syntax.</returns>
         </member>
         <member name="T:Ninject.Syntax.IBindingInSyntax`1">
@@ -4122,6 +4383,38 @@
             </summary>
             <param name="name">The name of the argument to override.</param>
             <param name="callback">The callback to invoke to get the value for the argument.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Syntax.IBindingWithSyntax`1.WithConstructorArgument``1(``0)">
+            <summary>
+            Indicates that the specified constructor argument should be overridden with the specified value.
+            </summary>
+            <typeparam name="TValue">Specifies the argument type to override.</typeparam>
+            <param name="value">The value for the argument.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Syntax.IBindingWithSyntax`1.WithConstructorArgument(System.Type,System.Object)">
+            <summary>
+            Indicates that the specified constructor argument should be overridden with the specified value.
+            </summary>
+            <param name="type">The type of the argument to override.</param>
+            <param name="value">The value for the argument.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Syntax.IBindingWithSyntax`1.WithConstructorArgument(System.Type,System.Func{Ninject.Activation.IContext,System.Object})">
+            <summary>
+            Indicates that the specified constructor argument should be overridden with the specified value.
+            </summary>
+            <param name="type">The type of the argument to override.</param>
+            <param name="callback">The callback to invoke to get the value for the argument.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Syntax.IBindingWithSyntax`1.WithConstructorArgument(System.Type,System.Func{Ninject.Activation.IContext,Ninject.Planning.Targets.ITarget,System.Object})">
+            <summary>
+            Indicates that the specified constructor argument should be overridden with the specified value.
+            </summary>
+            <param name="type">The type of the argument to override.</param>
+            <param name="callback">The callback to invoke to get the value for the argument.</param>    
             <returns>The fluent syntax.</returns>
         </member>
         <member name="M:Ninject.Syntax.IBindingWithSyntax`1.WithPropertyValue(System.String,System.Object)">
@@ -4283,6 +4576,14 @@
             <param name="parent">The type.</param>
             <returns>The fluent syntax.</returns>
         </member>
+        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenInjectedInto(System.Type[])">
+            <summary>
+            Indicates that the binding should be used only for injections on the specified type.
+            Types that derive from the specified type are considered as valid targets.
+            </summary>
+            <param name="parents">The type.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
         <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenInjectedExactlyInto``1">
             <summary>
             Indicates that the binding should be used only for injections on the specified type.
@@ -4299,6 +4600,16 @@
             will not be considered as valid target.  
             </summary>
             <param name="parent">The type.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenInjectedExactlyInto(System.Type[])">
+            <summary>
+            Indicates that the binding should be used only for injections on the specified type.
+            The type must match exactly the specified type. Types that derive from the specified type
+            will not be considered as valid target.  
+            Should match at least one of the specified targets
+            </summary>
+            <param name="parents">The types.</param>
             <returns>The fluent syntax.</returns>
         </member>
         <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenClassHas``1">
@@ -4359,10 +4670,37 @@
         </member>
         <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenAnyAnchestorNamed(System.String)">
             <summary>
-            Indicates that the binding should be used only when the service is being requested
-            by a service bound with the specified name or any of its anchestor services bound with the specified name. 
+            Indicates that the binding should be used only when any ancestor is bound with the specified name.
             </summary>
             <param name="name">The name to expect.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenAnyAncestorNamed(System.String)">
+            <summary>
+            Indicates that the binding should be used only when any ancestor is bound with the specified name.
+            </summary>
+            <param name="name">The name to expect.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenNoAncestorNamed(System.String)">
+            <summary>
+            Indicates that the binding should be used only when no ancestor is bound with the specified name.
+            </summary>
+            <param name="name">The name to expect.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenAnyAncestorMatches(System.Predicate{Ninject.Activation.IContext})">
+            <summary>
+            Indicates that the binding should be used only when any ancestor matches the specified predicate.
+            </summary>
+            <param name="predicate">The predicate to match.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenNoAncestorMatches(System.Predicate{Ninject.Activation.IContext})">
+            <summary>
+            Indicates that the binding should be used only when no ancestor matches the specified predicate.
+            </summary>
+            <param name="predicate">The predicate to match.</param>
             <returns>The fluent syntax.</returns>
         </member>
         <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.Named(System.String)">
@@ -4423,6 +4761,38 @@
             </summary>
             <param name="name">The name of the argument to override.</param>
             <param name="callback">The callback to invoke to get the value for the argument.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WithConstructorArgument``1(``0)">
+            <summary>
+            Indicates that the specified constructor argument should be overridden with the specified value.
+            </summary>
+            <typeparam name="TValue">Specifies the argument type to override.</typeparam>
+            <param name="value">The value for the argument.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WithConstructorArgument(System.Type,System.Object)">
+            <summary>
+            Indicates that the specified constructor argument should be overridden with the specified value.
+            </summary>
+            <param name="type">The type of the argument to override.</param>
+            <param name="value">The value for the argument.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WithConstructorArgument(System.Type,System.Func{Ninject.Activation.IContext,System.Object})">
+            <summary>
+            Indicates that the specified constructor argument should be overridden with the specified value.
+            </summary>
+            <param name="type">The type of the argument to override.</param>
+            <param name="callback">The callback to invoke to get the value for the argument.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WithConstructorArgument(System.Type,System.Func{Ninject.Activation.IContext,Ninject.Planning.Targets.ITarget,System.Object})">
+            <summary>
+            Indicates that the specified constructor argument should be overridden with the specified value.
+            </summary>
+            <param name="type">The type of the argument to override.</param>
+            <param name="callback">The callback to invoke to get the value for the argument.</param>    
             <returns>The fluent syntax.</returns>
         </member>
         <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WithPropertyValue(System.String,System.Object)">
@@ -5256,6 +5626,15 @@
             <param name="target">The target.</param>
             <returns>Whether a binding exists for the target in the given context.</returns>
         </member>
+        <member name="M:Ninject.Selection.Heuristics.StandardConstructorScorer.BindingExists(Ninject.IKernel,Ninject.Activation.IContext,Ninject.Planning.Targets.ITarget)">
+            <summary>
+            Checkes whether a binding exists for a given target on the specified kernel.
+            </summary>
+            <param name="kernel">The kernel.</param>
+            <param name="context">The context.</param>
+            <param name="target">The target.</param>
+            <returns>Whether a binding exists for the target in the given context.</returns>
+        </member>
         <member name="M:Ninject.Selection.Heuristics.StandardConstructorScorer.ParameterExists(Ninject.Activation.IContext,Ninject.Planning.Targets.ITarget)">
             <summary>
             Checks whether any parameters exist for the geiven target..
@@ -5457,6 +5836,35 @@
             <param name="parameters">The parameters to pass to the request.</param>
             <returns>An instance of the service, or <see langword="null"/> if no implementation was available.</returns>
         </member>
+        <member name="M:Ninject.ResolutionExtensions.TryGetAndThrowOnInvalidBinding``1(Ninject.Syntax.IResolutionRoot,Ninject.Parameters.IParameter[])">
+            <summary>
+            Tries to get an instance of the specified service.
+            </summary>
+            <typeparam name="T">The service to resolve.</typeparam>
+            <param name="root">The resolution root.</param>
+            <param name="parameters">The parameters to pass to the request.</param>
+            <returns>An instance of the service, or <see langword="null"/> if no implementation was available.</returns>
+        </member>
+        <member name="M:Ninject.ResolutionExtensions.TryGetAndThrowOnInvalidBinding``1(Ninject.Syntax.IResolutionRoot,System.String,Ninject.Parameters.IParameter[])">
+            <summary>
+            Tries to get an instance of the specified service by using the first binding with the specified name.
+            </summary>
+            <typeparam name="T">The service to resolve.</typeparam>
+            <param name="root">The resolution root.</param>
+            <param name="name">The name of the binding.</param>
+            <param name="parameters">The parameters to pass to the request.</param>
+            <returns>An instance of the service, or <see langword="null"/> if no implementation was available.</returns>
+        </member>
+        <member name="M:Ninject.ResolutionExtensions.TryGetAndThrowOnInvalidBinding``1(Ninject.Syntax.IResolutionRoot,System.Func{Ninject.Planning.Bindings.IBindingMetadata,System.Boolean},Ninject.Parameters.IParameter[])">
+            <summary>
+            Tries to get an instance of the specified service by using the first binding that matches the specified constraint.
+            </summary>
+            <typeparam name="T">The service to resolve.</typeparam>
+            <param name="root">The resolution root.</param>
+            <param name="constraint">The constraint to apply to the binding.</param>
+            <param name="parameters">The parameters to pass to the request.</param>
+            <returns>An instance of the service, or <see langword="null"/> if no implementation was available.</returns>
+        </member>
         <member name="M:Ninject.ResolutionExtensions.GetAll``1(Ninject.Syntax.IResolutionRoot,Ninject.Parameters.IParameter[])">
             <summary>
             Gets all available instances of the specified service.
@@ -5572,6 +5980,64 @@
             <param name="constraint">The constraint to apply to the bindings.</param>
             <param name="parameters">The parameters to pass to the request.</param>
             <returns>A series of instances of the service.</returns>
+        </member>
+        <member name="M:Ninject.ResolutionExtensions.CanResolve``1(Ninject.Syntax.IResolutionRoot,Ninject.Parameters.IParameter[])">
+            <summary>
+            Evaluates if an instance of the specified service can be resolved.
+            </summary>
+            <typeparam name="T">The service to resolve.</typeparam>
+            <param name="root">The resolution root.</param>
+            <param name="parameters">The parameters to pass to the request.</param>
+            <returns>An instance of the service.</returns>
+        </member>
+        <member name="M:Ninject.ResolutionExtensions.CanResolve``1(Ninject.Syntax.IResolutionRoot,System.String,Ninject.Parameters.IParameter[])">
+            <summary>
+            Evaluates if  an instance of the specified service by using the first binding with the specified name can be resolved.
+            </summary>
+            <typeparam name="T">The service to resolve.</typeparam>
+            <param name="root">The resolution root.</param>
+            <param name="name">The name of the binding.</param>
+            <param name="parameters">The parameters to pass to the request.</param>
+            <returns>An instance of the service.</returns>
+        </member>
+        <member name="M:Ninject.ResolutionExtensions.CanResolve``1(Ninject.Syntax.IResolutionRoot,System.Func{Ninject.Planning.Bindings.IBindingMetadata,System.Boolean},Ninject.Parameters.IParameter[])">
+            <summary>
+            Evaluates if  an instance of the specified service by using the first binding that matches the specified constraint can be resolved.
+            </summary>
+            <typeparam name="T">The service to resolve.</typeparam>
+            <param name="root">The resolution root.</param>
+            <param name="constraint">The constraint to apply to the binding.</param>
+            <param name="parameters">The parameters to pass to the request.</param>
+            <returns>An instance of the service.</returns>
+        </member>
+        <member name="M:Ninject.ResolutionExtensions.CanResolve(Ninject.Syntax.IResolutionRoot,System.Type,Ninject.Parameters.IParameter[])">
+            <summary>
+            Gets an instance of the specified service.
+            </summary>
+            <param name="root">The resolution root.</param>
+            <param name="service">The service to resolve.</param>
+            <param name="parameters">The parameters to pass to the request.</param>
+            <returns>An instance of the service.</returns>
+        </member>
+        <member name="M:Ninject.ResolutionExtensions.CanResolve(Ninject.Syntax.IResolutionRoot,System.Type,System.String,Ninject.Parameters.IParameter[])">
+            <summary>
+            Gets an instance of the specified service by using the first binding with the specified name.
+            </summary>
+            <param name="root">The resolution root.</param>
+            <param name="service">The service to resolve.</param>
+            <param name="name">The name of the binding.</param>
+            <param name="parameters">The parameters to pass to the request.</param>
+            <returns>An instance of the service.</returns>
+        </member>
+        <member name="M:Ninject.ResolutionExtensions.CanResolve(Ninject.Syntax.IResolutionRoot,System.Type,System.Func{Ninject.Planning.Bindings.IBindingMetadata,System.Boolean},Ninject.Parameters.IParameter[])">
+            <summary>
+            Gets an instance of the specified service by using the first binding that matches the specified constraint.
+            </summary>
+            <param name="root">The resolution root.</param>
+            <param name="service">The service to resolve.</param>
+            <param name="constraint">The constraint to apply to the binding.</param>
+            <param name="parameters">The parameters to pass to the request.</param>
+            <returns>An instance of the service.</returns>
         </member>
         <member name="T:Ninject.ActivationException">
             <summary>
@@ -5690,13 +6156,6 @@
             </summary>
             <param name="instance">The instance to inject.</param>
             <param name="parameters">The parameters to pass to the request.</param>
-        </member>
-        <member name="M:Ninject.IKernel.Release(System.Object)">
-            <summary>
-            Deactivates and releases the specified instance if it is currently managed by Ninject.
-            </summary>
-            <param name="instance">The instance to release.</param>
-            <returns><see langword="True"/> if the instance was found and released; otherwise <see langword="false"/>.</returns>
         </member>
         <member name="M:Ninject.IKernel.GetBindings(System.Type)">
             <summary>

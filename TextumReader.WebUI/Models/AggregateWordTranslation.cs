@@ -9,9 +9,9 @@ namespace TextumReader.WebUI.Models
     {
         public string Word { get; set; }
         public string NormalisedWord { get; set; }
-        public ICollection<string> SavedTranslations { get; set; }
-        public ICollection<string> Translations { get; set; }
-
-        public int WordFrequencyIndex { get; set; }
+        public string AudioUrl { get; set; }
+        public IEnumerable<string> SavedTranslations { get; set; }
+        public IEnumerable<string> Translations { get; set; }
+        public string WordFrequency { get; set; }
     }
 }

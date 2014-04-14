@@ -25,6 +25,8 @@ namespace TextumReader.WebUI.Controllers
         private readonly IGenericRepository _repository;
         private AnkiWeb ankiWeb = new AnkiWeb();
 
+
+        // TODO: get rid of it
         private LanguagePrebuilt currentLanguage = LanguagePrebuilt.English;
         private ILemmatizer lmtz;
 
@@ -50,9 +52,13 @@ namespace TextumReader.WebUI.Controllers
             return View(words);
         }
 
+
+        // TODO: remove to DictonaryAPIController
         [HttpPost]
         public void AddWord(string word, string translation, int dictionaryId)
         {
+            word = lmtz.Lemmatize(word);
+
             Dictionary dict = _repository.GetSingle<Dictionary>(d => d.DictionaryId == dictionaryId);
             Word foundWords = dict.Words.FirstOrDefault(w => w.WordName == word);
 
@@ -75,6 +81,7 @@ namespace TextumReader.WebUI.Controllers
             _repository.SaveChanges();
         }
 
+        // TODO: remove to DictonaryAPIController
         [HttpPost]
         public JsonResult GetSavedTranslations(string word, int dictionaryId, string inputLang)
         {

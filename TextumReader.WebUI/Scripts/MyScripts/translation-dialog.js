@@ -5,7 +5,7 @@
         $(params.dialogId).dialog({
             autoOpen: false,
             resizable: false,
-            width: 200
+            width: 210
         });
     };
 
@@ -25,71 +25,58 @@
             var currentDict = $("#DictionaryId option:selected").attr("value");
 
             var selectedWord = $(this).text();
-            var wordName;
-            var wordFrequency;
 
-            $.post(params.getSavedTranslationsAction, { word: selectedWord, dictionaryId: currentDict, inputLang: params.inputLanguage }, function (savedTranslations) {
-                var formattedData = ""; // Data with translations
+            $.getJSON("/api/DictionaryAPI", {
+                    word: selectedWord,
+                    dictionaryId: currentDict,
+                    inputLang: params.inputLanguage,
+                    outputLang: params.outputLanguage
+                },
+                function(translationData) {
+                    var formattedData = ""; // Data with translations
 
-                for (var i = 0; i < savedTranslations.length; i++) {
-                    formattedData += "✔ " + formatTranslation(params.translationTagName, savedTranslations[i]);
-                }
+                    for (var i = 0; i < translationData.savedTranslations.length; i++) {
+                        formattedData += "✔ " + formatTranslation(params.translationTagName, translationData.savedTranslations[i]);
+                    }
 
-                if (navigator.onLine === true) {
-                    $.ajaxSetup({ async: false });
-                    $.post(params.getTranslationAction, {
-                            word: selectedWord,
-                            inputLanguage: params.inputLanguage,
-                            outputLanguage: params.outputLanguage
-                        }, function(data) {
-                            wordName = data.WordName;
-                            wordFrequency = data.WordFrequencyIndex;
-                            for (var i = 0; i < data.Translations.length; i++) {
-                                if (savedTranslations.indexOf(data.Translations[i]) === -1) {
-                                    formattedData += formatTranslation(params.translationTagName, data.Translations[i]);
-                                }
-                            }
+                    for (var i = 0; i < translationData.translations.length; i++) {
+                        formattedData += formatTranslation(params.translationTagName, translationData.translations[i]);
+                    }
 
-                            //                    if (wordFrequency !== 0) {
-                            //                        formattedData += wordFrequency.toString() + " of 12527";
-                            //                    }
-                        });
+                    if (translationData.wordFrequency !== "") {
+                        formattedData += "frequency: " + translationData.wordFrequency.toString();
+                    }
+                    
+                    $("#translations").html(formattedData);
 
-                    $.ajaxSetup({ async: true });
-                }
+                    // highlights translations by adding class translationLight
+                    highlightWords("translation", "translationLight");
 
-                $("#translations").html(formattedData);
-
-                // highlights translations by adding class translationLight
-                highlightWords("translation", "translationLight");
-
-                $(params.translationTagName).click(function(e) {
-                    var selectedTranslation = $(this).text();
-                    $.post(params.addWordAction, {
-                            word: wordName,
-                            translation: selectedTranslation,
-                            dictionaryId: currentDict
-                        }, function(data) {
-                            if (data) {
-                                throw "Haven't added data to" + params.addWordAction;
-                            } else {
+                    $(params.translationTagName).click(function(e) {
+                        var selectedTranslation = $(this).text();
+                        
+                        $.post(params.addWordAction, {
+                            word: translationData.word,
+                                translation: selectedTranslation,
+                                dictionaryId: currentDict
+                            }, function(data) {
                                 $(params.dialogId).dialog("close");
 
                                 $.post(params.wordListAction, { dictionaryId: currentDict }, function(data) {
                                     $("#words").html(data);
                                 });
-                            }
-                        });
+                            });
+                    });
+
+                    // TODO: take into account a word position insted of a cursor one
+                    // сalculates proper coordinates for the dialog
+                    var x = e.pageX - $(document).scrollLeft();
+                    var y = e.pageY - $(document).scrollTop();
+
+                    $(params.dialogId).dialog("option", { position: [x - 100, y + 14] });
+
+                    $(params.dialogId).dialog("option", "title", translationData.word).dialog("open");
                 });
-
-                // сalculates proper coordinates for the dialog
-                var x = e.pageX - $(document).scrollLeft();
-                var y = e.pageY - $(document).scrollTop();
-
-                $(params.dialogId).dialog("option", { position: [x - 100, y + 14] });
-
-                $(params.dialogId).dialog("option", "title", wordName).dialog("open");
-            });
         });
     };
 };

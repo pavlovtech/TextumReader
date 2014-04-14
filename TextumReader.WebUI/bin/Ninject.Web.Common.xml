@@ -80,6 +80,13 @@
             Interface for the plugins of Ninject.Web.Common
             </summary>
         </member>
+        <member name="M:Ninject.Web.Common.INinjectHttpApplicationPlugin.GetRequestScope(Ninject.Activation.IContext)">
+            <summary>
+            Gets the request scope.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>The request scope.</returns>
+        </member>
         <member name="M:Ninject.Web.Common.INinjectHttpApplicationPlugin.Start">
             <summary>
             Starts this instance.
@@ -89,12 +96,6 @@
             <summary>
             Stops this instance.
             </summary>
-        </member>
-        <member name="P:Ninject.Web.Common.INinjectHttpApplicationPlugin.RequestScope">
-            <summary>
-            Gets the request scope.
-            </summary>
-            <value>The request scope.</value>
         </member>
         <member name="T:Ninject.Web.Common.NinjectHttpApplication">
             <summary>

@@ -21,6 +21,12 @@
             <param name="controllerContext">The controller context.</param>
             <param name="actionDescriptor">The action descriptor.</param>
         </member>
+        <member name="P:Ninject.Web.Mvc.Filter.FilterContextParameter.AttributePosition">
+            <summary>
+            Gets or sets the position of the attribute used to get constructor values from.
+            </summary>
+            <value>The attribute position.</value>
+        </member>
         <member name="P:Ninject.Web.Mvc.Filter.FilterContextParameter.ControllerContext">
             <summary>
             Gets the controller context.
@@ -38,12 +44,12 @@
             Used by the NinjectFilterProvider to get injected filters.
             </summary>
         </member>
-        <member name="M:Ninject.Web.Mvc.Filter.INinjectFilter.BuildFilter(Ninject.Web.Mvc.Filter.FilterContextParameter)">
+        <member name="M:Ninject.Web.Mvc.Filter.INinjectFilter.BuildFilters(Ninject.Web.Mvc.Filter.FilterContextParameter)">
             <summary>
-            Builds the filter instance.
+            Builds the filter instances.
             </summary>
             <param name="parameter">The parameter.</param>
-            <returns>The created filter.</returns>
+            <returns>The created filters.</returns>
         </member>
         <member name="T:Ninject.Web.Mvc.Filter.NinjectFilter`1">
             <summary>
@@ -66,6 +72,11 @@
             The filter order.
             </summary>
         </member>
+        <member name="F:Ninject.Web.Mvc.Filter.NinjectFilter`1.filterId">
+            <summary>
+            The id fo the filter.
+            </summary>
+        </member>
         <member name="M:Ninject.Web.Mvc.Filter.NinjectFilter`1.#ctor(Ninject.IKernel,System.Web.Mvc.FilterScope,System.Nullable{System.Int32},System.Guid)">
             <summary>
             Initializes a new instance of the <see cref="T:Ninject.Web.Mvc.Filter.NinjectFilter`1"/> class.
@@ -75,12 +86,18 @@
             <param name="order">The filter order.</param>
             <param name="filterId">The filter id.</param>
         </member>
-        <member name="M:Ninject.Web.Mvc.Filter.NinjectFilter`1.BuildFilter(Ninject.Web.Mvc.Filter.FilterContextParameter)">
+        <member name="M:Ninject.Web.Mvc.Filter.NinjectFilter`1.BuildFilters(Ninject.Web.Mvc.Filter.FilterContextParameter)">
             <summary>
-            Builds the filter instance.
+            Builds the filter instances.
             </summary>
             <param name="parameter">The parameter.</param>
-            <returns>The created filter.</returns>
+            <returns>The created filters.</returns>
+        </member>
+        <member name="P:Ninject.Web.Mvc.Filter.NinjectFilter`1.NumberOfFilters">
+            <summary>
+            Gets or sets the number of filters created by this instance.
+            </summary>
+            <value>The number of filters.</value>
         </member>
         <member name="T:Ninject.Web.Mvc.Filter.NinjectFilterAttributeFilterProvider">
             <summary>
@@ -242,6 +259,22 @@
             <typeparam name="TAttribute">The type of the attribute.</typeparam>
             <returns>The fluent syntax to define more information</returns>
         </member>
+        <member name="M:Ninject.Web.Mvc.FilterBindingSyntax.IFilterBindingWhenSyntax`1.WhenActionMethodHasNo(System.Type)">
+            <summary>
+            Indicates that the binding should be used only when the action method has
+            no attribute of the specified type.
+            </summary>
+            <param name="attributeType">Type of the attribute.</param>
+            <returns>The fluent syntax to define more information</returns>
+        </member>
+        <member name="M:Ninject.Web.Mvc.FilterBindingSyntax.IFilterBindingWhenSyntax`1.WhenActionMethodHasNo``1">
+            <summary>
+            Indicates that the binding should be used only when the action method has
+            no attribute of the specified type.
+            </summary>
+            <typeparam name="TAttribute">The type of the attribute.</typeparam>
+            <returns>The fluent syntax to define more information</returns>
+        </member>
         <member name="M:Ninject.Web.Mvc.FilterBindingSyntax.IFilterBindingWhenSyntax`1.WhenControllerHas(System.Type)">
             <summary>
             Indicates that the binding should be used only when the controller has
@@ -254,6 +287,22 @@
             <summary>
             Indicates that the binding should be used only when the controller has
             an attribute of the specified type.
+            </summary>
+            <typeparam name="TAttribute">The type of the attribute.</typeparam>
+            <returns>The fluent syntax to define more information</returns>
+        </member>
+        <member name="M:Ninject.Web.Mvc.FilterBindingSyntax.IFilterBindingWhenSyntax`1.WhenControllerHasNo(System.Type)">
+            <summary>
+            Indicates that the binding should be used only when the controller has
+            no attribute of the specified type.
+            </summary>
+            <param name="attributeType">Type of the attribute.</param>
+            <returns>The fluent syntax to define more information</returns>
+        </member>
+        <member name="M:Ninject.Web.Mvc.FilterBindingSyntax.IFilterBindingWhenSyntax`1.WhenControllerHasNo``1">
+            <summary>
+            Indicates that the binding should be used only when the controller has
+            no attribute of the specified type.
             </summary>
             <typeparam name="TAttribute">The type of the attribute.</typeparam>
             <returns>The fluent syntax to define more information</returns>
@@ -562,6 +611,22 @@
             <typeparam name="TAttribute">The type of the attribute.</typeparam>
             <returns>The fluent syntax to define more information</returns>
         </member>
+        <member name="M:Ninject.Web.Mvc.FilterBindingSyntax.FilterFilterBindingBuilder`1.WhenActionMethodHasNo(System.Type)">
+            <summary>
+            Indicates that the binding should be used only when the action method has
+            no attribute of the specified type.
+            </summary>
+            <param name="attributeType">Type of the attribute.</param>
+            <returns>The fluent syntax to define more information</returns>
+        </member>
+        <member name="M:Ninject.Web.Mvc.FilterBindingSyntax.FilterFilterBindingBuilder`1.WhenActionMethodHasNo``1">
+            <summary>
+            Indicates that the binding should be used only when the action method has
+            no attribute of the specified type.
+            </summary>
+            <typeparam name="TAttribute">The type of the attribute.</typeparam>
+            <returns>The fluent syntax to define more information</returns>
+        </member>
         <member name="M:Ninject.Web.Mvc.FilterBindingSyntax.FilterFilterBindingBuilder`1.WhenControllerHas(System.Type)">
             <summary>
             Indicates that the binding should be used only when the controller has
@@ -574,6 +639,22 @@
             <summary>
             Indicates that the binding should be used only when the controller has
             an attribute of the specified type.
+            </summary>
+            <typeparam name="TAttribute">The type of the attribute.</typeparam>
+            <returns>The fluent syntax to define more information</returns>
+        </member>
+        <member name="M:Ninject.Web.Mvc.FilterBindingSyntax.FilterFilterBindingBuilder`1.WhenControllerHasNo(System.Type)">
+            <summary>
+            Indicates that the binding should be used only when the controller has
+            no attribute of the specified type.
+            </summary>
+            <param name="attributeType">Type of the attribute.</param>
+            <returns>The fluent syntax to define more information</returns>
+        </member>
+        <member name="M:Ninject.Web.Mvc.FilterBindingSyntax.FilterFilterBindingBuilder`1.WhenControllerHasNo``1">
+            <summary>
+            Indicates that the binding should be used only when the controller has
+            no attribute of the specified type.
             </summary>
             <typeparam name="TAttribute">The type of the attribute.</typeparam>
             <returns>The fluent syntax to define more information</returns>
@@ -913,6 +994,13 @@
             Stops this instance.
             </summary>
         </member>
+        <member name="M:Ninject.Web.Mvc.NinjectMvcHttpApplicationPlugin.GetRequestScope(Ninject.Activation.IContext)">
+            <summary>
+            Gets the request scope.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>The request scope.</returns>
+        </member>
         <member name="M:Ninject.Web.Mvc.NinjectMvcHttpApplicationPlugin.CreateDependencyResolver">
             <summary>
             Creates the controller factory that is used to create the controllers.
@@ -923,12 +1011,6 @@
             <summary>
             Removes the default attribute filter provider.
             </summary>
-        </member>
-        <member name="P:Ninject.Web.Mvc.NinjectMvcHttpApplicationPlugin.RequestScope">
-            <summary>
-            Gets the request scope.
-            </summary>
-            <value>The request scope.</value>
         </member>
     </members>
 </doc>

@@ -1,0 +1,14 @@
+C:\TextumReader\TextumReader.Services\bin\TextumReader.Services.dll.config
+C:\TextumReader\TextumReader.Services\bin\TextumReader.Services.dll
+C:\TextumReader\TextumReader.Services\bin\TextumReader.Services.pdb
+C:\TextumReader\TextumReader.Services\bin\Newtonsoft.Json.dll
+C:\TextumReader\TextumReader.Services\bin\System.Net.Http.Formatting.dll
+C:\TextumReader\TextumReader.Services\bin\System.Web.Http.dll
+C:\TextumReader\TextumReader.Services\bin\System.Web.Http.WebHost.dll
+C:\TextumReader\TextumReader.Services\bin\Newtonsoft.Json.xml
+C:\TextumReader\TextumReader.Services\bin\System.Net.Http.Formatting.xml
+C:\TextumReader\TextumReader.Services\bin\System.Web.Http.xml
+C:\TextumReader\TextumReader.Services\bin\System.Web.Http.WebHost.xml
+C:\TextumReader\TextumReader.Services\obj\Release\TextumReader.Services.csprojResolveAssemblyReference.cache
+C:\TextumReader\TextumReader.Services\obj\Release\TextumReader.Services.dll
+C:\TextumReader\TextumReader.Services\obj\Release\TextumReader.Services.pdb

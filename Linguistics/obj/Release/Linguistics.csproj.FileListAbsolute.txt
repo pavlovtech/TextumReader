@@ -9,6 +9,6 @@ C:\TextumReader\Linguistics\bin\Release\Newtonsoft.Json.dll
 C:\TextumReader\Linguistics\bin\Release\HtmlAgilityPack.pdb
 C:\TextumReader\Linguistics\bin\Release\HtmlAgilityPack.xml
 C:\TextumReader\Linguistics\bin\Release\Newtonsoft.Json.xml
-C:\TextumReader\Linguistics\obj\Release\Linguistics.csprojResolveAssemblyReference.cache
 C:\TextumReader\Linguistics\obj\Release\Linguistics.dll
 C:\TextumReader\Linguistics\obj\Release\Linguistics.pdb
+C:\TextumReader\Linguistics\obj\Release\Linguistics.csprojResolveAssemblyReference.cache

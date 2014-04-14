@@ -24,26 +24,10 @@ namespace Linguistics.Dictionary
             return languageCode;
         }
 
-        public async Task<WordTranslations> GetTranslations(string word, Language inputLang, Language outputLang, bool lemmatization = true)
+        public async Task<IEnumerable<string>> GetTranslations(string word, Language inputLang, Language outputLang)
         {
-            string lemma = word;
-
-            if (lemmatization)
-            {
-                LanguagePrebuilt derivedLanguage;
-                LemmaSharp.LanguagePrebuilt.TryParse<LanguagePrebuilt>(inputLang.ToString(), true, out derivedLanguage);
-                lmtz = new LemmatizerPrebuiltCompact(derivedLanguage);
-
-                lemma = lmtz.Lemmatize(word.Trim().ToLower());
-            }
-
-            if (inputLang == Language.German)
-            { 
-                lemma = SaveUppercaseIfNeeded(word, lemma);
-            }
-
             string url = String.Format("http://translate.google.com/translate_a/t?client=t&sl={0}&tl={1}&hl={0}&sc=2&ie=UTF-8&oe=UTF-8&ssel=0&tsel=0&q={2}",
-                getLangCode(inputLang), getLangCode(outputLang), lemma);
+                getLangCode(inputLang), getLangCode(outputLang), word);
 
             string jsonData = "";
             try
@@ -55,29 +39,25 @@ namespace Linguistics.Dictionary
                 throw new Exception("Http connection problem", ex);
             }
 
-            var translations = parseTranslations(lemma, jsonData);
+            var translations = parseTranslations(word, jsonData);
 
-            if (translations.Length == 1 && lemmatization != false)
-            {
-                if (translations[0] == lemma)
-                {
-                    return await GetTranslations(word, inputLang, outputLang, false);
-                }
-            }
+            bool hasTranslations = containsTranslations(word, translations);
 
-            return new WordTranslations() { Translations = translations, WordName = lemma };
+            if (!hasTranslations)
+                return Enumerable.Empty<string>();
+
+            return translations;
         }
 
-        private string SaveUppercaseIfNeeded(string word, string lemma)
+        // if there is only one translation which equals the actual word, the word is wrong and there are no translation to it
+        private bool containsTranslations(string word, ICollection<string> translations)
         {
-            if (char.IsUpper(word[0]))
-            {
-                lemma = lemma.Remove(0, 1);
-                lemma = lemma.Insert(0, word[0].ToString().ToUpper());
-            }
-            return lemma;
-        }
+            if (translations.First() == word && translations.Count == 1)
+                return false;
 
+            return true;
+        }
+       
         private string[] parseTranslations(string word, string jsonData)
         {
             JArray jsonArray = JArray.Parse(jsonData);

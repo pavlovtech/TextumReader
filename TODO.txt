@@ -9,3 +9,4 @@
 9. Implement removeng translation from word list
 10. Make the word list fixed on the web page
 11. Add saving a current page of a material
+12. Try to check whether a word already exists in the database when a user adds words to Anki

@@ -39,7 +39,6 @@ C:\TextumReader\TextumReader.WebUI\bin\System.Web.WebPages.dll
 C:\TextumReader\TextumReader.WebUI\bin\System.Web.WebPages.Razor.dll
 C:\TextumReader\TextumReader.WebUI\bin\TextumReader.DataLayer.dll
 C:\TextumReader\TextumReader.WebUI\bin\TextumReader.ProblemDomain.dll
-C:\TextumReader\TextumReader.WebUI\bin\WebActivator.dll
 C:\TextumReader\TextumReader.WebUI\bin\WebActivatorEx.dll
 C:\TextumReader\TextumReader.WebUI\bin\WebGrease.dll
 C:\TextumReader\TextumReader.WebUI\bin\WebMatrix.Data.dll
@@ -60,11 +59,8 @@ C:\TextumReader\TextumReader.WebUI\bin\Microsoft.Owin.Security.xml
 C:\TextumReader\TextumReader.WebUI\bin\Microsoft.Owin.Security.Cookies.xml
 C:\TextumReader\TextumReader.WebUI\bin\Microsoft.Owin.Security.OAuth.xml
 C:\TextumReader\TextumReader.WebUI\bin\Newtonsoft.Json.xml
-C:\TextumReader\TextumReader.WebUI\bin\Ninject.pdb
 C:\TextumReader\TextumReader.WebUI\bin\Ninject.xml
-C:\TextumReader\TextumReader.WebUI\bin\Ninject.Web.Common.pdb
 C:\TextumReader\TextumReader.WebUI\bin\Ninject.Web.Common.xml
-C:\TextumReader\TextumReader.WebUI\bin\Ninject.Web.Mvc.pdb
 C:\TextumReader\TextumReader.WebUI\bin\Ninject.Web.Mvc.xml
 C:\TextumReader\TextumReader.WebUI\bin\System.Net.Http.Formatting.xml
 C:\TextumReader\TextumReader.WebUI\bin\System.Web.Helpers.xml
@@ -82,3 +78,83 @@ C:\TextumReader\TextumReader.WebUI\bin\WebMatrix.WebData.xml
 C:\TextumReader\TextumReader.WebUI\obj\Release\TextumReader.WebUI.csprojResolveAssemblyReference.cache
 C:\TextumReader\TextumReader.WebUI\obj\Release\TextumReader.WebUI.dll
 C:\TextumReader\TextumReader.WebUI\obj\Release\TextumReader.WebUI.pdb
+C:\TextumReader — копия\TextumReader.WebUI\bin\AutoMapper.Net4.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\TextumReader.WebUI.dll.config
+C:\TextumReader — копия\TextumReader.WebUI\bin\TextumReader.WebUI.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\TextumReader.WebUI.pdb
+C:\TextumReader — копия\TextumReader.WebUI\bin\Antlr3.Runtime.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\AutoMapper.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\EntityFramework.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\EntityFramework.SqlServer.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\LemmaSharp.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\LemmaSharpPrebuilt.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\LemmaSharpPrebuiltCompact.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Linguistics.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Lzma#.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.AspNet.Identity.Core.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.Owin.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.Owin.Security.Cookies.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.Owin.Security.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.Owin.Security.OAuth.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.Web.Helpers.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.Web.Infrastructure.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Newtonsoft.Json.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Ninject.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Ninject.Web.Common.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Ninject.Web.Mvc.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Owin.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Net.Http.Formatting.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Helpers.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Http.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Http.WebHost.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Mvc.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Optimization.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Providers.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Razor.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.WebPages.Deployment.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.WebPages.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.WebPages.Razor.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\TextumReader.DataLayer.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\TextumReader.ProblemDomain.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\WebActivatorEx.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\WebGrease.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\WebMatrix.Data.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\WebMatrix.WebData.dll
+C:\TextumReader — копия\TextumReader.WebUI\bin\Linguistics.pdb
+C:\TextumReader — копия\TextumReader.WebUI\bin\TextumReader.DataLayer.pdb
+C:\TextumReader — копия\TextumReader.WebUI\bin\TextumReader.ProblemDomain.pdb
+C:\TextumReader — копия\TextumReader.WebUI\bin\Antlr3.Runtime.pdb
+C:\TextumReader — копия\TextumReader.WebUI\bin\AutoMapper.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\EntityFramework.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\EntityFramework.SqlServer.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.AspNet.Identity.Core.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.Owin.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.Owin.Security.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.Owin.Security.Cookies.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\Microsoft.Owin.Security.OAuth.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\Newtonsoft.Json.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\Ninject.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\Ninject.Web.Common.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\Ninject.Web.Mvc.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Net.Http.Formatting.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Helpers.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Http.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Http.WebHost.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Mvc.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Optimization.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Providers.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.Razor.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.WebPages.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.WebPages.Deployment.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\System.Web.WebPages.Razor.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\WebMatrix.Data.xml
+C:\TextumReader — копия\TextumReader.WebUI\bin\WebMatrix.WebData.xml
+C:\TextumReader — копия\TextumReader.WebUI\obj\Release\TextumReader.WebUI.csprojResolveAssemblyReference.cache
+C:\TextumReader — копия\TextumReader.WebUI\obj\Release\TextumReader.WebUI.dll
+C:\TextumReader — копия\TextumReader.WebUI\obj\Release\TextumReader.WebUI.pdb

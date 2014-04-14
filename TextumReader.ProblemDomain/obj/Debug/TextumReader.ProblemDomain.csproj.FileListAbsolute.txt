@@ -39,9 +39,9 @@ C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\EntityFramework.SqlServer.d
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Linguistics.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\LemmaSharpPrebuilt.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\LemmaSharp.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Newtonsoft.Json.dll
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\LemmaSharpPrebuilt.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\LemmaSharpPrebuiltCompact.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Lzma#.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Linguistics.pdb
