@@ -15,6 +15,7 @@ using TextumReader.DataLayer.Concrete;
 using TextumReader.ProblemDomain;
 using TextumReader.WebUI.Extensions;
 using TextumReader.WebUI.Models;
+using TextumReader.WebUI.Models.WebApiModels;
 
 namespace TextumReader.WebUI.Controllers
 {
@@ -72,30 +73,32 @@ namespace TextumReader.WebUI.Controllers
             return translation;
         }
 
-        public void AddWord(string word, string translation, string lang, int dictionaryId)
+        public void PostWord(PostWordRequest postWordRequest)
         {
-            word = _dictionaryManager.GetLemmatization(word, lang.ToEnum<Language>());
+            postWordRequest.word = _dictionaryManager.GetLemmatization(postWordRequest.word, postWordRequest.lang.ToEnum<Language>());
 
-            Dictionary dict = _repository.GetSingle<Dictionary>(d => d.DictionaryId == dictionaryId);
-            Word foundWords = dict.Words.FirstOrDefault(w => w.WordName == word);
+            Dictionary dict = _repository.GetSingle<Dictionary>(d => d.DictionaryId == postWordRequest.dictionaryId);
+            Word foundWord = dict.Words.FirstOrDefault(w => w.WordName == postWordRequest.word);
 
-            if (foundWords != null)
+            if (foundWord != null)
             {
-                if (foundWords.Translations.Any(t => t.Value == translation))
+                if (foundWord.Translations.Any(t => t.Value == postWordRequest.translation))
                     return;
 
-                foundWords.Translations.Add(new Translation() { WordId = foundWords.WordId, Value = translation });
+                foundWord.Translations.Add(new Translation() { WordId = foundWord.WordId, Value = postWordRequest.translation });
             }
             else
             {
-                Word newWord = new Word() { WordName = word, DictionaryId = dictionaryId };
+                Word newWord = new Word() { WordName = postWordRequest.word, DictionaryId = postWordRequest.dictionaryId };
                 newWord.AddDate = DateTime.Now;
 
                 _repository.Add<Word>(newWord);
 
-                newWord.Translations.Add(new Translation() { Value = translation });
+                newWord.Translations.Add(new Translation() { Value = postWordRequest.translation });
             }
             _repository.SaveChanges();
+
+            return;
         }
 
         private static IEnumerable<string> GetSavedTranslationsFromDB(Word foundWord)

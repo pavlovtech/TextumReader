@@ -26,6 +26,7 @@
 
             var selectedWord = $(this).text();
 
+            // TODO: replace with a parameter
             $.getJSON("/api/DictionaryAPI", {
                     word: selectedWord,
                     dictionaryId: currentDict,
@@ -46,7 +47,7 @@
                     if (translationData.wordFrequency !== "") {
                         formattedData += "frequency: " + translationData.wordFrequency.toString();
                     }
-                    
+
                     $("#translations").html(formattedData);
 
                     // highlights translations by adding class translationLight
@@ -54,10 +55,11 @@
 
                     $(params.translationTagName).click(function(e) {
                         var selectedTranslation = $(this).text();
-                        
-                        $.post(params.addWordAction, {
-                            word: translationData.word,
+
+                        $.post("/api/DictionaryAPI", {
+                                word: translationData.word,
                                 translation: selectedTranslation,
+                                lang: params.inputLanguage,
                                 dictionaryId: currentDict
                             }, function(data) {
                                 $(params.dialogId).dialog("close");
