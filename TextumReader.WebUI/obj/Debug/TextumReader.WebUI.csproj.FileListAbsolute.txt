@@ -477,3 +477,4 @@ C:\TextumReader\TextumReader.WebUI\bin\WebMatrix.WebData.xml
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.csprojResolveAssemblyReference.cache
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.dll
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.pdb
+C:\TextumReader\TextumReader.WebUI\bin\WebApiContrib.IoC.Ninject.dll

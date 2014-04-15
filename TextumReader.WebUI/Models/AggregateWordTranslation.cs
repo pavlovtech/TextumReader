@@ -8,7 +8,6 @@ namespace TextumReader.WebUI.Models
     public class AggregateWordTranslation
     {
         public string Word { get; set; }
-        public string NormalisedWord { get; set; }
         public string AudioUrl { get; set; }
         public IEnumerable<string> SavedTranslations { get; set; }
         public IEnumerable<string> Translations { get; set; }

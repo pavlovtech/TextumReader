@@ -1,8 +1,10 @@
 using System.Configuration;
 using System.Data.Entity;
+using System.Web.Http;
 using Linguistics.Dictionary;
 using TextumReader.DataLayer.Abstract;
 using TextumReader.DataLayer.Concrete;
+using WebApiContrib.IoC.Ninject;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(TextumReader.WebUI.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(TextumReader.WebUI.App_Start.NinjectWebCommon), "Stop")]
@@ -50,6 +52,8 @@ namespace TextumReader.WebUI.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+
+                GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel);
 
                 RegisterServices(kernel);
                 return kernel;

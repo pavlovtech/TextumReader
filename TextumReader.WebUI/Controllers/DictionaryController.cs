@@ -53,7 +53,7 @@ namespace TextumReader.WebUI.Controllers
         }
 
 
-        // TODO: remove to DictonaryAPIController
+        // TODO: remove to DictonaryAPIController and add a lang param
         [HttpPost]
         public void AddWord(string word, string translation, int dictionaryId)
         {

@@ -12,6 +12,7 @@ namespace Linguistics.Dictionary
     {
         // TODO: use ninject for binding
         private IWebDictionary webDictionary = new GoogleTranslate();
+
         private LanguagePrebuilt currentLanguage = LanguagePrebuilt.English;
         private ILemmatizer lmtz;
 
