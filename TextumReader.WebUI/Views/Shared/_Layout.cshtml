@@ -4,13 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jsextlibs")
-    @Scripts.Render("~/bundles/myscripts")
-
     @Styles.Render("~/Content/themes/base/css")
     
     @Styles.Render("~/Content/bootstrap")
@@ -19,7 +12,6 @@
     @Styles.Render("~/Content/css")
 
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div id="page">
@@ -50,6 +42,12 @@
         <footer id="footer" class="container"><p class="text-muted">© 2014 TextumReader</p></footer>
     </div>
     
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jsextlibs")
+    @Scripts.Render("~/bundles/myscripts")
     @RenderSection("scripts", required: false)
 </body>
 </html>

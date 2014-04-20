@@ -86,18 +86,5 @@ namespace TextumReader.WebUI.Controllers
 
             return View("AnkiRegistrationFinish");
         }
-
-//        public PartialViewResult Settings()
-//        {
-//            AnkiUser ankiUser = _repository.GetSingle<AnkiUser>(u => u.UserId == User.Identity.GetUserId());
-//            AnkiUserViewModel viewModel;
-//
-//            if (ankiUser != null)
-//                viewModel = Mapper.Map<AnkiUserViewModel>(ankiUser);
-//            else
-//                viewModel = new AnkiUserViewModel();
-//
-//            return PartialView(viewModel);
-//        }
 	}
 }

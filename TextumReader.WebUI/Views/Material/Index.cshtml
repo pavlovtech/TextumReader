@@ -44,6 +44,7 @@
         $(function() {
             submitFormAutomatically("#category");
             $(".alert").fadeOut(4000);
+            $("table").tablesorter({ headers: { 2: { sorter: false }, } });
         });
     </script>
-}
+}   

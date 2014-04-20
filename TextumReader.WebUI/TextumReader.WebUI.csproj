@@ -239,7 +239,6 @@
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaterialController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\HtmlHelpers.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
@@ -256,6 +255,7 @@
     <Compile Include="Models\MaterialsListViewModel.cs" />
     <Compile Include="Models\MaterialViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Models\WebApiModels\GetTranslationsRequest.cs" />
     <Compile Include="Models\WebApiModels\PostWordRequest.cs" />
     <Compile Include="Models\WordViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -272,7 +272,6 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\fantasy_space-wide.jpg" />
     <Content Include="Content\intro-bg.jpg" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\tablesorter\asc.gif" />
@@ -353,7 +352,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\knockout-3.1.0.debug.js" />
     <Content Include="Scripts\knockout-3.1.0.js" />
-    <Content Include="Scripts\MyScripts\dialog-hider.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -377,8 +375,13 @@
     <Content Include="Scripts\modernizr-2.7.1.js" />
     <Content Include="Scripts\MyScripts\submit-helper.js" />
     <Content Include="Scripts\MyScripts\translation-dialog.js" />
+    <Content Include="Scripts\MyScripts\translation-popover.js" />
     <Content Include="Scripts\MyScripts\word-lighter.js" />
     <Content Include="Scripts\MyScripts\word-wrapper.js" />
+    <Content Include="Scripts\qTip\jquery.qtip.css" />
+    <Content Include="Scripts\qTip\jquery.qtip.js" />
+    <Content Include="Scripts\qTip\jquery.qtip.min.css" />
+    <Content Include="Scripts\qTip\jquery.qtip.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -399,7 +402,7 @@
     <Content Include="Views\Material\Edit.cshtml" />
     <Content Include="Views\Dictionary\Index.cshtml" />
     <Content Include="Views\Dictionary\WordList.cshtml" />
-    <Content Include="Views\Shared\_DialogPartial.cshtml" />
+    <Content Include="Views\Shared\_PopoverPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Dictionary\Edit.cshtml" />
     <Content Include="Views\Material\Create.cshtml" />
@@ -421,7 +424,7 @@
     <Content Include="Views\Anki\AnkiRegistrationFinish.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Settings.cshtml" />
-    <Content Include="Views\Dictionary\WordEditor.cshtml" />
+    <Content Include="Views\Dictionary\WordManager.cshtml" />
     <Content Include="Views\Home\AdditionalInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>

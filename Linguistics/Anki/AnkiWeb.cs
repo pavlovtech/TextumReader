@@ -35,6 +35,15 @@ namespace Linguistics.Anki
         public string Login { get; set; }
         public string Password { get; set; }
 
+//        public async Task<bool> Exists(string word)
+//        {
+//            AutorizationCheck();
+//
+//            string url = string.Format("https://ankiweb.net/search/keyword={0}&submitted=1&submit=Search", word);
+//
+//            string htmlPage = await HttpQuery.Make(url, cookie, "POST");
+//        }
+
         public async Task<IEnumerable<Card>> GetCards()
         {
             AutorizationCheck();

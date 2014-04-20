@@ -45,25 +45,19 @@
     </div>
 </div>
 
-@{ Html.RenderPartial("_DialogPartial"); }
+@{ Html.RenderPartial("_PopoverPartial"); }
 
 
 @section scripts
 {
     <script>
-        $(document).ready(function() {
-            hideDialogWhenUserClicksOutside("#dialog");
-
-            wrapAllWords(".word_split", "w");
-            highlightWords("w", "lighted");
-            submitFormAutomatically("#DictionaryId");
-
+        $(document).ready(function () {
             var params =
             {
-                getTranslationAction: '@Url.Action("GetTranslations", "DictionaryAPI")',
+                getTranslationsAction: '@Url.Action("GetTranslations", "DictionaryAPI")',
                 addWordAction: '@Url.Action("PostWord", "DictionaryAPI")',
-                getSavedTranslationsAction: '@Url.Action("GetSavedTranslations", "Dictionary")',
-                dialogId: "#dialog",
+                getSavedTranslationsAction: '@Url.Action("GetSavedTranslations", "DictionaryAPI")',
+                popoverId: "#translationPopover",
                 wordTagName: "w",
                 translationTagName: "translation",
                 wordListAction: '@Url.Action("WordList")',
@@ -71,10 +65,21 @@
                 outputLanguage: '@Model.OutputLanguage'
             };
 
-            var tp = new TranslationProcessing(params);
-            tp.setUp();
+            wrapAllWords(".word_split", params.wordTagName, "innerContent");
+            highlightWords(params.wordTagName, "lighted");
+            submitFormAutomatically("#DictionaryId");
+
+            var pm = new PopoverManager(params);
+            pm.setUp();
 
             $("#words").height($('#text').height());
+
+            $(document).mouseup(function (e) {
+                if ($('.popover').has(e.target).length === 0) {
+                    $('.popover').toggleClass('in').remove();
+                    return;
+                }
+            });
         });
     </script>
 }

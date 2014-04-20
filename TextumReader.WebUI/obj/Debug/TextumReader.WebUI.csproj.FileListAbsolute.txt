@@ -439,6 +439,7 @@ C:\TextumReader\TextumReader.WebUI\bin\System.Web.WebPages.Razor.dll
 C:\TextumReader\TextumReader.WebUI\bin\TextumReader.DataLayer.dll
 C:\TextumReader\TextumReader.WebUI\bin\TextumReader.ProblemDomain.dll
 C:\TextumReader\TextumReader.WebUI\bin\WebActivatorEx.dll
+C:\TextumReader\TextumReader.WebUI\bin\WebApiContrib.IoC.Ninject.dll
 C:\TextumReader\TextumReader.WebUI\bin\WebGrease.dll
 C:\TextumReader\TextumReader.WebUI\bin\WebMatrix.Data.dll
 C:\TextumReader\TextumReader.WebUI\bin\WebMatrix.WebData.dll
@@ -477,4 +478,3 @@ C:\TextumReader\TextumReader.WebUI\bin\WebMatrix.WebData.xml
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.csprojResolveAssemblyReference.cache
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.dll
 C:\TextumReader\TextumReader.WebUI\obj\Debug\TextumReader.WebUI.pdb
-C:\TextumReader\TextumReader.WebUI\bin\WebApiContrib.IoC.Ninject.dll

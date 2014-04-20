@@ -30,7 +30,8 @@ namespace TextumReader.WebUI
             bundles.Add(new ScriptBundle("~/bundles/jsextlibs").Include(
                     "~/Scripts/jquery.tablesorter.min.js",
                     "~/Scripts/bootbox.js",
-                    "~/Scripts/knockout-3.1.0.js"));
+                    "~/Scripts/knockout-3.1.0.js",
+                    "~/Scripts/qTip/jquery.qtip.min.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -41,11 +42,19 @@ namespace TextumReader.WebUI
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",
                         "~/Content/themes/base/jquery.ui.selectable.css",
+                        "~/Content/themes/base/jquery.ui.accordion.css",
+                        "~/Content/themes/base/jquery.ui.autocomplete.css",
                         "~/Content/themes/base/jquery.ui.button.css",
                         "~/Content/themes/base/jquery.ui.dialog.css",
+                        "~/Content/themes/base/jquery.ui.slider.css",
+                        "~/Content/themes/base/jquery.ui.tabs.css",
+                        "~/Content/themes/base/jquery.ui.datepicker.css",
+                        "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css", "~/Content/tablesorter/style.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css",
+                "~/Content/tablesorter/style.css",
+                "~/Scripts/qTip/jquery.qtip.min.css"));
         }
     }
 }

@@ -12,10 +12,13 @@ namespace TextumReader.ProblemDomain
         public Word()
         {
             Translations = new List<Translation>();
+            IsAddedToAnki = false;
         }
 
         public int WordId { get; set; }
         public int DictionaryId { get; set; }
+
+        public bool IsAddedToAnki { get; set; }
 
         public string WordName { get; set; }
 

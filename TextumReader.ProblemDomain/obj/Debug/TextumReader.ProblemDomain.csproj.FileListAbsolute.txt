@@ -31,6 +31,7 @@ F:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.E
 F:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.csprojResolveAssemblyReference.cache
 F:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.dll
 F:\TextumReader\TextumReader.ProblemDomain\obj\Debug\TextumReader.ProblemDomain.pdb
+C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\EntityFramework.xml
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.dll.config
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\TextumReader.ProblemDomain.pdb
@@ -45,7 +46,6 @@ C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Newtonsoft.Json.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\LemmaSharpPrebuiltCompact.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Lzma#.dll
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Linguistics.pdb
-C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\EntityFramework.xml
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\EntityFramework.SqlServer.xml
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\TextumReader\TextumReader.ProblemDomain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

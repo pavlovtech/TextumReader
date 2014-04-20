@@ -31,7 +31,19 @@ namespace TextumReader.WebUI.Controllers
             _repository = repository;
         }
 
+
+        [ActionName("GetSentenceTranslation")]
+        public async Task<string> GetSentenceTranslation(string sentence, string inputLang, string outputLang)
+        {
+            var translations = await _dictionaryManager.GetTranslations(sentence,
+                    inputLang.ToEnum<Language>(),
+                    outputLang.ToEnum<Language>());
+
+            return translations.FirstOrDefault();
+        }
+
         // localhost:4766/api/DictionaryAPI?word=community&dictionaryId=24&inputLang=english&outputLang=russian
+       [ActionName("GetTranslations")]
         public async Task<AggregateWordTranslation> GetTranslations(string word, int dictionaryId, string inputLang, string outputLang)
         {
             Dictionary dict = _repository.GetSingle<Dictionary>(d => d.DictionaryId == dictionaryId);;
@@ -60,7 +72,7 @@ namespace TextumReader.WebUI.Controllers
             int wordFrequencyIndex = GetWordFrequencyIndexFromDB(word, inputLang.ToEnum<Language>());
             string shortendFreqView = GetShortendFrequencyView(wordFrequencyIndex);
 
-            string audio = await Make(string.Format("http://apifree.forvo.com/action/word-pronunciations/format/json/word/{0}/language/en/order/date-desc/limit/1/key/444c6f26cd5e1d526f27ff00a7775f3e/", word));
+            //string audio = await Make(string.Format("http://apifree.forvo.com/action/word-pronunciations/format/json/word/{0}/language/en/order/date-desc/limit/1/key/444c6f26cd5e1d526f27ff00a7775f3e/", word));
 
             var translation = new AggregateWordTranslation()
             {
@@ -73,32 +85,52 @@ namespace TextumReader.WebUI.Controllers
             return translation;
         }
 
-        public void PostWord(PostWordRequest postWordRequest)
+        [ActionName("PostWord")]
+        public void PostWord(PostWordRequest request)
         {
-            postWordRequest.word = _dictionaryManager.GetLemmatization(postWordRequest.word, postWordRequest.lang.ToEnum<Language>());
+            request.word = _dictionaryManager.GetLemmatization(request.word, request.lang.ToEnum<Language>());
 
-            Dictionary dict = _repository.GetSingle<Dictionary>(d => d.DictionaryId == postWordRequest.dictionaryId);
-            Word foundWord = dict.Words.FirstOrDefault(w => w.WordName == postWordRequest.word);
+            Dictionary dict = _repository.GetSingle<Dictionary>(d => d.DictionaryId == request.dictionaryId);
+            Word foundWord = dict.Words.FirstOrDefault(w => w.WordName == request.word);
 
-            if (foundWord != null)
+            if (foundWord == null)
             {
-                if (foundWord.Translations.Any(t => t.Value == postWordRequest.translation))
-                    return;
+                var newWord = new Word
+                {
+                    WordName = request.word,
+                    DictionaryId = request.dictionaryId,
+                    AddDate = DateTime.Now
+                };
 
-                foundWord.Translations.Add(new Translation() { WordId = foundWord.WordId, Value = postWordRequest.translation });
+                newWord.Translations.Add(new Translation() { Value = request.translation });
+
+                _repository.Add<Word>(newWord);
             }
             else
             {
-                Word newWord = new Word() { WordName = postWordRequest.word, DictionaryId = postWordRequest.dictionaryId };
-                newWord.AddDate = DateTime.Now;
+                if (foundWord.Translations.Any(t => t.Value == request.translation))
+                    return;
 
-                _repository.Add<Word>(newWord);
-
-                newWord.Translations.Add(new Translation() { Value = postWordRequest.translation });
+                foundWord.Translations.Add(new Translation() { WordId = foundWord.WordId, Value = request.translation });
             }
+            
             _repository.SaveChanges();
 
             return;
+        }
+
+        [ActionName("GetSavedTranslations")]
+        public IEnumerable<string> GetSavedTranslations(GetTranslationsRequest request)
+        {
+            request.word = _dictionaryManager.GetLemmatization(request.word, request.lang.ToEnum<Language>());
+
+            Dictionary dict = _repository.GetSingle<Dictionary>(d => d.DictionaryId == request.dictionaryId);
+            Word foundWord = dict.Words.FirstOrDefault(w => w.WordName == request.word);
+
+            if (foundWord == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound); 
+
+            return foundWord.Translations.Select(t => t.Value);
         }
 
         private static IEnumerable<string> GetSavedTranslationsFromDB(Word foundWord)
@@ -107,6 +139,7 @@ namespace TextumReader.WebUI.Controllers
 
             if (foundWord != null)
                 savedTranslations = foundWord.Translations.Select(t => t.Value);
+
             return savedTranslations;
         }
 

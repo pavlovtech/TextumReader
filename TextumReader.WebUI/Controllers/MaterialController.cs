@@ -163,7 +163,7 @@ namespace TextumReader.WebUI.Controllers
             return View("Create", viewModel);
         }
 
-        private static Language DetectCurrentLanguage()
+        private Language DetectCurrentLanguage()
         {
             var culture = CultureInfo.CurrentCulture;
             string englishName = culture.EnglishName;

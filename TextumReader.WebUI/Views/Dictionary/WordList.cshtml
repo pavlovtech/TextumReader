@@ -8,11 +8,13 @@
 @section scripts
 {
     <script>
-        $((function () {
-            $("form.confirmable").submit(function (e) {
+        $((function() {
+            $("[data-toggle='tooltip']").tooltip();
+
+            $("form.confirmable").submit(function(e) {
                 e.preventDefault();
                 var currentForm = this;
-                bootbox.confirm("Are you sure?", function (result) {
+                bootbox.confirm("Are you sure?", function(result) {
                     if (result) {
                         currentForm.submit();
                     }
@@ -29,9 +31,17 @@
                     $("#tools").hide("slow");
                 }
             });
+
+            $('.addedToAnki').qtip({
+                content: {
+                    text: 'Already added to Anki',
+                },
+                style: { classes: 'qtip-bootstrap' }
+            });
         }));
     </script>
 }
+   
 
 @if (Model.Any())
 {
@@ -66,17 +76,34 @@
                         <td class="centered-column" style="width: 40px">
                             @Html.HiddenFor(x => Model[i].WordId)
                             @Html.HiddenFor(x => Model[i].DictionaryId)
-                            @Html.CheckBoxFor(x => Model[i].IsSelected, new {@class = "wcheckbox"})
+                            
+                            @if (Model[i].IsAddedToAnki)
+                            {
+                                @Html.CheckBoxFor(x => Model[i].IsSelected, new {@class = "wcheckbox addedToAnki"})
+                            }
+                            else
+                            {
+                                @Html.CheckBoxFor(x => Model[i].IsSelected, new {@class = "wcheckbox"})
+                            }
                         </td>
-                        <td style="width: 140px;">@Model[i].WordName</td>
+                        <td style="width: 140px;">
+                            @if (@Model[i].IsAddedToAnki)
+                            {
+                                <span class="addedToAnki">@Model[i].WordName</span>
+                            }
+                            else
+                            {
+                                <strong>@Model[i].WordName</strong>
+                            }
+                        </td>
                         <td>
                             @foreach (Translation t in Model[i].Translations)
                             {
                                 <span class="well well-sm translation">
                                     @t.Value
                                     @using (Html.BeginForm("DeleteTranslation", "Dictionary",
-                                        new { id = t.TranslationId }, FormMethod.Post,
-                                        new { style = "display:inline;" }))
+                                        new {id = t.TranslationId}, FormMethod.Post,
+                                        new {style = "display:inline;"}))
                                     {
                                         <input class="closeBtn" type="submit" value="&times;" />
                                     }
@@ -85,7 +112,7 @@
                         </td>
 
                         <td class="buttons centered-column" style="width: 110px;">
-                            @using (Html.BeginForm("DeleteWord", "Dictionary", new { id = Model[i].WordId }, FormMethod.Post,
+                            @using (Html.BeginForm("DeleteWord", "Dictionary", new {id = Model[i].WordId}, FormMethod.Post,
                                 new
                                 {
                                     style = "display:inline;",

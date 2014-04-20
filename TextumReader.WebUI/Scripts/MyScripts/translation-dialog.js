@@ -56,6 +56,7 @@
                     $(params.translationTagName).click(function(e) {
                         var selectedTranslation = $(this).text();
 
+                        // TODO: replace with a parameter
                         $.post("/api/DictionaryAPI", {
                                 word: translationData.word,
                                 translation: selectedTranslation,

@@ -1,4 +1,4 @@
-﻿function wrapAllWords(containerId, tagName) {
+﻿function wrapAllWords(containerId, tagName, className) {
     var text = $(containerId).text();
 
     var alphabet = {};
@@ -22,7 +22,7 @@
 
     var regexp = new RegExp("[a-zA-z" + pattern + "’'-]+", "gi");
 
-    text = text.replace(regexp, "<" + tagName + ">$&</" + tagName + ">");
+    text = text.replace(regexp, "<span>" + "<" + tagName + ">$&</" + tagName + ">" + "</span>");
     text = text.replace(/\n/g, "<br />");
     $(containerId).html(text);
 }

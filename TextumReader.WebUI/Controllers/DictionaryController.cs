@@ -47,59 +47,9 @@ namespace TextumReader.WebUI.Controllers
             var words = _repository.Get<Word>()
                 .Where(w => w.DictionaryId == dictionaryId)
                 .ToList()
-                .Select(Mapper.Map<WordViewModel>).ToList();
+                .Select(Mapper.Map<WordViewModel>).OrderByDescending(w => w.AddDate).ToList();
 
             return View(words);
-        }
-
-
-        // TODO: remove to DictonaryAPIController and add a lang param
-        [HttpPost]
-        public void AddWord(string word, string translation, int dictionaryId)
-        {
-            word = lmtz.Lemmatize(word);
-
-            Dictionary dict = _repository.GetSingle<Dictionary>(d => d.DictionaryId == dictionaryId);
-            Word foundWords = dict.Words.FirstOrDefault(w => w.WordName == word);
-
-            if (foundWords != null)
-            {
-                if (foundWords.Translations.Any(t => t.Value == translation))
-                    return;
-
-                foundWords.Translations.Add(new Translation() { WordId = foundWords.WordId, Value = translation });
-            }
-            else
-            {
-                Word newWord = new Word() { WordName = word, DictionaryId = dictionaryId };
-                newWord.AddDate = DateTime.Now;
-
-                _repository.Add<Word>(newWord);
-
-                newWord.Translations.Add(new Translation() { Value = translation });
-            }
-            _repository.SaveChanges();
-        }
-
-        // TODO: remove to DictonaryAPIController
-        [HttpPost]
-        public JsonResult GetSavedTranslations(string word, int dictionaryId, string inputLang)
-        {
-            if (currentLanguage != inputLang.ToEnum<LanguagePrebuilt>())
-            {
-                lmtz = new LemmatizerPrebuiltCompact(inputLang.ToEnum<LanguagePrebuilt>());
-            }
-
-            word = lmtz.Lemmatize(word);
-
-            Dictionary dict = _repository.GetSingle<Dictionary>(d => d.DictionaryId == dictionaryId);
-            Word foundWord = dict.Words.FirstOrDefault(w => w.WordName == word);
-
-            if (foundWord != null)
-                return Json(foundWord.Translations.Select(t => t.Value).ToArray());
-
-            //return Json(Enumerable.Empty<string>());
-            return null;
         }
 
         [HttpPost]
@@ -233,9 +183,6 @@ namespace TextumReader.WebUI.Controllers
 
             if (!ankiWeb.IsAutorized)
             {
-                if (user == null)
-                    RedirectToAction("WordList", new { dictionaryId = dictId });
-
                 ankiWeb.Login = user.Login;
                 ankiWeb.Password = user.Password;
                 await ankiWeb.Autorize();
@@ -254,7 +201,14 @@ namespace TextumReader.WebUI.Controllers
                 }
 
                 success = await ankiWeb.AddWord(word.WordName, translations, user.DeckName, user.CardId);
+
+                if (success)
+                {
+                    word.IsAddedToAnki = true;
+                }
             }
+
+            _repository.SaveChanges();
 
             if (success)
                 TempData["message"] = "The words have successfully been added to Anki";
