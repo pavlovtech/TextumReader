@@ -3,4 +3,4 @@
 3. Add bookmarks
 4. Do over the Dictionary View
 5. Make the word list fixed on the web page
-6. Add saving a current page of a material
+6. Fix a bag with pagination, which occurs when a user adds a new material

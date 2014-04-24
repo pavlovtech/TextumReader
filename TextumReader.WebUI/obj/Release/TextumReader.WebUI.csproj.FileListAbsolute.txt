@@ -158,3 +158,4 @@ C:\TextumReader — копия\TextumReader.WebUI\bin\WebMatrix.WebData.xml
 C:\TextumReader — копия\TextumReader.WebUI\obj\Release\TextumReader.WebUI.csprojResolveAssemblyReference.cache
 C:\TextumReader — копия\TextumReader.WebUI\obj\Release\TextumReader.WebUI.dll
 C:\TextumReader — копия\TextumReader.WebUI\obj\Release\TextumReader.WebUI.pdb
+C:\TextumReader\TextumReader.WebUI\bin\WebApiContrib.IoC.Ninject.dll

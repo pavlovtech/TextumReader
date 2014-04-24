@@ -48,12 +48,19 @@ namespace TextumReader.WebUI.Controllers
             return PartialView("MaterialListPartial", materials.Reverse());
         }
 
-        public ActionResult Material(int id, int page = 1)
+        // TODO: refactor this ASAP
+        public ActionResult Material(int id, int page = 0)
         {
             var material = _repository.GetSingle<Material>(p => p.MaterialId == id && p.UserId == User.Identity.GetUserId());
 
             if (material == null)
                 return RedirectToAction("Index");
+
+            if(page <= 0)
+                page = material.CurrentPage;
+
+            material.CurrentPage = page;
+            _repository.SaveChanges();
 
             int size = 40;
             var sencences = material.Text.Split(new char[] {'.'});
@@ -139,6 +146,7 @@ namespace TextumReader.WebUI.Controllers
             material.DictionaryId = _repository.GetSingle<Dictionary>(d => d.Title == "Default").DictionaryId;
             material.UserId = User.Identity.GetUserId();
             material.AddDate = material.AddDate = DateTime.Now;
+            material.CurrentPage = 1;
 
             _repository.Add(material);
             _repository.SaveChanges();

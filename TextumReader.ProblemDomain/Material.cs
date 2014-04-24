@@ -25,6 +25,8 @@ namespace TextumReader.ProblemDomain
 
         public DateTime AddDate { get; set; }
 
+        public int CurrentPage { get; set; }
+
         public virtual Category Category { get; set; }
         public virtual Dictionary Dictionary { get; set; }
     }

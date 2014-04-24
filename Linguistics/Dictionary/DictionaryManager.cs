@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using LemmaSharp;
 using Linguistics.Models;
+using Linguistics.Utilities;
+using Newtonsoft.Json.Linq;
 
 namespace Linguistics.Dictionary
 {
@@ -43,6 +45,14 @@ namespace Linguistics.Dictionary
                 lemma = SaveFirstLetterUppercaseIfNeeded(word, lemma);
 
             return lemma;
+        }
+
+        public async Task<string> GetAudioUrl(string word)
+        {
+            string jsonSource = await HttpQuery.Make(string.Format("http://apifree.forvo.com/action/word-pronunciations/format/json/word/{0}/language/en/order/date-desc/limit/1/key/444c6f26cd5e1d526f27ff00a7775f3e/", word));
+            JObject audioSource = JObject.Parse(jsonSource);
+            var url = audioSource["items"][0]["pathmp3"].Value<string>();
+            return url;
         }
 
         private string SaveFirstLetterUppercaseIfNeeded(string word, string lemma)

@@ -9,8 +9,6 @@
 {
     <script>
         $((function() {
-            $("[data-toggle='tooltip']").tooltip();
-
             $("form.confirmable").submit(function(e) {
                 e.preventDefault();
                 var currentForm = this;
@@ -24,19 +22,34 @@
             $("table").tablesorter({ headers: { 0: { sorter: false }, 3: { sorter: false } } });
             $(".alert").fadeOut(4000);
 
-            $("[type=checkbox]").click(function() {
+            $(".addedToAnki").qtip({
+                content: {
+                    text: "Already added to Anki",
+                },
+                style: { classes: "qtip-bootstrap" }
+            });
+
+            $("#check-all").click(function() {
+                if (this.checked) {
+
+                    $('.wcheckbox').each(function (e) { 
+                        if (!$(this).hasClass('addedToAnki')) {
+                            this.checked = true; 
+                        }
+                    });
+                } else {
+                    $('.wcheckbox').each(function (e) { 
+                        this.checked = false;                    
+                    });
+                }
+            });
+            
+            $("[type=checkbox]").click(function () {
                 if ($(":checkbox:checked.wcheckbox").length > 0) {
                     $("#tools").show("slow");
                 } else {
                     $("#tools").hide("slow");
                 }
-            });
-
-            $('.addedToAnki').qtip({
-                content: {
-                    text: 'Already added to Anki',
-                },
-                style: { classes: 'qtip-bootstrap' }
             });
         }));
     </script>
@@ -63,7 +76,9 @@
         <table class="table table-striped table-bordered table-hover table-condensed tablesorter wordlist">
             <thead>
                 <tr>
-                    <th></th>
+                    <th class="centered-column">
+                        <input type="checkbox" id="check-all" />
+                    </th>
                     <th>Word Name</th>
                     <th>Translations</th>
                     <th>Actions</th>

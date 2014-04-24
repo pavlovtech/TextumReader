@@ -1,6 +1,8 @@
 ﻿var PopoverManager = function(params) {
     var self = this;
 
+    var translatioObject;
+
     var formatTranslation = function(translationTagName, translation) {
         var formattedData =
             "<" + translationTagName + ">" +
@@ -65,8 +67,10 @@
                     inputLang: params.inputLanguage,
                     outputLang: params.outputLanguage
                 },
-                function(translationData) {
-                    var formattedData = ""; // Data with translations
+                function (translationData) {
+                    translatioObject = translationData;
+
+                    var formattedData = "";
 
                     for (var i = 0; i < translationData.savedTranslations.length; i++) {
                         formattedData += "✔ " + formatTranslation(params.translationTagName, translationData.savedTranslations[i]);
@@ -86,12 +90,18 @@
                         content: function() {
                             return $(params.popoverId).html();
                         },
-                        title: translationData.word,
+                        title: "<a class='glyphicon glyphicon-play-circle' style='text-decoration:none; padding-right:5px; cursor: pointer' id='audio'></a> " + translationData.word,
                         html: true,
                         trigger: 'manual',
                         placement: 'bottom',
                         container: 'body'
                     }).popover('show');
+
+                    $("#audio").click(function () {
+                        var audio = new Audio(translationData.audioUrl);
+                        audio.load();
+                        audio.play();
+                    });
 
                     // highlights translations by adding class translationLight
                     highlightWords("translation", "translationLight");
